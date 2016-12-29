@@ -1,2 +1,2 @@
 <?php
-Page::create("home", "Lang::getLang('mainPage')", "mainPage");
+Page::create("home", Lang::getLang('mainPage'), "mainPage");
