@@ -79,6 +79,7 @@ Class Validation {
         }
     }
 }
+
 Class Get
 {
     public static function post($key, $default_value = false)
@@ -91,5 +92,32 @@ Class Get
             $ret = urldecode(preg_replace('/((\%5C0+)|(\%00+))/i', '', urlencode($ret)));
         return !is_string($ret)? $ret : stripslashes($ret);
     }
-   
+    
+}
+
+Class AddHtml
+{
+    //Add pagination to template docs
+    public static function addPaginationWithLetter($foreach, $pageName, $page){
+        echo '
+        <div class="clear">
+        <ul class="pagination pagination-split">';
+        if ( Get::post($page) == "" ){
+            echo '<li class="active" ><a href="?url='.$pageName.'">'.Lang::getLang("all").'</a></li> ';
+        }
+        else{
+            echo '<li><a href="?url='.$pageName.'">'.Lang::getLang("all").'</a></li>';
+        }
+        
+        foreach ( $foreach as $f ){
+            if( Get::post($page) == $f["lastname"] ){
+                echo '<li class = "active"><a href="?url='.$pageName.'&'.$page.'='.$f["lastname"].'">'.$f["lastname"].'</a></li> ';
+            }
+            else{
+                echo '<li><a href="?url='.$pageName.'&'.$page.'='.$f["lastname"].'">'.$f["lastname"].'</a></li> ';
+            }
+        }
+        echo ' </ul></div>';
+    }
+    
 }

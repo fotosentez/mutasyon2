@@ -36,9 +36,9 @@ class DB
     }
     
     /** GET eg: $dbase->get('customer', 'id_customer = 1') **/
-    public static function get($table,  $condition) {
+    public static function get($which, $table,  $condition) {
         global $db;
-        $gettable = $db->query('SELECT * FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
+        $gettable = $db->query('SELECT '.$which.' FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
         return $gettable;
     }
     

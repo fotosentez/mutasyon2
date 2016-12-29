@@ -28,9 +28,11 @@ Class Lang{
             //Left Menu
             "index" 					=> "Anasayfa",
             "invoices" 					=> "Faturalar",
+            "invoiceList" 				=> "Fatura Listesi",
             "addInvoice" 				=> "Fatura Ekle",
             "current" 					=> "Cari",
             "customers" 				=> "Müşteriler",
+            "addCustomer" 				=> "Müşteri Ekle",
             "sellers" 					=> "Satıcılar",
             "serviceProviders" 				=> "Hizmet Sağlayıcılar",
             "stockManagements" 				=> "Stok Yönetimi",

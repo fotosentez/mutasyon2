@@ -2,4 +2,4 @@
 
 
 
-Page::create("invoices", Lang::getLang('invoices'), "invoices");
+Page::create("invoice", Lang::getLang('invoice'), "invoice");

@@ -15,7 +15,6 @@ if(Validation::isMd5($token)){
                         Validation::checkError('');
                         $checkUser = DB::isExist("superuser", "superuser_email = '" . $username . "' AND superuser_password = '" . md5 ( $password ) . "' AND superuser_active = 1");
                         if ($checkUser == 1) {
-                            session_start ();
                             $_SESSION ["mutasyon_session"] = 4;
                             $_SESSION ["email"] = $username;
                             echo '<script type="text/javascript">window.location.href="index.php?url=index";</script>';
