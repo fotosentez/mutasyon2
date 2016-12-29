@@ -1,0 +1,146 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body{
+    background:url("../img/loginbg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.relative{
+    position:relative;
+}
+.absolute{
+    position:absolute;
+}
+.displayNone{
+    display:none;
+}
+.displayBlock{
+    display:block;
+}
+.alert-danger{
+    background-color:#f2526d !important;
+}
+.loginform{
+    position:absolute;
+    left:35%;
+    top:30%;
+}
+.loginform h4 {
+    color: #eee;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 20px;
+    background: #333;
+    border: 1px solid #000;
+    padding: 3px;
+    border-radius: 10px 10px 0 0;
+    opacity: 0.9;
+    font-weight: bolder;
+}
+.loginform > div{
+    width: 240px;
+    background: #000;
+    padding: 40px;
+    height: 170px;
+    border: 1px solid #555;
+    border-radius: 0 0 10px 10px;
+    opacity: 0.9;
+}
+.loginform input {
+    height: 15px;
+    width: 95%;
+    border: 1px solid #444;
+    padding: 5px;
+    background: #333;
+    border-radius: 3px;
+    opacity: 0.7;
+    color: #fff;
+    margin-top:10px;
+    margin-bottom:10px;
+    opacity: 1;
+}
+.loginform label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #aaa;
+    text-transform: uppercase;
+}
+.loginform .buttondiv{
+    text-align:center;
+}
+.loginform button{
+    border:1px solid #91b41a; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family:arial, helvetica, sans-serif; 
+    padding: 10px 10px 10px 10px; 
+    text-decoration:none; 
+    display:inline-block;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    font-weight:bold; 
+    color: #FFFFFF;
+    background-color: #b6e026; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e026), to(#abdc28));
+    background-image: -webkit-linear-gradient(top, #b6e026, #abdc28);
+    background-image: -moz-linear-gradient(top, #b6e026, #abdc28);
+    background-image: -ms-linear-gradient(top, #b6e026, #abdc28);
+    background-image: -o-linear-gradient(top, #b6e026, #abdc28);
+    background-image: linear-gradient(to bottom, #b6e026, #abdc28);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#b6e026, endColorstr=#abdc28);
+    opacity:1;
+    font-size:14px;
+}
+.inf {
+    background: #fff;
+    width: 253px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 0;
+    color: #000;
+    font-weight: 300;
+}
