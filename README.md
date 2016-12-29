@@ -11,4 +11,7 @@ Neden Mutasyon?
 - İsterseniz localhost kurulumu yaparak ta sadece şirketinizin bilgisayarından ulaşmasını sağlayabilirsiniz.
 - **Mutasyon tamamen ücretsizdir**.
 
+Giriş Bilgileri:
+Kullanıcı Adı: deneme@deneme.com
+Şifre: deneme1
 
