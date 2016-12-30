@@ -1,3 +1,18 @@
+//Send forms with ajax no reload
+$(document).ready(function() {
+    $(".noload").each(function(index) {   				    
+        $(".noload").eq(index).submit(function(event){
+            event.preventDefault();
+            $(".inf").addClass("displayBlock");
+            $(".inf").html("<img src='view/img/load.gif' />");
+            $.post($(".noload").eq(index).attr("action"), $(".noload").eq(index).serialize(), function(gelen){
+                $(".inf").addClass("displayBlock");
+                $(".inf").html(gelen);
+            });
+        });
+    });
+});
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

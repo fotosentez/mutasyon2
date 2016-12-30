@@ -35,18 +35,21 @@ class DB
         $res = $sth->execute($values);
     }
     
-    /** GET eg: $dbase->get('customer', 'id_customer = 1') **/
+    /** GET eg: $dbase->get('*', 'customer', 'id_customer = 1') **/
     public static function get($which, $table,  $condition) {
         global $db;
         $gettable = $db->query('SELECT '.$which.' FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
         return $gettable;
     }
     
-    /** Is exist eg: $dbase->get('customer', 'id_customer = 1') **/
+    /** Is exist eg: $dbase->isExist('customer', 'id_customer = 1') **/
     public static function isExist($table,  $condition) {
         global $db;
-        $gettable = $db->query('SELECT * FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
-        if( $gettable ){
+        $gettable = $db->query('SELECT COUNT( * ) AS result FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
+        foreach($gettable as $g){
+            $result = $g['result'];
+        }
+        if($result > 0){
             return 1;
         }
         else{

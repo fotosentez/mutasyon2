@@ -886,6 +886,9 @@ legend {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
 }
+.active  a {
+  color: #fff !important;
+}
 .well.profile_view {
   background: #fff;
 }
@@ -5394,4 +5397,25 @@ ul.notifications {
 }
 .copyright-info {
   padding: 8px 0;
+}
+
+/* Infs */
+.displayBlock{
+    display:block !important;
+}
+.displayNone{
+    display:none;
+}
+.inf{
+    position: fixed;
+    bottom: 30px;
+    background: #fff;
+    padding: 10px;
+    color: #000;
+    min-width: 200px;
+    min-height: 50px;
+    left: 0;
+    z-index: 9999;
+    border: 1px solid #000;
+    border-radius: 10px;
 }

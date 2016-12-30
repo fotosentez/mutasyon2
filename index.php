@@ -14,6 +14,9 @@ if (isset ( $_SESSION ["mutasyon_session"] )) {
         case "customers" :
             include ("model/customers.php");
             break;
+        case "customers/add" :
+            include ("model/addCustomer.php");
+            break;
         default:
             include ("model/mainPage.php");
     }

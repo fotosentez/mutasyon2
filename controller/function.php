@@ -57,6 +57,11 @@ Class Validation {
     {
         return preg_match("#.*^(?=.{5,20})(?=.*[a-z])(?=.*[0-9]).*$#", $passwd);
     }
+    
+    public static function cleanHtmlCode($post)
+    {
+        return strip_tags($post);
+    }
     public static function isEmail($email)
     {
         return preg_match('/^[a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]+[.a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]*@[a-z\p{L}0-9]+(?:[.]?[_a-z\p{L}0-9-])*\.[a-z\p{L}0-9]+$/ui', $email);
@@ -68,15 +73,6 @@ Class Validation {
     public static function isDate($date)
     {
         return (bool)preg_match('/^([0-9]{4})-((0?[0-9])|(1[0-2]))-((0?[0-9])|([1-2][0-9])|(3[01]))( [0-9]{2}:[0-9]{2}:[0-9]{2})?$/', $date);
-    }
-    public static function checkError($name)
-    {
-        if($name){
-            echo "<script>$('input').removeClass('alert-danger');$('select').removeClass('alert-danger');$('input[name=".$name."]').addClass('alert-danger');</script>";
-        }
-        else{
-            echo "<script>$('input').removeClass('alert-danger');</script>";
-        }
     }
 }
 
@@ -118,6 +114,24 @@ Class AddHtml
             }
         }
         echo ' </ul></div>';
+    }
+    
+}
+
+Class Output
+{
+    public static function checkError($name)
+    {
+        if($name){
+            echo "<script>$('input').removeClass('alert-danger');$('select').removeClass('alert-danger');$('input[name=".$name."]').addClass('alert-danger');$('textarea[name=".$name."]').addClass('alert-danger');</script>";
+        }
+        else{
+            echo "<script>$('input').removeClass('alert-danger');$('textarea').removeClass('alert-danger');</script>";
+        }
+    }
+    public static function cleanInputs()
+    {
+        echo "<script>$('input').val('');$('textarea').val('');</script>";
     }
     
 }

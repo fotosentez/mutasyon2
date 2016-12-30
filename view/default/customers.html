@@ -16,14 +16,12 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown">
                       <div class="well profile_view">
                         <div class="col-sm-12">
-                          <h4 class="brief"><i>Digital Strategist</i></h4>
+                            <h4 class="brief"><b><i>{$c.customers_name} {$c.customers_surname}</i></b></h4>
                           <div class="left col-xs-7">
-                              <h2>{$c.customers_name} {$c.customers_surname}</h2>
-                            <p><strong>About: </strong> Web Designer / UI. </p>
+                              <h4>{$c.costumers_groups_name}</h4>
                             <ul class="list-unstyled">
-                              <li><i class="fa fa-phone"></i> Address: </li>
-                              <li><i class="fa fa-phone"></i> Address: </li>
-
+                                <li><i class="fa fa-phone"></i>{$c.customers_phone}</li>
+                                <p><strong>{Lang::getLang('address')}: </strong>{$c.customers_address}</p>
                             </ul>
                           </div>
                           <div class="right col-xs-5 text-center">
@@ -33,19 +31,20 @@
                         <div class="col-xs-12 bottom text-center">
                           <div class="col-xs-12 col-sm-6 emphasis">
                             <p class="ratings">
-                              <a>4.0</a>
+                                {for $i = 1 to $c.costumers_groups_star}
                               <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star-o"></span></a>
+                              {/for}
+<!--                              <a href="#"><span class="fa fa-star-o"></span></a>-->
                             </p>
                           </div>
                           <div class="col-xs-12 col-sm-6 emphasis">
-                            <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                                            </i> <i class="fa fa-comments-o"></i> </button>
-                            <button type="button" class="btn btn-primary btn-xs"> <i class="fa fa-user">
-                                                            </i> View Profile </button>
+                            <button type="button" class="btn btn-success btn-xs"> 
+                                <i class="fa fa-plus"></i> 
+                                <i class="fa-file-text-o"></i> 
+                            </button>
+                            <a href="?url=customers&id={$c.customers_id}" type="button" class="btn btn-primary btn-xs"> 
+                                <i class="fa fa-user"></i> {Lang::getLang('viewProfil')} 
+                            </a>
                           </div>
                         </div>
                       </div>

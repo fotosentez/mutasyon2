@@ -12,6 +12,7 @@ Class Lang{
             "currency" 					=> "TRY",
             "totalInput" 				=> "Toplam Veri",
             "all" 					=> "Tümü",
+            "proccessSuccess" 				=> "İşlem başarıyla tamamlandı",
             
             //Login form
             "signin" 					=> "Giriş",
@@ -47,6 +48,10 @@ Class Lang{
             //Pagination
             "previous" 					=> "Önceki",
             "next" 					=> "Sonraki",
+            
+            //Buttons
+            "cancel" 					=> "İptal",
+            "submit" 					=> "Tamam",
             
             //Menu Names
             "menuIndex" 				=> "Anasayfa",
@@ -89,6 +94,21 @@ Class Lang{
             "discountRate" 				=> "İndirim Oranı",
             "viewProfile" 				=> "Profile Bak",
             "noGroup" 					=> "Grup Yok",
+            "address" 					=> "Adres",
+            "viewProfil" 				=> "Profile Bak",
+            
+            //Add Customers
+            "customerInfs" 				=> "Müşteri Bilgileri",
+            "name" 				        => "İsim",
+            "surname" 				        => "Soyisim",
+            "phone" 				        => "Telefon Numarası",
+            "mail" 				        => "E-Posta adresi",
+            "city" 				        => "Şehir",
+            "country" 				        => "Ülke",
+            "group" 				        => "Grup",
+            "validateName" 				=> "Lütfen geçerli bir içerik giriniz!",
+            "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
+            "customerExist" 				=> "Böyle bir müşteri zaten var!",
             );
             return $value[$a];
     }
