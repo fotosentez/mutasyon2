@@ -12,7 +12,7 @@ if(Validation::isMd5($token)){
             if(Validation::isEmail($username)){
                 if($password){
                     if(Validation::isPasword($password)){
-                        Validation::checkError('');
+                        Output::checkError('');
                         $checkUser = DB::isExist("superuser", "superuser_email = '" . $username . "' AND superuser_password = '" . md5 ( $password ) . "' AND superuser_active = 1");
                         if ($checkUser == 1) {
                             $_SESSION ["mutasyon_session"] = 4;
@@ -24,22 +24,22 @@ if(Validation::isMd5($token)){
                     }
                     else{
                         echo Lang::getLang('validatePassword');
-                        Validation::checkError('password');
+                        Output::checkError('password');
                     }
                 }
                 else{
                     echo Lang::getLang('cantBlank');
-                    Validation::checkError('password');
+                    Output::checkError('password');
                 }
             }
             else{
                 echo Lang::getLang('notEmail');
-                Validation::checkError('username');
+                Output::checkError('username');
             }
         }
         else{
             echo Lang::getLang('cantBlank');
-            Validation::checkError('username');
+            Output::checkError('username');
         }
     }
 }

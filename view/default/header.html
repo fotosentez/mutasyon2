@@ -43,7 +43,7 @@
                                 <body class="nav-md">
                                 <div class="container body">
                                     <div class="main_container">
-                            <!-- Left Menu -->
+                                        <!-- Left Menu -->
                                         <div class="col-md-3 left_col">
                                             <div class="left_col scroll-view">
                                                 <div class="navbar nav_title" style="border: 0;">
@@ -71,21 +71,21 @@
                                                         <div class="menu_section">
                                                             <h3>General</h3>
                                                             <ul class="nav side-menu">
-                                                            <!--Home -->
+                                                                <!--Home -->
                                                                 <li>
                                                                     <a href="?url=index">
                                                                         <i class="fa fa-home"></i> {Lang::getLang('mainPage')}
                                                                     </a>
                                                                 </li>
-                                                            <!--Invoices -->
+                                                                <!--Invoices -->
                                                                 <li>
                                                                     <a>
-                                                                        <i class="fa fa-home"></i> {Lang::getLang('invoices')} 
+                                                                        <i class="fa fa-file-text-o"></i> {Lang::getLang('invoices')} 
                                                                         <span class="fa fa-chevron-down"></span>
                                                                     </a>
                                                                     <ul class="nav child_menu" style="display: none">
                                                                         <li>
-                                                                            <a href="?url=invoices">{Lang::getLang('invoiceList')}</a>
+                                                                            <a href="?url=invoice">{Lang::getLang('invoiceList')}</a>
                                                                         </li>
                                                                         <li>
                                                                             <a href="?url=index/add">{Lang::getLang('addInvoice')}</a>
@@ -93,10 +93,10 @@
                                                                     </ul>
                                                                 </li>
                                                                 
-                                                            <!--Customers -->
+                                                                <!--Customers -->
                                                                 <li>
                                                                     <a>
-                                                                        <i class="fa fa-home"></i> {Lang::getLang('current')} 
+                                                                        <i class="fa fa-users"></i> {Lang::getLang('current')} 
                                                                         <span class="fa fa-chevron-down"></span>
                                                                     </a>
                                                                     <ul class="nav child_menu" style="display: none">
@@ -105,6 +105,22 @@
                                                                         </li>
                                                                         <li>
                                                                             <a href="?url=customers/add">{Lang::getLang('addCustomer')}</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                
+                                                                <!--Products -->
+                                                                <li>
+                                                                    <a>
+                                                                        <i class="fa fa-users"></i> {Lang::getLang('products')} 
+                                                                        <span class="fa fa-chevron-down"></span>
+                                                                    </a>
+                                                                    <ul class="nav child_menu" style="display: none">
+                                                                        <li>
+                                                                            <a href="?url=products">{Lang::getLang('productsList')}</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="?url=products/add">{Lang::getLang('addProducts')}</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
@@ -224,3 +240,25 @@
                                                             </div>
                                                             <div class="clearfix"></div>
                                                             {/if}
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <div class="x_panel">
+                                                                        <div class="x_title">
+                                                                            <h2>E-commerce page design</h2>
+                                                                            <ul class="nav navbar-right panel_toolbox">
+                                                                                <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                                                                                </li>
+                                                                                <li class="dropdown">
+                                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                                                    <ul class="dropdown-menu" role="menu">
+                                                                                        <li><a href="#">Settings 1</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">Settings 2</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li><a href="#"><i class="fa fa-close"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>

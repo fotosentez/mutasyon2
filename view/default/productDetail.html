@@ -1,0 +1,134 @@
+<div class="x_content">
+    {foreach $productDetail as $p}
+    <div class="col-md-7 col-sm-7 col-xs-12">
+        <div class="product-image">
+            <img src="view/img/products/{$p.products_id}/big/{$p.cover}.jpg" alt="{$p.products_name}" />
+        </div>
+        <div class="product_gallery">
+            {foreach $getImages as $images}
+            <a>
+                <img src="view/img/products/{$p.products_id}/small/{$images.products_images_id}.jpg" alt="{$p.products_name}" />
+            </a>
+            {/foreach}
+        </div>
+    </div>
+    
+    <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
+        
+        <h3 class="prod_title">{$p.products_name}</h3>
+        
+        <p>{$p.products_short_detail}</p>
+        <br />
+        
+        {if $isAttributes == 1}
+        <div class="">
+            <h2>Öznitelikler</h2>
+            <ul class="list-inline prod_color">
+                {foreach $attr as $ga}
+                    {if $ga.color == NULL}
+                        <li>
+                            <label>{$ga.ag_name}</label><br />
+                            <button type="button" class="btn btn-default btn-xs">{$ga.ac_name}</button>
+                        </li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <br />
+        {/if}
+        
+        <div class="">
+            <h2>{Lang::getLang('colors')}</h2>
+            <ul class="list-inline prod_color">
+                {foreach $attr as $color}
+                    {if $color.color != NULL}
+                        <li>
+                            <div class="color" style="background-color:#{$color.color}"></div>
+                        </li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <br />
+        
+        <div class="">
+            <div class="product_price">
+                <h1 class="price">{$currency}{$p.sp_price}</h1>
+                <span class="price-tax">{Lang::getLang('exTax')}: {$currency}{Math::findTax($p.tax_amount, $p.sp_price)}</span>
+                <br>
+                </div>
+            </div>
+            
+            <div class="">
+                <button type="button" class="btn btn-default btn-lg">{Lang::getLang('addToCart')}</button>
+            </div>
+            
+            <div class="product_social">
+                <ul class="list-inline">
+                    <li><a href="#"><i class="fa fa-facebook-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-twitter-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-envelope-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-rss-square"></i></a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        
+        <div class="col-md-12">
+            
+            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{Lang::getLang('desc')}</a>
+                    </li>
+                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">{Lang::getLang('productAct')}</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                        <p>{$p.products_detail}</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <table id="datatable-keytable" class="table table-striped table-bordered" style="width:100% !important">
+                                        <thead>
+                                            <tr>
+                                                <th>{Lang::getLang('productName')}</th>
+                                                <th>{Lang::getLang('sellerName')}</th>
+                                                <th>{Lang::getLang('amount')}</th>
+                                                <th>{Lang::getLang('eachPrice')}</th>
+                                                <th>{Lang::getLang('paidTotal')}</th>
+                                                <th>{Lang::getLang('date')}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {foreach $buyActions as $ba}
+                                            <tr>
+                                                <td>{$ba.products_name}</td>
+                                                <td>{$ba.seller_name}</td>
+                                                <td>{$ba.bp_amount}</td>
+                                                <td>{$currency}{$ba.bp_price}</td>
+                                                <td>{$currency}{$ba.bp_price*$ba.bp_amount}</td>
+                                                <td>{$ba.bp_date}</td>
+                                            </tr>
+                                            {/foreach}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    {/foreach}
+</div>

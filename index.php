@@ -5,10 +5,10 @@ require_once(dirname(__FILE__).'/model/settings/settings.php');
 include 'model/top.php';
 if (isset ( $_SESSION ["mutasyon_session"] )) {
     switch ($url) {
-        case "invoice" :
+        case "invoices" :
             include ("model/invoice.php");
             break;
-        case "invoice/add" :
+        case "invoices/add" :
             include ("model/addInvoice.php");
             break;
         case "customers" :
@@ -16,6 +16,9 @@ if (isset ( $_SESSION ["mutasyon_session"] )) {
             break;
         case "customers/add" :
             include ("model/addCustomer.php");
+            break;
+        case "products/detail" :
+            include ("model/productDetail.php");
             break;
         default:
             include ("model/mainPage.php");

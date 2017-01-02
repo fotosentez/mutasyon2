@@ -44,6 +44,29 @@ Class Lang{
             //Title of name
             "title_name" 				=> "Sayın",
             
+            //Colors
+            "green" 				        => "Yeşil",
+            "blue" 				        => "Mavi",
+            "red" 				        => "Kırmızı",
+            "orange" 				        => "Turuncu",
+            "white" 				        => "Beyaz",
+            "purple" 				        => "Mor",
+            "blue-sky" 				        => "Açık Mavi",
+            
+            //Products
+            "products" 				        => "Ürünler",
+            "productsList" 				=> "Ürün Listesi",
+            "addProducts" 				=> "Ürün Ekle",
+            "productDetail" 				=> "Ürün Ayrıntısı",
+            "productAct" 				=> "Satış hareketleri",
+            "exTax" 				        => "Vergi hariç",
+            "addToCart" 				=> "Sepete Ekle",
+            "productName" 				=> "Ürünün Adı",
+            "sellerName" 				=> "Satıcı Adı",
+            "eachPrice" 				=> "Birim Fiyat",
+            "paidTotal" 				=> "Toplam Ödenen",
+            "colors" 				        => "Renk Seçenekleri",
+            
             
             //Pagination
             "previous" 					=> "Önceki",
@@ -73,7 +96,6 @@ Class Lang{
             "invoiceDetail" 				=> "Fatura Detayı",
             "invoice" 					=> "Fatura",
             "amount" 					=> "Miktar",
-            "product" 					=> "Ürün",
             "tax" 					=> "Vergi",
             "subTotal" 					=> "Ara Toplam",
             "desc" 					=> "Açıklama",
