@@ -4,6 +4,7 @@ require_once(dirname(__FILE__).'/../model/settings/settings.php'); // Get All Fu
 
 // Get informations
 $name = Get::post ( "name" );
+$addDate = Get::post ( "addDate" );
 $surname = Get::post ( "surname" );
 $address = Get::post ( "address" );
 $phone = Get::post ( "phone" );
@@ -18,42 +19,44 @@ if($name){
         $vname = 1;
         if($surname){
             if(Validation::isName($surname)){
-                Output::checkError('');
                 $vsurname = 1;
+                if($addDate){
+                    Output::cleanRed('');
+                    $vaddDate = 1;
+                }
+                else{
+                    Output::checkError('addDate', 'validateDate');
+                    $vaddDate = 0;
+                }
             }
             else{//if surname not a valid
-                echo Lang::getLang('validateName');
-                Output::checkError('surname');
+                Output::checkError('surname', 'validateText');
                 $vsurname = 0;
             }
         }
         else{//if surname not posting
-            echo Lang::getLang('validateName');
-            Output::checkError('surname');
+        Output::checkError('surname', 'validateText');
             $vsurname = 0;
         }
     }
     else{//is not a name
-        echo Lang::getLang('validateName');
-        Output::checkError('name');
+    Output::checkError('name', 'validateText');
         $vname = 0;
     }
 }
 else{//if name sot posting
-    echo Lang::getLang('validateName');
-    Output::checkError('name');
+Output::checkError('name', 'validateText');
     $vname = 0;
 }
 
 // Check other inputs
-if($vname == 1 and $vsurname == 1){
+if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
     if($address){
         if(Validation::cleanHtmlCode($address)){
             $vaddress = 1;
         }
         else{//if address not valid
-            echo Lang::getLang('validateName');
-            Output::checkError('address');
+        Output::checkError('address', 'validateText');
             $vaddress = 0;
         }
     }
@@ -65,8 +68,7 @@ if($vname == 1 and $vsurname == 1){
             $vphone = 1;
         }
         else{//if address not valid
-            echo Lang::getLang('validateName');
-            Output::checkError('phone');
+        Output::checkError('phone', 'validateText');
             $vphone = 0;
         }
     }
@@ -78,8 +80,7 @@ if($vname == 1 and $vsurname == 1){
             $vmail = 1;
         }
         else{//if address not valid
-            echo Lang::getLang('validateMail');
-            Output::checkError('mail');
+            Output::checkError('mail', 'validateMail');
             $vmail = 0;
         }
     }
@@ -91,8 +92,7 @@ if($vname == 1 and $vsurname == 1){
             $vcity = 1;
         }
         else{//if address not valid
-            echo Lang::getLang('validateName');
-            Output::checkError('city');
+            Output::checkError('city', 'validateText');
             $vcity = 0;
         }
     }
@@ -104,8 +104,7 @@ if($vname == 1 and $vsurname == 1){
             $vcountry = 1;
         }
         else{//if address not valid
-            echo Lang::getLang('validateName');
-            Output::checkError('country');
+            Output::checkError('country', 'validateText');
             $vcountry = 0;
         }
     }
@@ -117,8 +116,7 @@ if($vname == 1 and $vsurname == 1){
             $vgroup = 1;
         }
         else{//if address not valid
-            echo Lang::getLang('validateName');
-            Output::checkError('group');
+            Output::checkError('group', 'validateText');
             $vgroup = 0;
         }
     }
@@ -132,7 +130,7 @@ if($vname == 1 and $vsurname == 1 and $vaddress == 1 and $vphone == 1 and $vmail
     $checkCustomer = $dbase->isExist('customers', 'customers_name = "'.$name.'" and customers_surname = "'.$surname.'"  ');
     
     if($checkCustomer == 1){
-        echo Lang::getLang('customerExist');
+    echo Lang::getLang('contentExist');
         exit();
     }
     else{
@@ -152,6 +150,7 @@ if($vname == 1 and $vsurname == 1 and $vaddress == 1 and $vphone == 1 and $vmail
             'customers_country' => $country,
             'customers_city' => $city,
             'customers_group' => $ngroup,
+            'customers_addDate' => $addDate,
             );
             $insert = $dbase->insert($table, $values );
             echo Lang::getLang('proccessSuccess');

@@ -27,7 +27,9 @@
                                 {for $i = 1 to $c.costumers_groups_star}
                                 <a href="#"><span class="fa fa-star"></span></a>
                                 {/for}
-                                <!--                              <a href="#"><span class="fa fa-star-o"></span></a>-->
+                                {for $i = 1 to (5-$c.costumers_groups_star)}
+                                <a href="#"><span class="fa fa-star-o"></span></a>
+                                {/for}
                             </p>
                         </div>
                         <div class="col-xs-12 col-sm-6 emphasis">
@@ -44,6 +46,13 @@
             </div>
             <!-- List Finish-->
             {/foreach}
+            {if $totalPage > 1}
+                {if $letter}
+                {AddHtml::addPagination($totalPage, "customers&c={Get::post('c')}")}
+                {else}
+                {AddHtml::addPagination($totalPage, "customers")}
+                {/if}
+            {/if}
         </div>
     </div>
 </div>

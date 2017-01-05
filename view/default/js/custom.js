@@ -5,9 +5,13 @@ $(document).ready(function() {
             event.preventDefault();
             $(".inf").addClass("displayBlock");
             $(".inf").html("<img src='view/img/load.gif' />");
-            $.post($(".noload").eq(index).attr("action"), $(".noload").eq(index).serialize(), function(gelen){
-                $(".inf").addClass("displayBlock");
-                $(".inf").html(gelen);
+            $.post($(".noload").eq(index).attr("action"), $(".noload").eq(index).serialize(), function(message){
+                $(".inf").removeClass("displayBlock");
+                new PNotify({
+                    title: false,
+                    text: message,
+                    type: 'info',
+                });
             });
         });
     });

@@ -887,7 +887,7 @@ legend {
   -webkit-border-radius: 4px;
 }
 .active  a {
-  color: #fff !important;
+  color: #fff;
 }
 .well.profile_view {
   background: #fff;
@@ -5408,14 +5408,17 @@ ul.notifications {
 }
 .inf{
     position: fixed;
-    bottom: 30px;
+    top: 10%;
     background: #fff;
     padding: 10px;
     color: #000;
-    min-width: 200px;
-    min-height: 50px;
-    left: 0;
+    min-width: 50px;
+    min-height: 10px;
+    right: 0;
     z-index: 9999;
     border: 1px solid #000;
     border-radius: 10px;
+}
+.active a{
+    color:#fff !important;
 }

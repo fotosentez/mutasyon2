@@ -20,6 +20,9 @@ if (isset ( $_SESSION ["mutasyon_session"] )) {
         case "products/detail" :
             include ("model/productDetail.php");
             break;
+        case "products/add" :
+            include ("model/productAdd.php");
+            break;
         default:
             include ("model/mainPage.php");
     }

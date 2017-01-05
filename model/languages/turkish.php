@@ -12,19 +12,24 @@ Class Lang{
             "currency" 					=> "TRY",
             "totalInput" 				=> "Toplam Veri",
             "all" 					=> "Tümü",
-            "proccessSuccess" 				=> "İşlem başarıyla tamamlandı",
             
             //Login form
             "signin" 					=> "Giriş",
             "login" 					=> "Giriş Yap",
             "password" 					=> "Şifreniz",
             "username" 					=> "Kullanıcı Adınız",
-            "notEmail" 				         => "Geçersiz E-Posta adresi",
-            "cantBlank" 			         => "Bu alan boş olamaz!",
-            "validatePassword" 			        => "Şifreniz 5-20 karakter arasında olmalıdır",
             
-            //Page names
+            //Notifications
             "mainPage" 					=> "Anasayfa",
+            "validateText" 				=> "Lütfen geçerli bir içerik giriniz!",
+            "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
+            "contentExist" 				=> "Böyle bir içerik zaten var!",
+            "cantBlank" 			        => "Bu alan boş olamaz!",
+            "proccessSuccess" 				=> "İşlem başarıyla tamamlandı",
+            "validatePassword" 			        => "Şifreniz 5-20 karakter arasında olmalıdır",
+            "tokenError" 			        => "Token uyuşmuyor",
+            
+            
             
             //Left Menu
             "index" 					=> "Anasayfa",
@@ -61,11 +66,13 @@ Class Lang{
             "productAct" 				=> "Satış hareketleri",
             "exTax" 				        => "Vergi hariç",
             "addToCart" 				=> "Sepete Ekle",
+            "addToStock" 				=> "Satın Al",
             "productName" 				=> "Ürünün Adı",
             "sellerName" 				=> "Satıcı Adı",
             "eachPrice" 				=> "Birim Fiyat",
             "paidTotal" 				=> "Toplam Ödenen",
             "colors" 				        => "Renk Seçenekleri",
+            "productAdd" 				=> "Ürün Ekle",
             
             
             //Pagination
@@ -128,9 +135,7 @@ Class Lang{
             "city" 				        => "Şehir",
             "country" 				        => "Ülke",
             "group" 				        => "Grup",
-            "validateName" 				=> "Lütfen geçerli bir içerik giriniz!",
-            "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
-            "customerExist" 				=> "Böyle bir müşteri zaten var!",
+            
             );
             return $value[$a];
     }

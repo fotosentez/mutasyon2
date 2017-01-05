@@ -1,112 +1,94 @@
-          <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="x_panel">
-                      <div class="x_title">
-                          <h2>Form validation <small>sub title</small></h2>
-                          <ul class="nav navbar-right panel_toolbox">
-                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                              <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                  <ul class="dropdown-menu" role="menu">
-                                      <li><a href="#">Settings 1</a></li>
-                                      <li><a href="#">Settings 2</a></li>
-                                  </ul>
-                              </li>
-                              <li><a class="close-link"><i class="fa fa-close"></i></a></li>
-                          </ul>
-                          <div class="clearfix"></div>
-                      </div>
-                      <div class="x_content">
-                          
-                          <form class="form-horizontal form-label-left noload" method="post" action="controller/addCustomer.php">
-                              <span class="section">{Lang::getLang('customerInfs')}</span>
-                              
-                              <!--Inputs -->
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('name')} 
-                                      <span class="required">*</span>
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" type="text" />
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('surname')} 
-                                      <span class="required">*</span>
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="surname" type="text" />
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">{Lang::getLang('address')} 
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <textarea id="textarea" name="address" class="form-control col-md-7 col-xs-12"></textarea>
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('phone')} 
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="phone" type="text" />
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('mail')} 
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="mail" type="text" />
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('city')} 
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="city" type="text" />
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('country')} 
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="country" type="text" />
-                                  </div>
-                              </div>
-                              
-                              <div class="item form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">{Lang::getLang('group')}</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="group">
-                                        <option value="noGroup">{Lang::getLang('noGroup')}</option>
-                                        {foreach $getGroup as $g}
-                                        <option value="{$g.costumers_groups_id}">{$g.costumers_groups_name}</option>
-                                        {/foreach}
-                                    </select>
-                                </div>
-                              </div>
-                              
-                              
-                              <!--inputs -->
-                              
-                              <div class="ln_solid"></div>
-                              <div class="form-group">
-                                  <div class="col-md-6 col-md-offset-3">
-                                      <button type="submit" class="btn btn-primary">{Lang::getLang('cancel')}</button>
-                                      <button id="send" type="submit" class="btn btn-success">{Lang::getLang('submit')}</button>
-                                  </div>
-                              </div>
-                          </form>
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+<div class="x_content">
+    
+    <form class="form-horizontal form-label-left noload" method="post" action="controller/addCustomer.php">
+        
+        <!--Inputs -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('name')} 
+                <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="name" class="form-control col-md-7 col-xs-12" name="name" type="text" />
+                <input class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y.%m.%d'}" />
+            </div>
+        </div>
+        
+        <!--Surname -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="surname">{Lang::getLang('surname')} 
+                <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control col-md-7 col-xs-12" name="surname" type="text" />
+            </div>
+        </div>
+        
+        <!--Address -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">{Lang::getLang('address')} 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <textarea id="textarea" name="address" class="form-control col-md-7 col-xs-12"></textarea>
+            </div>
+        </div>
+        
+        <!--Phone -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">{Lang::getLang('phone')} 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input class="form-control" name="phone" data-inputmask="'mask' : '(999) 999-9999'" type="text">
+            </div>
+        </div>
+        
+        <!--Mail -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mail">{Lang::getLang('mail')} 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="name" class="form-control col-md-7 col-xs-12" name="mail" type="text" />
+            </div>
+        </div>
+        
+        <!--City -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">{Lang::getLang('city')} 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="name" class="form-control col-md-7 col-xs-12" name="city" type="text" />
+            </div>
+        </div>
+        
+        <!--Country -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">{Lang::getLang('country')} 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="name" class="form-control col-md-7 col-xs-12" name="country" type="text" />
+            </div>
+        </div>
+        
+        <!--Select Group -->
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">{Lang::getLang('group')}</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="form-control" name="group">
+                    <option value="noGroup">{Lang::getLang('noGroup')}</option>
+                    {foreach $getGroup as $g}
+                    <option value="{$g.costumers_groups_id}">{$g.costumers_groups_name}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <!--inputs -->
+        
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <a href="?url=customers" class="btn btn-primary">{Lang::getLang('cancel')}</a>
+                <button id="send" type="submit" class="btn btn-success">{Lang::getLang('submit')}</button>
+            </div>
+        </div>
+    </form>
+    
+</div>

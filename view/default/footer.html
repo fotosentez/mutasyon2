@@ -26,62 +26,33 @@
     <div id="notif-group" class="tabbed_notifications"></div>
 </div>
 
+<!-- For alla pages -->
 <script src="{$template_dir}js/bootstrap.min.js"></script>
 
-<!-- gauge js -->
-<script type="text/javascript" src="{$template_dir}js/gauge/gauge.min.js"></script>
-<script type="text/javascript" src="{$template_dir}js/gauge/gauge_demo.js"></script>
-<!-- bootstrap progress js -->
-<script src="{$template_dir}js/progressbar/bootstrap-progressbar.min.js"></script>
-<script src="{$template_dir}js/nicescroll/jquery.nicescroll.min.js"></script>
-<!-- icheck -->
-<script src="{$template_dir}js/icheck/icheck.min.js"></script>
-<!-- daterangepicker -->
-<script type="text/javascript" src="{$template_dir}js/moment/moment.min.js"></script>
-<script type="text/javascript" src="{$template_dir}js/datepicker/daterangepicker.js"></script>
-<!-- chart js -->
-<script src="{$template_dir}js/chart{$template_dir}js/chart.min.js"></script>
 
 <script src="{$template_dir}js/custom.js"></script>
 
-<!-- flot js -->
-<!--[if lte IE 8]><script type="text/javascript" src="{$template_dir}js/excanvas.min.js"></script><![endif]-->
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.pie.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.orderBars.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.time.min.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/date.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.spline.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.stack.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/curvedLines.js"></script>
-<script type="text/javascript" src="{$template_dir}js/flot/jquery.flot.resize.js"></script>
-<!-- worldmap -->
-<script type="text/javascript" src="{$template_dir}js/maps/jquery-jvectormap-2.0.3.min.js"></script>
-<script type="text/javascript" src="{$template_dir}js/maps/gdp-data.js"></script>
-<script type="text/javascript" src="{$template_dir}js/maps/jquery-jvectormap-world-mill-en.js"></script>
-<script type="text/javascript" src="{$template_dir}js/maps/jquery-jvectormap-us-aea-en.js"></script>
-<!-- pace -->
-<script src="{$template_dir}js/pace/pace.min.js"></script>
-<!-- skycons -->
-<script src="{$template_dir}js/skycons/skycons.min.js"></script>
-<!-- form validation -->
-<script src="{$template_dir}js/validator/validator.js"></script>
-<script src="{$template_dir}js/datatables/jquery.dataTables.min.js"></script>
-<script src="{$template_dir}js/datatables/dataTables.bootstrap.js"></script>
-<script src="{$template_dir}js/datatables/dataTables.buttons.min.js"></script>
-<script src="{$template_dir}js/datatables/buttons.bootstrap.min.js"></script>
-<script src="{$template_dir}js/datatables/jszip.min.js"></script>
-<script src="{$template_dir}js/datatables/pdfmake.min.js"></script>
-<script src="{$template_dir}js/datatables/vfs_fonts.js"></script>
-<script src="{$template_dir}js/datatables/buttons.html5.min.js"></script>
-<script src="{$template_dir}js/datatables/buttons.print.min.js"></script>
-<script src="{$template_dir}js/datatables/dataTables.fixedHeader.min.js"></script>
-<script src="{$template_dir}js/datatables/dataTables.keyTable.min.js"></script>
-<script src="{$template_dir}js/datatables/dataTables.responsive.min.js"></script>
-<script src="{$template_dir}js/datatables/responsive.bootstrap.min.js"></script>
-<script src="{$template_dir}js/datatables/dataTables.scroller.min.js"></script>
+<!-- PNotify -->
+<script type="text/javascript" src="{$template_dir}js/notify/pnotify.core.js"></script>
+<script type="text/javascript" src="{$template_dir}js/notify/pnotify.buttons.js"></script>
+<script type="text/javascript" src="{$template_dir}js/notify/pnotify.nonblock.js"></script>
+
+{if $pageName== 'addCustomer'}
+        <!-- input mask -->
+        <script src="{$template_dir}js/input_mask/jquery.inputmask.js"></script>
+        <!-- pace -->
+        <script src="{$template_dir}js/pace/pace.min.js"></script>
+{/if}
+
+
+{if $pageName == 'productAdd'}
+        <script type="text/javascript" src="{$template_dir}js/wizard/jquery.smartWizard.js"></script>
+{/if}
+
+
+<!-- if page has js -->
 {if $js}
-<script src="{$template_dir}js/{$js}.js"></script>
+        <script src="{$template_dir}js/{$js}.js"></script>
 {/if}
 </body>
 

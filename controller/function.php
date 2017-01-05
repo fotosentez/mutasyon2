@@ -118,7 +118,7 @@ Class Get
 
 Class AddHtml
 {
-    //Add pagination to template docs
+    //Add pagination with letter to template docs
     public static function addPaginationWithLetter($foreach, $pageName, $page){
         echo '
         <div class="clear">
@@ -141,22 +141,78 @@ Class AddHtml
         echo ' </ul></div>';
     }
     
+    //Add pagination to template docs
+    public static function addPagination($totalPage, $pageName){        
+        echo '
+        <div class="clear"></div>
+        <div class="dataTables_paginate paging_simple_numbers">
+        <ul class="pagination">
+        
+        <li class="paginate_button previous ';
+        
+        if(Get::post("page") < 2)
+        {
+            echo 'disabled';
+        }
+        echo '" id="datatable_previous">
+        <a href="';
+        if(Get::post("page") > 1)
+        {
+            echo '?url='.$pageName;
+            $pre = Get::post("page")-1;
+            echo '&page='.$pre;
+        }
+        
+        echo '" aria-controls="datatable" data-dt-idx="0" tabindex="0">'.Lang::getLang("previous").'</a></li>';
+        
+        for($i = 1;$i <= $totalPage;$i++)
+        {
+            echo '<li class="paginate_button ';
+            if(Get::post("page") == $i)
+            {
+                echo 'active';
+            }
+            echo '">
+            <a href="?url='.$pageName.'&page='.$i.'" aria-controls="datatable" data-dt-idx="1" tabindex="0">'.$i.'</a></li>';
+        }
+        echo '<li class="paginate_button previous ';
+        
+        if(Get::post("page") == $totalPage)
+        {
+            echo 'disabled';
+        }
+        echo '" id="datatable_previous">
+        <a href="';
+        if(Get::post("page") != $totalPage)
+        {
+            echo '?url='.$pageName;
+            $nxt = Get::post("page")+1;
+            echo '&page='.$nxt;
+        }
+        
+        echo '" aria-controls="datatable" data-dt-idx="0" tabindex="0">'.Lang::getLang("next").'</a></li></ul></div>';
+    }
+    
 }
 
 Class Output
 {
-    public static function checkError($name)
+    //Add red background to input which gived error
+    public static function checkError($name, $output)
     {
-        if($name){
-            echo "<script>$('input').removeClass('alert-danger');$('select').removeClass('alert-danger');$('input[name=".$name."]').addClass('alert-danger');$('textarea[name=".$name."]').addClass('alert-danger');</script>";
-        }
-        else{
-            echo "<script>$('input').removeClass('alert-danger');$('textarea').removeClass('alert-danger');</script>";
-        }
+        echo "<script>$('input').removeClass('alert-danger');$('select').removeClass('alert-danger');$('input[name=".$name."]').addClass('alert-danger');$('textarea[name=".$name."]').addClass('alert-danger');</script>".Lang::getLang($output);
     }
+    
+    //Clean all inputs and textarea's values
     public static function cleanInputs()
     {
         echo "<script>$('input').val('');$('textarea').val('');</script>";
+    }
+    
+    //Clean red from all inputs and textarea
+    public static function cleanRed()
+    {
+        echo "<script>$('input').removeClass('alert-danger');$('textarea').removeClass('alert-danger');</script>";
     }
     
 }

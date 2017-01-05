@@ -12,7 +12,7 @@ if(Validation::isMd5($token)){
             if(Validation::isEmail($username)){
                 if($password){
                     if(Validation::isPasword($password)){
-                        Output::checkError('');
+                        Output::cleanRed();
                         $checkUser = DB::isExist("superuser", "superuser_email = '" . $username . "' AND superuser_password = '" . md5 ( $password ) . "' AND superuser_active = 1");
                         if ($checkUser == 1) {
                             $_SESSION ["mutasyon_session"] = 4;
@@ -23,24 +23,24 @@ if(Validation::isMd5($token)){
                         }
                     }
                     else{
-                        echo Lang::getLang('validatePassword');
-                        Output::checkError('password');
+                        Output::checkError('username', 'validatePassword');
                     }
                 }
                 else{
-                    echo Lang::getLang('cantBlank');
-                    Output::checkError('password');
+                    Output::checkError('password', 'cantBlank');
                 }
             }
             else{
-                echo Lang::getLang('notEmail');
-                Output::checkError('username');
+                Output::checkError('username', 'validateMail');
             }
         }
         else{
-            echo Lang::getLang('cantBlank');
-            Output::checkError('username');
+            Output::checkError('username', 'cantBlank');
         }
     }
+    else{
+        Lang::getLang('tokenError');
+    }
 }
-makeToken();
+$newToken = makeToken();
+echo "<script type='text/javascript'>$('#token').val('$newToken');</script>";

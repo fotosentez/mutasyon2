@@ -8,4 +8,4 @@ $smarty->assign ( array (
 ) );
 
 
-Page::create("addCustomer", Lang::getLang('addCustomer'), "addCustomer", "addCustomer");
+Page::create("addCustomer", Lang::getLang('addCustomer'), "", "addCustomer");
