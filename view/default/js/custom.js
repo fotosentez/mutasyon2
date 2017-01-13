@@ -1,11 +1,30 @@
 //Send forms with ajax no reload
 $(document).ready(function() {
-    $(".noload").each(function(index) {   				    
+    $(".noload").each(function(index) {   
         $(".noload").eq(index).submit(function(event){
             event.preventDefault();
             $(".inf").addClass("displayBlock");
             $(".inf").html("<img src='view/img/load.gif' />");
             $.post($(".noload").eq(index).attr("action"), $(".noload").eq(index).serialize(), function(message){
+                $(".inf").removeClass("displayBlock");
+                new PNotify({
+                    title: false,
+                    text: message,
+                    type: 'info',
+                });
+            });
+        });
+    });
+});
+//Send forms which used tinyMCE with ajax no reload
+$(document).ready(function() {
+    $(".tinyMCE").each(function(index) {   
+        $(".tinyMCE").eq(index).submit(function(event){
+            tinyMCE.triggerSave();
+            event.preventDefault();
+            $(".inf").addClass("displayBlock");
+            $(".inf").html("<img src='view/img/load.gif' />");
+            $.post($(".tinyMCE").eq(index).attr("action"), $(".tinyMCE").eq(index).serialize(), function(message){
                 $(".inf").removeClass("displayBlock");
                 new PNotify({
                     title: false,

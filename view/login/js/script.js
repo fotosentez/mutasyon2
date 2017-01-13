@@ -7,6 +7,7 @@ $(document).ready(function() {
             $("div.inf").html("<img src='view/login/img/load.gif' />");
             $.post($(".noload").eq(index).attr("action"), $(".noload").eq(index).serialize(), function(gelen){
                 $("div.inf").addClass("displayBlock");
+                $("div.inf").html("");
                 $("div.inf").html(gelen);
             });
         });

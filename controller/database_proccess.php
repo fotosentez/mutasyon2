@@ -60,7 +60,7 @@ class DB
     /** GET ROW eg: $dbase->getRow('product', 'id_product = 12', 'product_name') **/
     public static function getRow($table,  $condition, $value) {
         global $db;
-        $getRow = $db->query('SELECT * FROM '.$table.' WHERE '.$condition.' LIMIT 1', PDO::FETCH_ASSOC);
+        $getRow = $db->query('SELECT *, rowid FROM '.$table.' WHERE '.$condition.' LIMIT 1', PDO::FETCH_ASSOC);
         foreach ($getRow as $row)
         {
             return $row[$value];
@@ -77,7 +77,7 @@ class DB
     /** GET CONFIGS eg: $dbase->config('Config name') ***/
     public static function config($value) {
         global $db;
-        $value = Validation::clearCode($value);
+        $value = Check::clearCode($value);
         $asd = $db->query('SELECT * FROM configs WHERE name = "'.$value.'" LIMIT 1');
         foreach ($asd as $cn)
         {

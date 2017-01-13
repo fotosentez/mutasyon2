@@ -1,6 +1,13 @@
 <?php
 require_once(dirname(__FILE__).'/database.php'); //Connect Database
-require_once(dirname(__FILE__).'/../../controller/function.php'); // Get All Functions
+
+//Functions
+require_once(dirname(__FILE__).'/../../controller/functions/AddHtml.php');
+require_once(dirname(__FILE__).'/../../controller/functions/Check.php');
+require_once(dirname(__FILE__).'/../../controller/functions/Get.php');
+require_once(dirname(__FILE__).'/../../controller/functions/Math.php');
+require_once(dirname(__FILE__).'/../../controller/functions/Output.php');
+
 require_once(dirname(__FILE__).'/../../controller/database_proccess.php'); // Process and Function
 include(dirname(__FILE__).'/../languages/turkish.php'); // languages
 

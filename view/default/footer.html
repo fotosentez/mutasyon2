@@ -27,28 +27,34 @@
 </div>
 
 <!-- For alla pages -->
+<script src="{$template_dir}js/jquery.min.js"></script>
 <script src="{$template_dir}js/bootstrap.min.js"></script>
-
-
-<script src="{$template_dir}js/custom.js"></script>
 
 <!-- PNotify -->
 <script type="text/javascript" src="{$template_dir}js/notify/pnotify.core.js"></script>
 <script type="text/javascript" src="{$template_dir}js/notify/pnotify.buttons.js"></script>
 <script type="text/javascript" src="{$template_dir}js/notify/pnotify.nonblock.js"></script>
+<!-- bootstrap progress js -->
+<script src="{$template_dir}js/progressbar/bootstrap-progressbar.min.js"></script>
+<script src="{$template_dir}js/nicescroll/jquery.nicescroll.min.js"></script>
+
+<script src="{$template_dir}js/custom.js"></script>
 
 {if $pageName== 'addCustomer'}
-        <!-- input mask -->
-        <script src="{$template_dir}js/input_mask/jquery.inputmask.js"></script>
-        <!-- pace -->
-        <script src="{$template_dir}js/pace/pace.min.js"></script>
+<!-- input mask -->
+<script src="{$template_dir}js/input_mask/jquery.inputmask.js"></script>
+<!-- pace -->
+<script src="{$template_dir}js/pace/pace.min.js"></script>
 {/if}
 
 
 {if $pageName == 'productAdd'}
-        <script type="text/javascript" src="{$template_dir}js/wizard/jquery.smartWizard.js"></script>
-{/if}
+<!-- dropzone -->
+<script src="{$template_dir}js/dropzone/dropzone.js"></script>
+<!-- Tinymace -->
+<script src="{$template_dir}js/tinymce/tinymce.min.js"></script>
 
+{/if}
 
 <!-- if page has js -->
 {if $js}

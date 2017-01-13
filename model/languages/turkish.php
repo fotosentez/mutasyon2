@@ -22,12 +22,20 @@ Class Lang{
             //Notifications
             "mainPage" 					=> "Anasayfa",
             "validateText" 				=> "Lütfen geçerli bir içerik giriniz!",
+            "validateNumber" 				=> "Lütfen yalnızca numara giriniz!",
             "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
+            "validateDate" 				=> "Lütfen geçerli bir tarih formatı giriniz! Örn: 2017.01.01",
             "contentExist" 				=> "Böyle bir içerik zaten var!",
             "cantBlank" 			        => "Bu alan boş olamaz!",
             "proccessSuccess" 				=> "İşlem başarıyla tamamlandı",
-            "validatePassword" 			        => "Şifreniz 5-20 karakter arasında olmalıdır",
+            "validatePassword" 			        => "Şifreniz 5-20 karakter arasında olmalı ve enaz bir harf ve sayı içermelidir",
             "tokenError" 			        => "Token uyuşmuyor",
+            "notAnyFile" 			        => "Lütfen bir resim yollayınız!",
+            "fileVeryBig" 			        => "Maksimum yükleme boyutu 2 Mb olmalıdır",
+            "fileNotJpg" 			        => "Dosya türü olarak JPEG seçiniz!",
+            "writeDBError" 			        => "Veritabanına yazılırken hata oluştu!",
+            "doLogin" 			                => "Giriş yapıldı anasayfaya yönlendiiriliyorsunuz",
+            "cantLogin" 			        => "Kullanıcı adı yada şifre yanlış!",
             
             
             
@@ -72,16 +80,26 @@ Class Lang{
             "eachPrice" 				=> "Birim Fiyat",
             "paidTotal" 				=> "Toplam Ödenen",
             "colors" 				        => "Renk Seçenekleri",
-            "productAdd" 				=> "Ürün Ekle",
+            "shortDesc" 				=> "Kısa Açıklama",
             
             
             //Pagination
             "previous" 					=> "Önceki",
             "next" 					=> "Sonraki",
             
-            //Buttons
+            //Page Names
+            "productAdd" 				=> "Yeni Ürün Ekle",
+            
+            //Buttons and labels
             "cancel" 					=> "İptal",
             "submit" 					=> "Tamam",
+            "addNewProduct" 				=> "Yeni Ürünü Ekle",
+            "finishUpload" 				=> "Yüklemeyi Bitir",
+            "category" 				        => "Kategori",
+            "addCategory" 				=> "Kategori Ekle",
+            "uploadImages" 				=> "Resim Yükle",
+            "productInfs" 				=> "Ürün Bilgileri",
+            
             
             //Menu Names
             "menuIndex" 				=> "Anasayfa",

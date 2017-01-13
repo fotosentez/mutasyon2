@@ -17,6 +17,9 @@ if (isset ( $_SESSION ["mutasyon_session"] )) {
         case "customers/add" :
             include ("model/addCustomer.php");
             break;
+        case "products" :
+            include ("model/products.php");
+            break;
         case "products/detail" :
             include ("model/productDetail.php");
             break;

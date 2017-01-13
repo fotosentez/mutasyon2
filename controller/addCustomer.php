@@ -14,49 +14,24 @@ $country = Get::post ( "country" );
 $group = Get::post ( "group" );
 
 // Check name and surname
-if($name){
-    if(Validation::isName($name)){
-        $vname = 1;
-        if($surname){
-            if(Validation::isName($surname)){
-                $vsurname = 1;
-                if($addDate){
-                    Output::cleanRed('');
-                    $vaddDate = 1;
-                }
-                else{
-                    Output::checkError('addDate', 'validateDate');
-                    $vaddDate = 0;
-                }
-            }
-            else{//if surname not a valid
-                Output::checkError('surname', 'validateText');
-                $vsurname = 0;
-            }
-        }
-        else{//if surname not posting
-        Output::checkError('surname', 'validateText');
-            $vsurname = 0;
-        }
-    }
-    else{//is not a name
-    Output::checkError('name', 'validateText');
-        $vname = 0;
-    }
+if(Check::isName($name, 'name') AND Check::isName($surname, 'surname') AND Check::isDate($addDate, 'addDate')){
+    $vname = 1;
+    $vsurname = 1;
+    $vaddDate = 1;
 }
-else{//if name sot posting
-Output::checkError('name', 'validateText');
+else{
     $vname = 0;
+    $vsurname = 0;
+    $vaddDate = 0;
 }
 
 // Check other inputs
 if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
     if($address){
-        if(Validation::cleanHtmlCode($address)){
+        if(Check::isAddress($address, 'address')){
             $vaddress = 1;
         }
-        else{//if address not valid
-        Output::checkError('address', 'validateText');
+        else{
             $vaddress = 0;
         }
     }
@@ -64,11 +39,10 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vaddress = 1;
     }
     if($phone){
-        if(Validation::isNumeric($phone)){
+        if(Check::isNumeric($phone, 'phone')){
             $vphone = 1;
         }
         else{//if address not valid
-        Output::checkError('phone', 'validateText');
             $vphone = 0;
         }
     }
@@ -76,11 +50,10 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vphone = 1;
     }
     if($mail){
-        if(Validation::isEmail($mail)){
+        if(Check::isEmail($mail, "mail")){
             $vmail = 1;
         }
-        else{//if address not valid
-            Output::checkError('mail', 'validateMail');
+        else{//if mail not valid
             $vmail = 0;
         }
     }
@@ -88,11 +61,10 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vmail = 1;
     }
     if($city){
-        if(Validation::isName($city)){
+        if(Check::isName($city, 'city')){
             $vcity = 1;
         }
         else{//if address not valid
-            Output::checkError('city', 'validateText');
             $vcity = 0;
         }
     }
@@ -100,11 +72,10 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vcity = 1;
     }
     if($country){
-        if(Validation::isName($country)){
+        if(Check::isName($country, 'country')){
             $vcountry = 1;
         }
         else{//if address not valid
-            Output::checkError('country', 'validateText');
             $vcountry = 0;
         }
     }
@@ -112,11 +83,10 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vcountry = 1;
     }
     if($group){
-        if(Validation::isNumeric($group) OR $group == "noGroup"){
+        if(Check::isNumeric($group, 'group') OR $group == "noGroup"){
             $vgroup = 1;
         }
         else{//if address not valid
-            Output::checkError('group', 'validateText');
             $vgroup = 0;
         }
     }
@@ -124,13 +94,12 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vgroup = 1;
     }
 }
-
 //Write infs
 if($vname == 1 and $vsurname == 1 and $vaddress == 1 and $vphone == 1 and $vmail ==1 and $vcity == 1 and $vcountry == 1 and $vgroup ==1){
     $checkCustomer = $dbase->isExist('customers', 'customers_name = "'.$name.'" and customers_surname = "'.$surname.'"  ');
     
     if($checkCustomer == 1){
-    echo Lang::getLang('contentExist');
+        echo Lang::getLang('contentExist');
         exit();
     }
     else{
@@ -154,7 +123,6 @@ if($vname == 1 and $vsurname == 1 and $vaddress == 1 and $vphone == 1 and $vmail
             );
             $insert = $dbase->insert($table, $values );
             echo Lang::getLang('proccessSuccess');
-            echo Output::cleanInputs();
     }
 }
 else{
