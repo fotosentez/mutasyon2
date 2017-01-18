@@ -11,7 +11,25 @@ Neden Mutasyon?
 - İsterseniz localhost kurulumu yaparak ta sadece şirketinizin bilgisayarından ulaşmasını sağlayabilirsiniz.
 - **Mutasyon tamamen ücretsizdir**.
 
-Giriş Bilgileri:
-Kullanıcı Adı: deneme@deneme.com
-Şifre: deneme1
 
+Kurulum
+===============
+Mutasyon uygulamasını kendi bilgisayarınızda çalıştırmak için sisteminizde öncelikle [PHP](http://www.php.net) kurulu ve çalışır durumda olmalıdır. Örneğin Ubuntu ve Linux Mint gibi sistemlerde aşağıdaki gibi kurulum yapabilirsiniz.
+
+```bash
+sudo apt-get install php7.0
+```
+Ön tanımlı kurulumda Mutasyon [sqlite](https://sqlite.org) veritabanını kullanır. Eğer sisteminizde PDO için sqlite veritabanı sürücüleri yoksa önceklikle bunlarıda kurmalısınız. Ubuntu ve Linux Mint için örnek kurulumu şöyle yapabilirsiniz.
+
+```bash
+sudo apt-get install php7.0-sqlite3
+```
+
+Başlangıç
+===============
+Kurulum işlemini başarıyla tamamladıktan sonra tarayıcıdan Mutasyon sistemine bağlandığınızda sizi bir giriş sayfası karşılar. Ön tanımlı giriş bilgileri aşağıdaki gibidir.
+
+```
+Kullanıcı Adı : deneme@deneme.com
+Şifre         : deneme1
+```
