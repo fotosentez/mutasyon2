@@ -1,0 +1,53 @@
+/* Basket */
+.basket h4 {
+    background: #000;
+    height: 30px;
+    color: #eee;
+    padding: 6px;
+    text-transform: uppercase;
+}
+.basketinp {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    height: 30px;
+    margin-left: -15px;
+    padding-left:10px;
+}
+.getProductLit{
+    position:absolute;
+    top:0;
+    right:0;
+}
+li{
+    list-style:none;
+}
+.relative{
+    position:relative;
+}
+.cartList{
+    border:1px solid #aaa;
+    background-color:#ddd;
+    clear:both;
+    margin-top: -10px;
+    padding-top: 15px;
+    height:250px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.cartListheader {
+    background: #000;
+    line-height: 36px;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+ul.baslik li{
+    list-style:none;
+    font-weight:bold;
+}

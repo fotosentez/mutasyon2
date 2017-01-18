@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-08 20:56:10
+/* Smarty version 3.1.30, created on 2017-01-16 19:32:25
   from "/var/www/html/mutasyon2/view/default/header.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58727d3a160056_35338725',
+  'unifunc' => 'content_587cf599275f44_79754355',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4cd6883acfd53a79a6824a58de2f02e9d709271c' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/header.html',
-      1 => 1483465236,
+      1 => 1484584259,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58727d3a160056_35338725 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587cf599275f44_79754355 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,20 +53,16 @@ css/maps/jquery-jvectormap-2.0.3.css" />
 css/icheck/flat/green.css" rel="stylesheet" />
                                     <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 css/floatexamples.css" rel="stylesheet" type="text/css" />
-                                    <?php if ($_smarty_tpl->tpl_vars['js']->value) {?>
+                                    <?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'invoice/addInvoice') {?>
+                                    <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+css/jquery-ui.css" rel="stylesheet" type="text/css" />
+                                    <?php }?>
+                                    
+                                    <?php if ($_smarty_tpl->tpl_vars['css']->value) {?>
                                     <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 css/<?php echo $_smarty_tpl->tpl_vars['css']->value;?>
 .css" rel="stylesheet" type="text/css" />
                                     <?php }?>
-                                    
-                                    <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/jquery.min.js"><?php echo '</script'; ?>
->
-                                    <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/nprogress.js"><?php echo '</script'; ?>
->
                                     
                                     <!--[if lt IE 9]>
                                     <?php echo '<script'; ?>
@@ -133,11 +129,11 @@ js/nprogress.js"><?php echo '</script'; ?>
                                                                     </a>
                                                                     <ul class="nav child_menu" style="display: none">
                                                                         <li>
-                                                                            <a href="?url=invoice"><?php echo Lang::getLang('invoiceList');?>
+                                                                            <a href="?url=invoices"><?php echo Lang::getLang('invoiceList');?>
 </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="?url=index/add"><?php echo Lang::getLang('addInvoice');?>
+                                                                            <a href="?url=invoices/add"><?php echo Lang::getLang('addInvoice');?>
 </a>
                                                                         </li>
                                                                     </ul>
@@ -275,13 +271,13 @@ js/nprogress.js"><?php echo '</script'; ?>
                                                     
                                                 </div>
                                                 <!-- /top navigation -->
-                                                <?php if ($_smarty_tpl->tpl_vars['pageName']->value != "index") {?>
+                                                <?php if ($_smarty_tpl->tpl_vars['pagePath']->value != "index") {?>
                                                 <!-- page content -->
                                                 <div class="right_col" role="main">
                                                     <div class="">
                                                         <div class="page-title">
                                                             <div class="title_left">
-                                                                <h3><?php echo Lang::getLang($_smarty_tpl->tpl_vars['pageName']->value);?>
+                                                                <h3><?php echo Lang::getLang($_smarty_tpl->tpl_vars['pageTitle']->value);?>
 </h3>
                                                             </div>
                                                             <div class="title_right">
@@ -319,6 +315,7 @@ js/nprogress.js"><?php echo '</script'; ?>
                                                                             </ul>
                                                                             <div class="clearfix"></div>
                                                                         </div>
+                                                                        <div class="x_content">
                                                                         <?php }
 }
 }

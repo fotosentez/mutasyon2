@@ -7,7 +7,7 @@ $productDetail = $dbase->get('*, (SELECT products_images_id FROM products_images
 //Get product images
 $getImages = $dbase->get('*', 'products_images', 'products_images_status = 1 AND products_images_product = "'.$productId.'" ');
 
-//Get product images
+//Get product attributes
 $getAttributes = $dbase->get('*', 'products_attributes LEFT JOIN attributes_contents ON pa_attributes_content_id = ac_id LEFT JOIN attributes_group ON ac_attributes_group_id = ag_id', 'pa_products_id = '.$productId.' ');
 $attr = array();
 foreach($getAttributes as $a){
@@ -29,4 +29,4 @@ $smarty->assign ( array (
     "buyActions" => $buyActions,
     ) );
     
-    Page::create("productDetail", Lang::getLang('productDetail'), "productDetail", "productDetail");
+    Page::create("productDetail", "productDetail", "productDetail", "productDetail");

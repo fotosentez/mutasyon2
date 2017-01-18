@@ -1,3 +1,105 @@
-<div class="x_content">
+<div class="col-xs-12">
+    <table class="table filter">
+        <tbody>
+            <tr>
+                <th>
+                    <a href="javascript:removeOther('stock=outstock', 'stock=instock');"><i class="fa fa-check-square-o"></i> <span class="hidden-xs">Stokta Olanlar</span></a>
+                </th>
+                <th>
+                    <a href="javascript:removeOther('s=all', 's=bestseller');"><i class="fa fa-line-chart"></i> <span class="hidden-xs">Çok Satılanlar</span></a>
+                </th>
+                <th>
+                    <a href="javascript:removeOther('stock=instock', 'stock=outstock');"><i class="fa fa-battery-empty"></i> <span class="hidden-xs">Tükenenler</span></a>
+                </th>
+                <th class="gridList">
+                    <a class="list"><i class="fa fa-bars"></i> <span class="hidden-xs">Liste</span></a>
+                </th>
+                <th class="gridList">
+                    <a class="grid"><i class="fa fa-th-large"></i> <span class="hidden-xs">Tablo</span></a>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div><!--/prfilter-->
+<div class="col-sm-3 col-xs-12">
+    {include file='view/default/products/categories.html'}
+</div>
+<div class="col-sm-9 col-xs-12 {if $smarty.session['view'] == 'list'}vlist{else}vgrid{/if}">
+    {foreach $products as $pr}
     
-</div><!--x_content-->
+    {if $smarty.session['view'] == 'list'}
+    <div class="row prlist">
+        <div class="col-sm-4 col-xs-6">
+            <img class="vbestseller" src="view/img/crown.png" />
+            <img class="vprimage" src="view/img/products/37/big/51.jpg" />
+        </div>
+        <div class="col-sm-8 col-xs-6">
+            <div class="row listPrname">
+                <a href="?url=products/detail&id={$pr.products_id}" title="{$pr.products_name}">
+                    <span class="vprname">{$pr.products_name|truncate:50}</span>
+                </a>
+            </div>
+            <div class="row listPrsname hidden-xs">
+                <span class="vdetail">{$pr.products_short_detail|truncate:100}</span>
+            </div>
+            <div class="row listPrbuttons">
+                <span class="price">TRY 13</span>
+                <div style="clear:both">
+                    <a data-toggle="collapse" href="#buystock" class="btn btn-success btn-xs buystock1" stock="Hafıza Kartı 4 GB" sid="1">
+                        <i class="fa fa-cart-plus"></i> Satın Al
+                    </a>
+                    <a data-toggle="collapse" href="#sellstock" class="btn btn-dark btn-xs sellstock1" price="10" stockname="Hafıza Kartı 4 GB">
+                        <i class="fa fa-shopping-cart"></i> Satış Yap
+                    </a>
+                    <input class="ctname" value="Hafıza Kartı" type="hidden">
+                </div>
+            </div>
+         </div>
+    </div>
+    
+    {else}
+    <div class="col-sm-3 col-xs-6 prbox relative">
+        <div class="prboxinner">
+            <div class="row rowImage">
+                <img class="vbestseller" src="view/img/crown.png" />
+                <img class="vprimage" src="view/img/products/{$pr.products_id}/big/{$pr.cover}.jpg" />
+            </div>
+            <div class="row vname">
+                <a href="?url=products/detail&id={$pr.products_id}" title="{$pr.products_name}">
+                    <span class="vprname">{$pr.products_name|truncate:40}</span>
+                </a>
+            </div>
+            <div class="row vdetail hidden-xs">
+                {$pr.products_short_detail|truncate:80}
+            </div>
+            <div class="row">
+                <div class="vpricemobile">
+                    <div class="vprice">
+                        <span>₺</span> 10
+                    </div>
+                </div>
+                <a data-toggle="collapse" href="#buystock" class="btn btn-success btn-xs buystock1" stock="Hafıza Kartı 4 GB" sid="1">
+                    <i class="fa fa-cart-plus"></i> Satın Al
+                </a>
+                <a data-toggle="collapse" href="#sellstock" class="btn btn-dark btn-xs sellstock1" price="10" stockname="Hafıza Kartı 4 GB">
+                    <i class="fa fa-shopping-cart"></i> Satış Yap
+                </a>
+                <input class="ctname" value="Hafıza Kartı" type="hidden">
+            </div>
+        </div>
+    </div>
+    {/if}
+    {/foreach}
+    <div class="row hidden-xs">
+        {if $totalPage > 1}
+            {AddHtml::addPagination($totalPage, $urlName)}
+        {/if}
+    </div>
+    <div class="row  hidden-sm hidden-md hidden-lg">
+        {if $totalPage > 1}
+            {AddHtml::addPagination($totalPage, $urlName, "mobile")}
+        {/if}
+    </div>
+    
+</div>
+    

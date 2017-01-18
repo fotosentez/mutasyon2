@@ -9,4 +9,4 @@ $smarty->assign ( array (
         "getSubCategory" => $getSubCategory,
     ) );
     
-Page::create("productAdd", Lang::getLang('productAdd'), "productAdd", "productAdd");
+    Page::create("productAdd", "productAdd", "productAdd", "productAdd");

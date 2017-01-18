@@ -86,9 +86,13 @@ Class Lang{
             //Pagination
             "previous" 					=> "Önceki",
             "next" 					=> "Sonraki",
+            "lastPage" 					=> "Son Sayfa",
+            "firstPage" 				=> "İlk Sayfa",
             
             //Page Names
+            "pageTitleBlank" 				=> " ",
             "productAdd" 				=> "Yeni Ürün Ekle",
+            "addInvoice" 				=> "Yeni Fatura Oluştur",
             
             //Buttons and labels
             "cancel" 					=> "İptal",

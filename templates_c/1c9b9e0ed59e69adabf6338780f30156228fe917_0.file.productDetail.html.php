@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-09 20:58:29
+/* Smarty version 3.1.30, created on 2017-01-16 14:59:05
   from "/var/www/html/mutasyon2/view/default/productDetail.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5873cf454a2a67_69562167',
+  'unifunc' => 'content_587cb5893ccbd2_75891344',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1c9b9e0ed59e69adabf6338780f30156228fe917' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/productDetail.html',
-      1 => 1483455251,
+      1 => 1484567943,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5873cf454a2a67_69562167 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587cb5893ccbd2_75891344 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-<div class="x_content">
     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['productDetail']->value, 'p');
 if ($_from !== null) {
@@ -74,14 +73,14 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['ga']->value) {
 ?>
-                    <?php if ($_smarty_tpl->tpl_vars['ga']->value['color'] == NULL) {?>
-                        <li>
-                            <label><?php echo $_smarty_tpl->tpl_vars['ga']->value['ag_name'];?>
+                <?php if ($_smarty_tpl->tpl_vars['ga']->value['color'] == NULL) {?>
+                <li>
+                    <label><?php echo $_smarty_tpl->tpl_vars['ga']->value['ag_name'];?>
 </label><br />
-                            <button type="button" class="btn btn-default btn-xs"><?php echo $_smarty_tpl->tpl_vars['ga']->value['ac_name'];?>
+                    <button type="button" class="btn btn-default btn-xs"><?php echo $_smarty_tpl->tpl_vars['ga']->value['ac_name'];?>
 </button>
-                        </li>
-                    <?php }?>
+                </li>
+                <?php }?>
                 <?php
 }
 }
@@ -102,12 +101,12 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['color']->value) {
 ?>
-                    <?php if ($_smarty_tpl->tpl_vars['color']->value['color'] != NULL) {?>
-                        <li>
-                            <div class="color" style="background-color:#<?php echo $_smarty_tpl->tpl_vars['color']->value['color'];?>
+                <?php if ($_smarty_tpl->tpl_vars['color']->value['color'] != NULL) {?>
+                <li>
+                    <div class="color" style="background-color:#<?php echo $_smarty_tpl->tpl_vars['color']->value['color'];?>
 "></div>
-                        </li>
-                    <?php }?>
+                </li>
+                <?php }?>
                 <?php
 }
 }
@@ -230,12 +229,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             </div>
             
         </div>
-    </div>
     <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
-
-</div><?php }
+}
 }

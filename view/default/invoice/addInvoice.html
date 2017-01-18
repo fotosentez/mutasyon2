@@ -1,0 +1,51 @@
+<!-- Smart Wizard -->
+<p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+<form id="addInvoiceForm" action="controller/invoice/addInvoice.php" class="form-horizontal form-label-left noload">
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Müşteri Adı</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <input type="text" name="customer-name" required="required" class="form-control col-md-7 col-xs-12" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tarih</label>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <input type="text" name="date" required="required" class="form-control col-md-7 col-xs-12" />
+        </div>
+        <div class="col-sm-6">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Önek</label>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <select id="heard" class="form-control" name="prefix">
+                    <option value="">Choose..</option>
+                    <option value="press">Press</option>
+                    <option value="net">Internet</option>
+                    <option value="mouth">Word of mouth</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <label>Ürün Faturası</label> 
+            <input type="radio" class="whichInvoice" name="invoiceType" id="typeP" value="product" required />
+            <label>Hizmet Faturası</label> 
+            <input type="radio" class="whichInvoice" name="invoiceType" id="typeS" value="service" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Açıklama</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <textarea type="text" name="desc" required="required" class="form-control col-md-7 col-xs-12" ></textarea>
+        </div>
+    </div>            
+    
+    <div id="addProductForm" class="displayNone">
+        {include file='view/default/invoice/addProductInvoice.html'}
+    </div>
+    <div id="addServiceForm" class="displayNone">
+        {include file='view/default/invoice/addServiceInvoice.html'}
+    </div>
+    <button type="submit" class="btn btn-success">Yolla</button>
+</form>
+<!-- End SmartWizard Content -->

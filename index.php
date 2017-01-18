@@ -6,10 +6,10 @@ include 'model/top.php';
 if (isset ( $_SESSION ["mutasyon_session"] )) {
     switch ($url) {
         case "invoices" :
-            include ("model/invoice.php");
+            include ("model/invoice/invoices.php");
             break;
         case "invoices/add" :
-            include ("model/addInvoice.php");
+            include ("model/invoice/addInvoice.php");
             break;
         case "customers" :
             include ("model/customers.php");

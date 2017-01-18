@@ -1,4 +1,3 @@
-            </div>
         </div>
     </div>
 <div class="inf displayNone"></div>
@@ -40,7 +39,7 @@
 
 <script src="{$template_dir}js/custom.js"></script>
 
-{if $pageName== 'addCustomer'}
+{if $pagePath== 'addCustomer'}
 <!-- input mask -->
 <script src="{$template_dir}js/input_mask/jquery.inputmask.js"></script>
 <!-- pace -->
@@ -48,18 +47,25 @@
 {/if}
 
 
-{if $pageName == 'productAdd'}
+{if $pagePath == 'productAdd'}
 <!-- dropzone -->
 <script src="{$template_dir}js/dropzone/dropzone.js"></script>
 <!-- Tinymace -->
 <script src="{$template_dir}js/tinymce/tinymce.min.js"></script>
+{/if}
 
+{if $pagePath == 'invoice/addInvoice'}
+<!-- form wizard -->
+<script type="text/javascript" src="{$template_dir}js/wizard/jquery.smartWizard.js"></script>
+<script src="{$template_dir}js/icheck/icheck.min.js"></script>
+<script src="{$template_dir}js/jquery-ui.min.js"></script>
 {/if}
 
 <!-- if page has js -->
 {if $js}
-        <script src="{$template_dir}js/{$js}.js"></script>
+<script src="{$template_dir}js/{$js}.js"></script>
 {/if}
-</body>
 
+
+</body>
 </html>

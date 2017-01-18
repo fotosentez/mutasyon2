@@ -49,4 +49,4 @@ $smarty->assign ( array (
     "totalPage" => $totalPage,
     ) );
     
-    Page::create("customers", Lang::getLang('customers'), "customers");
+    Page::create("customers", "customers", "customers");
