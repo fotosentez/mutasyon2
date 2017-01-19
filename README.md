@@ -1,9 +1,7 @@
+**Mutasyon projesi demo sitesi:** http://www.mustasyon.tk <br/><br/>
+
 MUTASYON (*Mu*steri *Ta*kip ve *S*tok *Yon*etimi)
 =================================================
-
-```
-Demo Sitesi : http://www.mustasyon.tk
-```
 
 Mutasyon Nedir?
 ===============
