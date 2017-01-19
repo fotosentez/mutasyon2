@@ -1,4 +1,3 @@
-<div class="x_content">
     {foreach $productDetail as $p}
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="product-image">
@@ -25,12 +24,12 @@
             <h2>Öznitelikler</h2>
             <ul class="list-inline prod_color">
                 {foreach $attr as $ga}
-                    {if $ga.color == NULL}
-                        <li>
-                            <label>{$ga.ag_name}</label><br />
-                            <button type="button" class="btn btn-default btn-xs">{$ga.ac_name}</button>
-                        </li>
-                    {/if}
+                {if $ga.color == NULL}
+                <li>
+                    <label>{$ga.ag_name}</label><br />
+                    <button type="button" class="btn btn-default btn-xs">{$ga.ac_name}</button>
+                </li>
+                {/if}
                 {/foreach}
             </ul>
         </div>
@@ -41,11 +40,11 @@
             <h2>{Lang::getLang('colors')}</h2>
             <ul class="list-inline prod_color">
                 {foreach $attr as $color}
-                    {if $color.color != NULL}
-                        <li>
-                            <div class="color" style="background-color:#{$color.color}"></div>
-                        </li>
-                    {/if}
+                {if $color.color != NULL}
+                <li>
+                    <div class="color" style="background-color:#{$color.color}"></div>
+                </li>
+                {/if}
                 {/foreach}
             </ul>
         </div>
@@ -130,6 +129,4 @@
             </div>
             
         </div>
-    </div>
     {/foreach}
-</div>

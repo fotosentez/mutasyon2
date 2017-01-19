@@ -1,0 +1,59 @@
+<!-- start accordion -->
+<div class="accordion hidden-xs" id="accordion" role="tablist" aria-multiselectable="true">
+    <h2><i class="fa fa-align-left"></i> Kategoriler</h2>
+    <a class="panel-heading collapsed" href="?url=products">
+        <h4 class="panel-title"><i class="fa fa-home"></i> Tüm Ürünler</h4>
+    </a>
+    {foreach $mainCategories as $mc}
+    <div class="panel">
+        <a class="panel-heading collapsed" role="tab" id="{$mc.maincategory_name}" data-toggle="collapse" data-parent="#accordion" href="#{$mc.maincategory_id}" aria-expanded="false" aria-controls="{$mc.maincategory_id}">
+            <h4 class="panel-title"><i class="fa fa-home"></i> {$mc.maincategory_name}</h4>
+            <small>{$mc.maincategory_desc}</small>
+        </a>
+        <div id="{$mc.maincategory_id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{$mc.maincategory_name}">
+            <div class="panel-body">
+                {foreach $subCategories as $sc}
+                    {if $mc.maincategory_id == $sc.subcategory_main}
+                    <p><a href="?url=products&cid={$sc.subcategory_id}"><i class="fa fa-caret-right"></i> {$sc.subcategory_name}</a></p>
+                    {/if}
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    {/foreach}
+</div>
+<!-- end of accordion -->
+
+<div class=" hidden-sm hidden-md hidden-lg">
+    <!-- Small modal -->
+    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm">Kategorilere Bak</button>
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">Kategoriler</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row"><a href="?url=products"><i class="fa fa-caret-right"></i> Tüm Ürünler</a></th>
+                            </tr>
+                            {foreach $subCategories as $sc}
+                            <tr>
+                                <th scope="row"><a href="?url=products&cid={$sc.subcategory_id}"><i class="fa fa-caret-right"></i> {$sc.subcategory_name}</a></th>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- /modals -->
+</div>
+
+<!-- Filters -->

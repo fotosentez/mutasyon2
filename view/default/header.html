@@ -22,12 +22,13 @@
                                     <link rel="stylesheet" type="text/css" href="{$template_dir}css/maps/jquery-jvectormap-2.0.3.css" />
                                     <link href="{$template_dir}css/icheck/flat/green.css" rel="stylesheet" />
                                     <link href="{$template_dir}css/floatexamples.css" rel="stylesheet" type="text/css" />
-                                    {if $js}
-                                    <link href="{$template_dir}css/{$css}.css" rel="stylesheet" type="text/css" />
+                                    {if $pagePath == 'invoice/addInvoice'}
+                                    <link href="{$template_dir}css/jquery-ui.css" rel="stylesheet" type="text/css" />
                                     {/if}
                                     
-                                    <script src="{$template_dir}js/jquery.min.js"></script>
-                                    <script src="{$template_dir}js/nprogress.js"></script>
+                                    {if $css}
+                                    <link href="{$template_dir}css/{$css}.css" rel="stylesheet" type="text/css" />
+                                    {/if}
                                     
                                     <!--[if lt IE 9]>
                                     <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -85,10 +86,10 @@
                                                                     </a>
                                                                     <ul class="nav child_menu" style="display: none">
                                                                         <li>
-                                                                            <a href="?url=invoice">{Lang::getLang('invoiceList')}</a>
+                                                                            <a href="?url=invoices">{Lang::getLang('invoiceList')}</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="?url=index/add">{Lang::getLang('addInvoice')}</a>
+                                                                            <a href="?url=invoices/add">{Lang::getLang('addInvoice')}</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
@@ -219,13 +220,13 @@
                                                     
                                                 </div>
                                                 <!-- /top navigation -->
-                                                {if $pageName != "index"}
+                                                {if $pagePath != "index"}
                                                 <!-- page content -->
                                                 <div class="right_col" role="main">
                                                     <div class="">
                                                         <div class="page-title">
                                                             <div class="title_left">
-                                                                <h3>{Lang::getLang($pageName)}</h3>
+                                                                <h3>{Lang::getLang($pageTitle)}</h3>
                                                             </div>
                                                             <div class="title_right">
                                                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -262,4 +263,5 @@
                                                                             </ul>
                                                                             <div class="clearfix"></div>
                                                                         </div>
+                                                                        <div class="x_content">
                                                                         {/if}

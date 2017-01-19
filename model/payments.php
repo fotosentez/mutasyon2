@@ -1,2 +1,2 @@
 <?php
-Page::create("payments", Lang::getLang('payments'), "payments");
+Page::create("payments", "payments", "payments");

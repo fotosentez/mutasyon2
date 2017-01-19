@@ -1,0 +1,196 @@
+/* Filter and view products */
+.prfilter{
+    background: #fff;
+    height: 48px;
+    border: 4px double #eee;
+}
+.firstli {
+    /*     margin-left:-20px !important */
+}
+.prfilter li {
+    float: left;
+    font-weight: bold;
+    margin-left: 5px;
+    font-size: 14px;
+    border: 1px solid #eee;
+    padding-left: 7px;
+    margin-top: 6px;
+    padding-right: 11px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    cursor:pointer;
+}
+.activeli a{
+    color:#fff !important;
+}
+.activeli {
+    background: #000;
+    border: 1px solid #eee;
+    color: #fff;
+}
+/* Product List */
+.vgrid {
+    margin-top:15px;
+}
+.prbox {
+    margin-right: 0px;
+    padding: 0;
+}
+.prboxinner{
+    padding:15px;
+    border: 1px solid #ddd;
+    background: #fff url('../images/desen.png') no-repeat right bottom;
+    margin-left: 10px;
+    height: 285px;
+}
+
+/* List view */
+.vlist{
+    padding-left:3px;
+    padding-right:20px;
+    margin-top:15px;
+}
+.prlist{
+    border:1px solid #eee;
+    margin-top:10px;
+    background: #fff url('../images/desen.png') no-repeat right bottom;
+}
+.vlist img.vprimage{
+    width: 100%;
+    height: auto;
+    border-right: 1px solid #eee;
+    padding: 3px;
+    margin-left: -12px;
+    margin-top: 1px;
+}
+.vlist  .ablock{
+    position:absolute;
+    bottom:4px;
+}
+.vlist .vname {
+    height: 38px;
+    margin-top: 5px;
+}
+.vlist .vprname {
+    font-weight: bold;
+    font-size: 14px;
+}
+.vlist  .vdetail {
+    font-size: 10px;
+    height: 50px;
+    font-style: italic;
+}
+.vlistbuttons a {
+    display: block;
+    margin-bottom: 2px;
+}
+.vlist  .vlabels{
+    margin-top:-5px;
+}
+.vlist .prbox{
+    height: 119px;
+}
+.vlist .vbestseller {
+    width: 24px;
+    position: absolute;
+    top: 0px;
+    margin-left: -13px;
+}
+.vlist .price {
+    font-weight: bold;
+    color: darkred;
+    font-size: 20px;
+    float:right;
+    font-style:italic;
+    padding-right:5px
+}
+.vlist .listPrbuttons{
+    height:30px;
+}
+.vlist .listPrname{
+    height:60px;
+    overflow:hidden;
+}
+.vlist .listPrsname{
+    height:65px;
+    overflow:hidden;
+}
+.relative{
+    position:relative;
+}
+/* Grid view */
+.rowImage{
+    height: 124px;
+}
+.vgrid img.vprimage{
+    width: auto;
+    height: 100%;
+}
+.vgrid  .ablock{
+    position:absolute;
+    bottom:4px;
+}
+.vgrid .vname {
+    height: 30px;
+}
+.vgrid .vprname {
+    font-weight: bold;
+    font-size: 12px;
+}
+.vgrid  .vdetail {
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 12px;
+    overflow:hidden;
+    height:40px;
+}
+.vgridbuttons a {
+    display: block;
+    margin-bottom: 2px;
+}
+.vgrid  .vlabels{
+    right: 1px;
+    top: -108px;
+    position: absolute;
+}
+.vgrid  .vlabels span{
+    font-size:12px;
+}
+.vgrid .prbox{
+    height: 300px;
+    text-align: center;
+}
+.vgrid .vbestseller {
+    width: 27px;
+    position: absolute;
+    top: -2px;
+    left: 1px;
+}
+.vgrid .vpricemobile {
+    height: 36px;
+    font-weight: bold;
+    color: darkred;
+    font-size: 20px;
+}
+table.filter{
+    border:1px solid #eee;
+}
+table.filter th{
+    border-top:none;
+    position:relative;
+    height:30px;
+}
+table.filter th span{
+    margin-left:30px;
+}
+table.filter .fa{
+    font-size:20px;
+    position:absolute;
+}
+.gridList{
+    background:#000;
+}
+.gridList a{
+    float:right;
+    color:#fff;
+}

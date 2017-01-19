@@ -5422,3 +5422,6 @@ ul.notifications {
 .active a{
     color:#fff !important;
 }
+a:hover{
+    text-decoration:none;
+}
