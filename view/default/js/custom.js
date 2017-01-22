@@ -1,3 +1,8 @@
+//Do all #date inputs to date
+$(function() {
+    $( ".date" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+});
+
 //Send forms with ajax no reload
 $(document).ready(function() {
     $(".noload").each(function(index) {   

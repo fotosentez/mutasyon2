@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-18 14:01:41
+/* Smarty version 3.1.30, created on 2017-01-22 17:05:21
   from "/var/www/html/mutasyon2/view/default/invoice/addInvoice.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_587f4b15e7a674_23571445',
+  'unifunc' => 'content_5884bc2107c323_15945850',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f58d2f0f7dbe35fba80ea4a7f6b9f20cdf6a8741' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/invoice/addInvoice.html',
-      1 => 1484737298,
+      1 => 1485093489,
       2 => 'file',
     ),
   ),
@@ -22,32 +22,59 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:view/default/invoice/addServiceInvoice.html' => 1,
   ),
 ),false)) {
-function content_587f4b15e7a674_23571445 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5884bc2107c323_15945850 (Smarty_Internal_Template $_smarty_tpl) {
+if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/mutasyon2/model/libs/plugins/modifier.date_format.php';
 ?>
 <!-- Smart Wizard -->
 <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
-<form id="addInvoiceForm" action="controller/invoice/addInvoice.php" class="form-horizontal form-label-left noload">
+<form id="addInvoiceForm" action="controller/invoice/addInvoice.php" class="form-horizontal form-label-left noload" onsubmit="return(false)">
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Müşteri Adı</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="text" name="customer-name" required="required" class="form-control col-md-7 col-xs-12" />
+            <input id="customers" type="text" name="customer-name" required="required" class="autocomplete form-control col-md-7 col-xs-12" />
+            <input id="customerId" name="cId" type="hidden" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Tarih</label>
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <input type="text" name="date" required="required" class="form-control col-md-7 col-xs-12" />
+        <div class="col-sm-3 col-xs-6">
+            <input type="date" name="date" value="<?php echo smarty_modifier_date_format(time(),'%Y-%m-%d');?>
+" required="required" class="date form-control col-md-7 col-xs-12" />
         </div>
-        <div class="col-sm-6">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Önek</label>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <select id="heard" class="form-control" name="prefix">
-                    <option value="">Choose..</option>
-                    <option value="press">Press</option>
-                    <option value="net">Internet</option>
-                    <option value="mouth">Word of mouth</option>
-                </select>
-            </div>
+        <div class="col-sm-3 col-xs-6">
+            <input type="date" name="dueDate" value="<?php echo smarty_modifier_date_format("+1 month",'%Y-%m-%d');?>
+" required="required" class="date form-control col-md-7 col-xs-12" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">İndirim</label>
+        <div class="col-sm-1 col-xs-3">
+            <select class="form-control" name="discountType">
+                <option value="percent">Yüzde</option>
+                <option value="same">Aynısı</option>
+            </select>
+        </div>
+        <div class="col-sm-2 col-xs-3">
+            <input type="number" name="discount" class="form-control col-md-7 col-xs-12" />
+        </div>
+        <label class="control-label col-sm-1 col-xs-2">Önek</label>
+        <div class="col-sm-2 col-xs-4">
+            <select class="form-control" name="prefix">
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['prefix']->value, 'p');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
+?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['p']->value['prefix_id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['p']->value['prefix_name'];?>
+</option>
+                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+            </select>
         </div>
     </div>
     <div class="form-group">
@@ -62,7 +89,7 @@ function content_587f4b15e7a674_23571445 (Smarty_Internal_Template $_smarty_tpl)
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Açıklama</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <textarea type="text" name="desc" required="required" class="form-control col-md-7 col-xs-12" ></textarea>
+            <textarea type="text" name="desc" class="form-control col-md-7 col-xs-12" ></textarea>
         </div>
     </div>            
     
@@ -76,7 +103,11 @@ function content_587f4b15e7a674_23571445 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
     </div>
-    <button type="submit" class="btn btn-success">Yolla</button>
+    <div class="clear"></div>
+    <div class="x_content">
+        <button type="submit" class="btn btn-success"><?php echo Lang::getLang("submit");?>
+</button>
+    </div>
 </form>
 <!-- End SmartWizard Content --><?php }
 }

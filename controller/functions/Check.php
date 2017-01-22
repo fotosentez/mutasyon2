@@ -67,6 +67,7 @@ Class Check {
     public static function isNumeric($value, $inputname)
     {
         if(preg_match('/^[+0-9. ()\/-]*$/', $value)){
+            Output::cleanRed();
             return true;
         }
         else{
@@ -80,6 +81,7 @@ Class Check {
     {
         if($name){
             if(preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($name))){
+                Output::cleanRed();
                 return true;
             }
             else{
@@ -97,6 +99,7 @@ Class Check {
     public static function isPasword($passwd, $inputname)
     {        
         if (preg_match("#.*^(?=.{5,20})(?=.*[a-z])(?=.*[0-9]).*$#", $passwd)){
+            Output::cleanRed();
             return true;
         } else {
             echo Output::checkError($inputname, 'validatePassword');
@@ -108,6 +111,7 @@ Class Check {
     public static function isProductName($name, $inputname)
     {
         if(preg_match('/^[^<>;=#{}]*$/ui', $name)){
+            Output::cleanRed();
             return true;
         }
         else{//if address not valid
@@ -116,10 +120,24 @@ Class Check {
         }
     }
     
+    //For cheking number of characters
+    public static function numberOfCharacters($value, $limit,  $inputname)
+    {
+        if(strlen($value) >= $limit){
+            Output::cleanRed();
+            return true;
+        }
+        else{//if address not valid
+            Output::checkError($inputname, 'validateShortInput');
+            exit();
+        }
+    }
+    
     //Checking for email
     public static function isEmail($email, $inputname)
     {
         if (preg_match('/^[a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]+[.a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]*@[a-z\p{L}0-9]+(?:[.]?[_a-z\p{L}0-9-])*\.[a-z\p{L}0-9]+$/ui', $email)){
+            Output::cleanRed();
             return true;
         } else {
             echo Output::checkError($inputname, 'validateMail');
@@ -137,6 +155,7 @@ Class Check {
     public static function isDate($date, $inputname)
     {
         if(preg_match('/^([0-9]{4}).((0?[0-9])|(1[0-2])).((0?[0-9])|([1-2][0-9])|(3[01]))( [0-9]{2}:[0-9]{2}:[0-9]{2})?$/', $date)){
+            Output::cleanRed();
             return true;
         }
         else{
@@ -155,6 +174,7 @@ Class Check {
     public static function isAddress($address, $inputname)
     {
         if(preg_match('/^[^<>;=#{}]*$/ui', $address)){
+            Output::cleanRed();
             return true;
         }
         else{//if address not valid
@@ -167,6 +187,7 @@ Class Check {
     public static function isProductDetail($detail, $inputname)
     {
         if(Check::cleanHtmlCode($detail) AND Check::cleanScript($detail)){
+            Output::cleanRed();
             return true;
         }
         else{//if address not valid

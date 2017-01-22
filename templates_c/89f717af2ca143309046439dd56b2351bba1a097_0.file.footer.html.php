@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-16 20:49:58
+/* Smarty version 3.1.30, created on 2017-01-22 17:45:55
   from "/var/www/html/mutasyon2/view/default/footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_587d07c6310374_61268845',
+  'unifunc' => 'content_5884c5a3d529d7_89905382',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89f717af2ca143309046439dd56b2351bba1a097' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/footer.html',
-      1 => 1484588994,
+      1 => 1485096352,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_587d07c6310374_61268845 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5884c5a3d529d7_89905382 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
         </div>
     </div>
@@ -58,6 +58,14 @@ js/jquery.min.js"><?php echo '</script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/bootstrap.min.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/icheck/icheck.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/jquery-ui.min.js"><?php echo '</script'; ?>
+>
 
 <!-- PNotify -->
 <?php echo '<script'; ?>
@@ -86,6 +94,10 @@ js/nicescroll/jquery.nicescroll.min.js"><?php echo '</script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/custom.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/styles.js"><?php echo '</script'; ?>
+>
 
 <?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'addCustomer') {?>
 <!-- input mask -->
@@ -111,22 +123,6 @@ js/dropzone/dropzone.js"><?php echo '</script'; ?>
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/tinymce/tinymce.min.js"><?php echo '</script'; ?>
->
-<?php }?>
-
-<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'invoice/addInvoice') {?>
-<!-- form wizard -->
-<?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/wizard/jquery.smartWizard.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/icheck/icheck.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/jquery-ui.min.js"><?php echo '</script'; ?>
 >
 <?php }?>
 

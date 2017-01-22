@@ -24,6 +24,7 @@ Class Lang{
             "validateText" 				=> "Lütfen geçerli bir içerik giriniz!",
             "validateNumber" 				=> "Lütfen yalnızca numara giriniz!",
             "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
+            "validateDiscount" 				=> "İndirim miktarı toplamdan büyük olamaz!",
             "validateDate" 				=> "Lütfen geçerli bir tarih formatı giriniz! Örn: 2017.01.01",
             "contentExist" 				=> "Böyle bir içerik zaten var!",
             "cantBlank" 			        => "Bu alan boş olamaz!",
@@ -36,6 +37,10 @@ Class Lang{
             "writeDBError" 			        => "Veritabanına yazılırken hata oluştu!",
             "doLogin" 			                => "Giriş yapıldı anasayfaya yönlendiiriliyorsunuz",
             "cantLogin" 			        => "Kullanıcı adı yada şifre yanlış!",
+            "validateShortInput" 		        => "Girdiğiniz içerik çok kısa lütfen biraz daha uzun bir içerik giriniz!",
+            "doeDateCantSmall" 		                => "Vade tarihi oluşturma tarihinden önce olamaz!",
+            "notEnoughStock" 		                => "Stokta yeterli ürün yok!",
+            "productNotFound" 		                => "Ürün bulunamadı yada stokta yok!",
             
             
             
@@ -81,6 +86,8 @@ Class Lang{
             "paidTotal" 				=> "Toplam Ödenen",
             "colors" 				        => "Renk Seçenekleri",
             "shortDesc" 				=> "Kısa Açıklama",
+            "cart" 				        => "Sepet",
+            "productPrefix" 				=> "Önek",
             
             
             //Pagination

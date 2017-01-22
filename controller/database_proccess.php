@@ -2,14 +2,14 @@
 class DB
 {
     /*** EG Insert or UPDATE
-     *		$table = 'customer';
-     *		$values = array(
-     *			'id_customer' => 1,
-     *			'customer_name' => "Eylül BENEK",
-     *			'customer_britday' => "15.09.2014",
-     *			'customer_active' => 1
-     *		);
-     *		$insert = $dbase->insert($table, $values );
+        $table = 'customer';
+     	$values = array(
+     		'id_customer' => 1,
+     		'customer_name' => "Eylül BENEK",
+     		'customer_britday' => "15.09.2014",
+     		'customer_active' => 1
+     	);
+     	$insert = $dbase->insert($table, $values );
      **/
     
     /*** INSER INTO database  **/
@@ -23,6 +23,7 @@ class DB
         $res = $sth->execute($prep);
         return $db->lastInsertId();
     }
+    
     /*** UPDATE database **/
     public static function update($table,  $values, $condition) {
         global $db;
@@ -35,11 +36,30 @@ class DB
         $res = $sth->execute($values);
     }
     
+    /*** UPDATE one row of database **/
+    public static function updateOneRow($table,  $row, $condition) {
+        global $db;
+        $updateOneRow = $db->prepare("UPDATE ".$table." SET ".  $row ."  WHERE ".$condition."");
+        $res = $updateOneRow->execute();
+    }
+    
     /** GET eg: $dbase->get('*', 'customer', 'id_customer = 1') **/
     public static function get($which, $table,  $condition) {
         global $db;
         $gettable = $db->query('SELECT '.$which.' FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
         return $gettable;
+    }
+    
+    /** GET CONFIGS eg: $dbase->getAdminInf('Config name') ***/
+    public static function getAdminInf($value)
+    {
+        global $db;
+        $value = Check::clearCode($value);
+        $asd = $db->query('SELECT * FROM superuser WHERE superuser_active = 1 AND superuser_email = "'.@$_SESSION ["email"].'" LIMIT 1');
+        foreach ($asd as $cn)
+        {
+            return $cn[$value];
+        }
     }
     
     /** Is exist eg: $dbase->isExist('customer', 'id_customer = 1') **/
@@ -60,7 +80,7 @@ class DB
     /** GET ROW eg: $dbase->getRow('product', 'id_product = 12', 'product_name') **/
     public static function getRow($table,  $condition, $value) {
         global $db;
-        $getRow = $db->query('SELECT *, rowid FROM '.$table.' WHERE '.$condition.' LIMIT 1', PDO::FETCH_ASSOC);
+        $getRow = $db->query('SELECT * FROM '.$table.' WHERE '.$condition.' LIMIT 1', PDO::FETCH_ASSOC);
         foreach ($getRow as $row)
         {
             return $row[$value];

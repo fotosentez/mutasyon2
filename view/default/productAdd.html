@@ -3,7 +3,7 @@
     <form action="controller/products/productAdd.php" method="post" enctype="multipart/form-data" class="tinyMCE">
         <div class="well one"><!--add product-->
             <label class="margin-top">{Lang::getLang('productName')}</label>
-            <input type="text" class="form-control name" placeholder="{Lang::getLang('productName')}" name="product_name" />
+            <input type="text" class="form-control name" placeholder="{Lang::getLang('productName')}" name="product_name" required />
             <label class="margin-top">{Lang::getLang('shortDesc')}</label>
             <input type="text" class="form-control shortdesc" placeholder="{Lang::getLang('shortDesc')}" name="short_desc" />
             <label class="margin-top">{Lang::getLang('desc')}</label>
@@ -13,7 +13,7 @@
                 <span class="input-group-addon btn btn-yellow" id="sizing-addon3" data-toggle="collapse" href="#addcategory" aria-expanded="false" title="{Lang::getLang('addCategory')}">
                     <i class="fa fa-plus"></i> {Lang::getLang('addCategory')}
                 </span>
-                <select class="form-control" name="category">
+                <select class="form-control" name="category" required>
                     <option value="none"></option>
                     {foreach $getSubCategory as $sc}
                     <option value="{$sc.subcategory_id}">{$sc.maincategory_name} --> {$sc.subcategory_name}                     </option>
@@ -24,7 +24,7 @@
         </div><!--/add product-->
     </form>
     
-    <div class="two "><!--add picture-->
+    <div class="two displayNone"><!--add picture-->
         <h3>2- {Lang::getLang('uploadImages')}</h3>
         <div class="form-group margin-top well ">
             <div class="form-group">

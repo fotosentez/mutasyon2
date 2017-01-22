@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-13 16:40:23
+/* Smarty version 3.1.30, created on 2017-01-20 09:23:03
   from "/var/www/html/mutasyon2/view/default/productAdd.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5878d8c77776a4_62393578',
+  'unifunc' => 'content_5881acc7041279_05201504',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f289d7536914837a845e7bc9f9087192b2799d82' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/productAdd.html',
-      1 => 1484314169,
+      1 => 1484893374,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5878d8c77776a4_62393578 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5881acc7041279_05201504 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="navbar">  
     <h3>1- <?php echo Lang::getLang('productInfs');?>
@@ -30,7 +30,7 @@ function content_5878d8c77776a4_62393578 (Smarty_Internal_Template $_smarty_tpl)
             <label class="margin-top"><?php echo Lang::getLang('productName');?>
 </label>
             <input type="text" class="form-control name" placeholder="<?php echo Lang::getLang('productName');?>
-" name="product_name" />
+" name="product_name" required />
             <label class="margin-top"><?php echo Lang::getLang('shortDesc');?>
 </label>
             <input type="text" class="form-control shortdesc" placeholder="<?php echo Lang::getLang('shortDesc');?>
@@ -47,7 +47,7 @@ function content_5878d8c77776a4_62393578 (Smarty_Internal_Template $_smarty_tpl)
                     <i class="fa fa-plus"></i> <?php echo Lang::getLang('addCategory');?>
 
                 </span>
-                <select class="form-control" name="category">
+                <select class="form-control" name="category" required>
                     <option value="none"></option>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['getSubCategory']->value, 'sc');
@@ -71,7 +71,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div><!--/add product-->
     </form>
     
-    <div class="two "><!--add picture-->
+    <div class="two displayNone"><!--add picture-->
         <h3>2- <?php echo Lang::getLang('uploadImages');?>
 </h3>
         <div class="form-group margin-top well ">

@@ -1,27 +1,40 @@
 <!-- Smart Wizard -->
 <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
-<form id="addInvoiceForm" action="controller/invoice/addInvoice.php" class="form-horizontal form-label-left noload">
+<form id="addInvoiceForm" action="controller/invoice/addInvoice.php" class="form-horizontal form-label-left noload" onsubmit="return(false)">
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Müşteri Adı</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="text" name="customer-name" required="required" class="form-control col-md-7 col-xs-12" />
+            <input id="customers" type="text" name="customer-name" required="required" class="autocomplete form-control col-md-7 col-xs-12" />
+            <input id="customerId" name="cId" type="hidden" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Tarih</label>
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <input type="text" name="date" required="required" class="form-control col-md-7 col-xs-12" />
+        <div class="col-sm-3 col-xs-6">
+            <input type="date" name="date" value="{$smarty.now|date_format:'%Y-%m-%d'}" required="required" class="date form-control col-md-7 col-xs-12" />
         </div>
-        <div class="col-sm-6">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Önek</label>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <select id="heard" class="form-control" name="prefix">
-                    <option value="">Choose..</option>
-                    <option value="press">Press</option>
-                    <option value="net">Internet</option>
-                    <option value="mouth">Word of mouth</option>
-                </select>
-            </div>
+        <div class="col-sm-3 col-xs-6">
+            <input type="date" name="dueDate" value="{"+1 month"|date_format:'%Y-%m-%d'}" required="required" class="date form-control col-md-7 col-xs-12" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">İndirim</label>
+        <div class="col-sm-1 col-xs-3">
+            <select class="form-control" name="discountType">
+                <option value="percent">Yüzde</option>
+                <option value="same">Aynısı</option>
+            </select>
+        </div>
+        <div class="col-sm-2 col-xs-3">
+            <input type="number" name="discount" class="form-control col-md-7 col-xs-12" />
+        </div>
+        <label class="control-label col-sm-1 col-xs-2">Önek</label>
+        <div class="col-sm-2 col-xs-4">
+            <select class="form-control" name="prefix">
+                {foreach $prefix as $p}
+                <option value="{$p.prefix_id}">{$p.prefix_name}</option>
+                {/foreach}
+            </select>
         </div>
     </div>
     <div class="form-group">
@@ -36,7 +49,7 @@
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Açıklama</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <textarea type="text" name="desc" required="required" class="form-control col-md-7 col-xs-12" ></textarea>
+            <textarea type="text" name="desc" class="form-control col-md-7 col-xs-12" ></textarea>
         </div>
     </div>            
     
@@ -46,6 +59,9 @@
     <div id="addServiceForm" class="displayNone">
         {include file='view/default/invoice/addServiceInvoice.html'}
     </div>
-    <button type="submit" class="btn btn-success">Yolla</button>
+    <div class="clear"></div>
+    <div class="x_content">
+        <button type="submit" class="btn btn-success">{Lang::getLang("submit")}</button>
+    </div>
 </form>
 <!-- End SmartWizard Content -->
