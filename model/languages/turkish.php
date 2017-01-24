@@ -22,6 +22,7 @@ Class Lang{
             //Notifications
             "mainPage" 					=> "Anasayfa",
             "validateText" 				=> "Lütfen geçerli bir içerik giriniz!",
+            "validateUrl" 				=> "Lütfen geçerli bir web adresi giriniz!",
             "validateNumber" 				=> "Lütfen yalnızca numara giriniz!",
             "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
             "validateDiscount" 				=> "İndirim miktarı toplamdan büyük olamaz!",
@@ -37,10 +38,11 @@ Class Lang{
             "writeDBError" 			        => "Veritabanına yazılırken hata oluştu!",
             "doLogin" 			                => "Giriş yapıldı anasayfaya yönlendiiriliyorsunuz",
             "cantLogin" 			        => "Kullanıcı adı yada şifre yanlış!",
-            "validateShortInput" 		        => "Girdiğiniz içerik çok kısa lütfen biraz daha uzun bir içerik giriniz!",
+            "validateShortInput" 		        => "Geçerli sayıda karakter girmediniz!",
             "doeDateCantSmall" 		                => "Vade tarihi oluşturma tarihinden önce olamaz!",
             "notEnoughStock" 		                => "Stokta yeterli ürün yok!",
             "productNotFound" 		                => "Ürün bulunamadı yada stokta yok!",
+            "errorChangeValue" 		                => "Gönderilen veri değiştirildi yada gönderilemedi!",
             
             
             
@@ -58,6 +60,8 @@ Class Lang{
             "stockLists" 				=> "Stok Listesi",
             "addStock" 					=> "Stok Ekle",
             "payments" 					=> "Ödemeler",
+            "providers" 				=> "Hizmet Sağlayıcı",
+            "addProviders" 				=> "Hizmet Sağlayıcı Ekle",
             
             //Title of name
             "title_name" 				=> "Sayın",
@@ -110,6 +114,11 @@ Class Lang{
             "addCategory" 				=> "Kategori Ekle",
             "uploadImages" 				=> "Resim Yükle",
             "productInfs" 				=> "Ürün Bilgileri",
+            "mainCategory" 				=> "Ana Kategori",
+            "subCategory" 				=> "Alt Kategori",
+            "refresh" 				        => "Listeyi yenile",
+            "web" 				        => "Web Adresi",
+            "connectedPerson" 				=> "Sorumlu Kişi",
             
             
             //Menu Names
@@ -120,12 +129,15 @@ Class Lang{
             "menuSettings" 				=> "Ayarlar",
             "menuModules" 				=> "Modüller",
             
+            //Menu Names
+            "bank" 				        => "Banka",
+            
             //Invoice List
             "invoiceNo" 				=> "Fatura No",
             "customer" 					=> "Müşteri",
             "bankName/providersName" 		        => "Banka/H. Sağlayıcı",
             "paidLeft" 					=> "Kalan",
-            "invoiceExpiry" 				=> "Vade",
+            "invoiceExpiry" 				=> "Ödeme Tarihi",
             "addInvoice" 				=> "Fatura Oluştur",
             
             //Invoice Detail
@@ -135,7 +147,6 @@ Class Lang{
             "tax" 					=> "Vergi",
             "subTotal" 					=> "Ara Toplam",
             "desc" 					=> "Açıklama",
-            "due" 					=> "Vade",
             "shipping" 					=> "Kargo",
             "discount" 					=> "İndirim",
             "total" 					=> "Toplam",

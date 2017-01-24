@@ -1,7 +1,7 @@
 <div class="col-xs-12">
     <table class="table filter">
         <tbody>
-            <tr>
+            <tr class="productFilter">
                 <th>
                     <a href="javascript:removeOther('stock=outstock', 'stock=instock');"><i class="fa fa-check-square-o"></i> <span class="hidden-xs">Stokta Olanlar</span></a>
                 </th>
@@ -12,10 +12,10 @@
                     <a href="javascript:removeOther('stock=instock', 'stock=outstock');"><i class="fa fa-battery-empty"></i> <span class="hidden-xs">Tükenenler</span></a>
                 </th>
                 <th class="gridList">
-                    <a class="list"><i class="fa fa-bars"></i> <span class="hidden-xs">Liste</span></a>
+                    <a href="#" class="list"><i class="fa fa-bars"></i> <span class="hidden-xs">Liste</span></a>
                 </th>
                 <th class="gridList">
-                    <a class="grid"><i class="fa fa-th-large"></i> <span class="hidden-xs">Tablo</span></a>
+                    <a href="#" class="grid"><i class="fa fa-th-large"></i> <span class="hidden-xs">Tablo</span></a>
                 </th>
             </tr>
         </tbody>
@@ -31,7 +31,7 @@
     <div class="row prlist">
         <div class="col-sm-4 col-xs-6">
             <img class="vbestseller" src="view/img/crown.png" />
-            <img class="vprimage" src="view/img/products/37/big/51.jpg" />
+            <img class="vprimage" src="view/img/products/{$pr.products_id}/big/{$pr.cover}.jpg" />
         </div>
         <div class="col-sm-8 col-xs-6">
             <div class="row listPrname">

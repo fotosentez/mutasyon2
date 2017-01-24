@@ -84,7 +84,7 @@ if($vimage == 1 AND $vfolder == 1){
                     'products_images_status' => 1,
         		);
     $insert = $dbase->insert($table, $values );
-    $imageId = $db->lastInsertId();
+    $imageId = $dbase->getRow('products_images', 'products_images_product = '.$productId.' AND products_images_cover = '.$cover.' ORDER BY products_images_id DESC ', 'products_images_id');
     
     //Copy image to that folder
     if($insert){

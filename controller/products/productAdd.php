@@ -7,7 +7,7 @@ $short_desc = Get::post('short_desc');
 $product_detail = Get::post('product_detail');
 $category = Get::post('category');
 if($product_name){
-    if(Check::isProductName($product_name, 'product_name')){
+    if(Check::isProductName($product_name, 'product_name', true)){
         $vname = 1;
     }
     else{
@@ -72,7 +72,7 @@ if($vname == 1 and $vshortdesc == 1 and $vprdetail == 1 and $vcategory == 1){
     Output::cleanRed();
     
     //Get last prefix of product
-    $getPrefixOfCategory = $dbase->getRow('subcategory', 'subcategory_main = '.$category.' ', 'subcategory_prefix');
+    $getPrefixOfCategory = $dbase->getRow('subcategory', 'subcategory_id = '.$category.' ', 'subcategory_prefix');
     $getLastSKU = $dbase->getRow('products', 'products_prefix = "'.$getPrefixOfCategory.'"  ORDER BY SKU DESC ', 'SKU');
     
     //Make new SKU

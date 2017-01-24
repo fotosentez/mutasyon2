@@ -14,7 +14,7 @@ $country = Get::post ( "country" );
 $group = Get::post ( "group" );
 
 // Check name and surname
-if(Check::isName($name, 'name') AND Check::isName($surname, 'surname') AND Check::isDate($addDate, 'addDate')){
+if(Check::isName($name, 'name', true) AND Check::isName($surname, 'surname', true) AND Check::isDate($addDate, 'addDate')){
     $vname = 1;
     $vsurname = 1;
     $vaddDate = 1;
@@ -83,7 +83,7 @@ if($vname == 1 and $vsurname == 1 and $vaddDate == 1){
         $vcountry = 1;
     }
     if($group){
-        if(Check::isNumeric($group, 'group') OR $group == "noGroup"){
+        if(Check::isNumeric($group, 'group')){
             $vgroup = 1;
         }
         else{//if address not valid
@@ -123,6 +123,7 @@ if($vname == 1 and $vsurname == 1 and $vaddress == 1 and $vphone == 1 and $vmail
             );
             $insert = $dbase->insert($table, $values );
             echo Lang::getLang('proccessSuccess');
+            Output::cleanAllInputs();
     }
 }
 else{

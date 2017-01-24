@@ -13,6 +13,18 @@ Class Output
     {
         echo "<script>$('*').removeClass('alert-danger');</script>";
     }
+   
+    //Clean inputs and textarea
+    public static function cleanAllInputs()
+    {
+        echo "<script>$('input').val('');$('textarea').val('');</script>";
+    }
+   
+    //Refresh posted div
+    public static function refreshDiv($id)
+    {
+        echo "<script>$('".$id."').load(location.href + ' ".$id."');</script>";
+    }
     
 }
 

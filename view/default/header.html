@@ -22,6 +22,17 @@
                                     <link rel="stylesheet" type="text/css" href="{$template_dir}css/maps/jquery-jvectormap-2.0.3.css" />
                                     <link href="{$template_dir}css/icheck/flat/green.css" rel="stylesheet" />
                                     <link href="{$template_dir}css/floatexamples.css" rel="stylesheet" type="text/css" />
+                                    
+                                    
+                                    <link href="{$template_dir}js/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="{$template_dir}js/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="{$template_dir}js/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="{$template_dir}js/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="{$template_dir}js/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    
+                                    
+                                    <script src="{$template_dir}js/jquery.min.js"></script>
+                                    <script src="{$template_dir}js/bootstrap.min.js"></script>
                                     {if $pagePath == 'invoice/addInvoice'}
                                     <link href="{$template_dir}css/jquery-ui.css" rel="stylesheet" type="text/css" />
                                     {/if}
@@ -107,6 +118,12 @@
                                                                         <li>
                                                                             <a href="?url=customers/add">{Lang::getLang('addCustomer')}</a>
                                                                         </li>
+                                                                        <li>
+                                                                            <a href="?url=providers">{Lang::getLang('providers')}</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="?url=providers/add">{Lang::getLang('addProviders')}</a>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                                 
@@ -122,6 +139,9 @@
                                                                         </li>
                                                                         <li>
                                                                             <a href="?url=products/add">{Lang::getLang('addProducts')}</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="?url=categories/add">{Lang::getLang('addCategory')}</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>

@@ -1,4 +1,4 @@
-<form class="form-horizontal noload" method="post" action="controller/addCustomer.php">
+<form class="form-horizontal noload" method="post" action="controller/providers/addProviders.php">
     
     <!--Inputs -->
     <div class="item form-group">
@@ -11,13 +11,10 @@
         </div>
     </div>
     
-    <!--Surname -->
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="surname">{Lang::getLang('surname')} 
-            <span class="required">*</span>
-        </label>
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('connectedPerson')}</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input class="form-control col-md-7 col-xs-12" name="surname" type="text" required/>
+            <input id="name" class="form-control col-md-7 col-xs-12" name="connectedPerson" type="text" required />
         </div>
     </div>
     
@@ -41,41 +38,19 @@
         
         <!--Mail -->
         <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mail">{Lang::getLang('mail')} 
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">{Lang::getLang('mail')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <input id="name" class="form-control col-md-7 col-xs-12" name="mail" type="text" />
             </div>
         </div>
         
-        <!--City -->
+        <!--Web -->
         <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">{Lang::getLang('city')} 
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="web">{Lang::getLang('web')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="city" type="text" />
-            </div>
-        </div>
-        
-        <!--Country -->
-        <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">{Lang::getLang('country')} 
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="country" type="text" />
-            </div>
-        </div>
-        
-        <!--Select Group -->
-        <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">{Lang::getLang('group')}</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <select class="form-control" name="group">
-                    <option value="">{Lang::getLang('noGroup')}</option>
-                    {foreach $getGroup as $g}
-                    <option value="{$g.costumers_groups_id}">{$g.costumers_groups_name}</option>
-                    {/foreach}
-                </select>
+                <input id="name" class="form-control col-md-7 col-xs-12" name="web" type="text" placeholder="www.gozdesm.com" />
             </div>
         </div>
         <!--inputs -->
@@ -83,7 +58,7 @@
         <div class="ln_solid"></div>
         <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-                <a href="?url=customers" class="btn btn-primary">{Lang::getLang('cancel')}</a>
+                <a href="?url=providers" class="btn btn-primary">{Lang::getLang('cancel')}</a>
                 <button id="send" type="submit" class="btn btn-success">{Lang::getLang('submit')}</button>
             </div>
         </div>

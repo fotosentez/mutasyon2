@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-16 15:03:47
+/* Smarty version 3.1.30, created on 2017-01-23 20:04:11
   from "/var/www/html/mutasyon2/view/default/invoice/invoices.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_587cb6a3d06706_95498801',
+  'unifunc' => 'content_5886378b8c2e34_38614222',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9aa5a828af57e356c2368d333f2550c85c2fe84d' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/invoice/invoices.html',
-      1 => 1484314211,
+      1 => 1485191011,
       2 => 'file',
     ),
   ),
@@ -20,331 +20,96 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_587cb6a3d06706_95498801 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5886378b8c2e34_38614222 (Smarty_Internal_Template $_smarty_tpl) {
+if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/mutasyon2/model/libs/plugins/modifier.date_format.php';
 ?>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card-box table-responsive">
-                    <p class="text-muted font-13 m-b-30">
-                        KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
-                    </p>
-                    <table id="datatable-keytable" class="table table-striped table-bordered">
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th><?php echo Lang::getLang("invoiceNo");?>
+</th>
+                                <th><?php echo Lang::getLang("desc");?>
+</th>
+                                <th><?php echo Lang::getLang("admin");?>
+</th>
+                                <th><?php echo Lang::getLang("customer");?>
+</th>
+                                <th><?php echo Lang::getLang("bank");?>
+</th>
+                                <th><?php echo Lang::getLang("total");?>
+</th>
+                                <th><?php echo Lang::getLang("date");?>
+</th>
+                                <th><?php echo Lang::getLang("invoiceExpiry");?>
+</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['invoice']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
+                                <td class="invoiceList <?php if ($_smarty_tpl->tpl_vars['i']->value['invoice_cancelled'] == 1) {?>invoiceNo<?php }?>">
+                                    <a href="index.php?url=invoices/id=<?php echo $_smarty_tpl->tpl_vars['i']->value['invoice_id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value['prefix_name'];
+echo $_smarty_tpl->tpl_vars['i']->value['invoice_no'];?>
+</a>
+                                    <?php if ($_smarty_tpl->tpl_vars['i']->value['invoice_providers_id'] == NULL) {?>
+                                            <i class="fa fa-circle purple"></i>
+                                        <?php } else { ?>
+                                            <i class="fa fa-circle silver"></i>
+                                        <?php }?>
+                                </td>
+                                <td><?php echo $_smarty_tpl->tpl_vars['i']->value['invoice_desc'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->tpl_vars['i']->value['superuser_name'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->tpl_vars['i']->value['customers_name'];?>
+ <?php echo $_smarty_tpl->tpl_vars['i']->value['customers_surname'];?>
+</td>
+                                <td>
+                                    <?php if ($_smarty_tpl->tpl_vars['i']->value['bank_name'] != NULL) {?>
+                                        <a><?php echo $_smarty_tpl->tpl_vars['i']->value['bank_name'];?>
+</a>
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['i']->value['providers_name'] != NULL) {?>
+                                        <a><?php echo $_smarty_tpl->tpl_vars['i']->value['providers_name'];?>
+</a>
+                                    <?php } else { ?>
+                                    <a></a>
+                                    <?php }?>
+                                </td>
+                                <td>
+                                    <?php echo $_smarty_tpl->tpl_vars['currency']->value;?>
+
+                                    <?php if ($_smarty_tpl->tpl_vars['i']->value['invoice_discount_type'] == "percent") {?>
+                                        <?php echo $_smarty_tpl->tpl_vars['i']->value['productTotal']-($_smarty_tpl->tpl_vars['i']->value['invoice_discount']*$_smarty_tpl->tpl_vars['i']->value['productTotal']/100);?>
+
+                                    <?php } else { ?>
+                                        <?php echo $_smarty_tpl->tpl_vars['i']->value['productTotal']-$_smarty_tpl->tpl_vars['i']->value['invoice_discount'];?>
+
+                                    <?php }?>
+                                </td>
+                                <td><?php echo $_smarty_tpl->tpl_vars['i']->value['invoice_date'];?>
+</td>
+                                <td <?php if (smarty_modifier_date_format(time(),"%Y-%m-%d") >= $_smarty_tpl->tpl_vars['i']->value['invoice_due_date']) {?>class="expry"<?php }?>>
+                                    <?php echo $_smarty_tpl->tpl_vars['i']->value['invoice_due_date'];?>
+
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
                         </tbody>
                     </table>
-                </div><?php }
+                </div>
+                <i class="fa fa-circle purple"></i>: Ürün faturası<br>
+                <i class="fa fa-circle silver"></i>: Servis faturası<?php }
 }

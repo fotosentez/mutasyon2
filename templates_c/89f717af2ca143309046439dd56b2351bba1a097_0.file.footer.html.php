@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-22 17:45:55
+/* Smarty version 3.1.30, created on 2017-01-23 19:58:02
   from "/var/www/html/mutasyon2/view/default/footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5884c5a3d529d7_89905382',
+  'unifunc' => 'content_5886361a0f7065_22881531',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89f717af2ca143309046439dd56b2351bba1a097' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/footer.html',
-      1 => 1485096352,
+      1 => 1485190664,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5884c5a3d529d7_89905382 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5886361a0f7065_22881531 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
         </div>
     </div>
@@ -50,14 +50,6 @@ function content_5884c5a3d529d7_89905382 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 
 <!-- For alla pages -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/jquery.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/bootstrap.min.js"><?php echo '</script'; ?>
->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/icheck/icheck.min.js"><?php echo '</script'; ?>
@@ -112,7 +104,6 @@ js/pace/pace.min.js"><?php echo '</script'; ?>
 >
 <?php }?>
 
-
 <?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'productAdd') {?>
 <!-- dropzone -->
 <?php echo '<script'; ?>
@@ -123,6 +114,65 @@ js/dropzone/dropzone.js"><?php echo '</script'; ?>
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/tinymce/tinymce.min.js"><?php echo '</script'; ?>
+>
+<?php }?>
+
+<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'invoice/invoices') {
+echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/jquery.dataTables.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/dataTables.bootstrap.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/dataTables.buttons.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/buttons.bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/jszip.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/pdfmake.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/vfs_fonts.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/buttons.html5.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/buttons.print.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/dataTables.fixedHeader.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/dataTables.keyTable.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/dataTables.responsive.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/responsive.bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/dataTables.scroller.min.js"><?php echo '</script'; ?>
 >
 <?php }?>
 

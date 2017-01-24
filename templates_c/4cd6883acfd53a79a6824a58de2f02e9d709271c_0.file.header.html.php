@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-16 19:32:25
+/* Smarty version 3.1.30, created on 2017-01-24 18:43:37
   from "/var/www/html/mutasyon2/view/default/header.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_587cf599275f44_79754355',
+  'unifunc' => 'content_58877629257399_57131587',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4cd6883acfd53a79a6824a58de2f02e9d709271c' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/header.html',
-      1 => 1484584259,
+      1 => 1485272614,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_587cf599275f44_79754355 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58877629257399_57131587 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +53,28 @@ css/maps/jquery-jvectormap-2.0.3.css" />
 css/icheck/flat/green.css" rel="stylesheet" />
                                     <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 css/floatexamples.css" rel="stylesheet" type="text/css" />
+                                    
+                                    
+                                    <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+                                    
+                                    
+                                    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/jquery.min.js"><?php echo '</script'; ?>
+>
+                                    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/bootstrap.min.js"><?php echo '</script'; ?>
+>
                                     <?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'invoice/addInvoice') {?>
                                     <link href="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 css/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -155,6 +177,14 @@ css/<?php echo $_smarty_tpl->tpl_vars['css']->value;?>
                                                                             <a href="?url=customers/add"><?php echo Lang::getLang('addCustomer');?>
 </a>
                                                                         </li>
+                                                                        <li>
+                                                                            <a href="?url=providers"><?php echo Lang::getLang('providers');?>
+</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="?url=providers/add"><?php echo Lang::getLang('addProviders');?>
+</a>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                                 
@@ -172,6 +202,10 @@ css/<?php echo $_smarty_tpl->tpl_vars['css']->value;?>
                                                                         </li>
                                                                         <li>
                                                                             <a href="?url=products/add"><?php echo Lang::getLang('addProducts');?>
+</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="?url=categories/add"><?php echo Lang::getLang('addCategory');?>
 </a>
                                                                         </li>
                                                                     </ul>

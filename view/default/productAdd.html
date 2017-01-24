@@ -10,13 +10,13 @@
             <textarea type="text" class="form-control" placeholder="{Lang::getLang('desc')}" id="editor" name="product_detail"></textarea>
             <label>{Lang::getLang('category')}</label>
             <div class="input-group input-group-sm categorylist">
-                <span class="input-group-addon btn btn-yellow" id="sizing-addon3" data-toggle="collapse" href="#addcategory" aria-expanded="false" title="{Lang::getLang('addCategory')}">
+                <span class="input-group-addon btn btn-primary" data-toggle="modal" data-target=".addCategoryModal" title="{Lang::getLang('addCategory')}">
                     <i class="fa fa-plus"></i> {Lang::getLang('addCategory')}
                 </span>
                 <select class="form-control" name="category" required>
                     <option value="none"></option>
                     {foreach $getSubCategory as $sc}
-                    <option value="{$sc.subcategory_id}">{$sc.maincategory_name} --> {$sc.subcategory_name}                     </option>
+                    <option value="{$sc.subcategory_id}">{$sc.maincategory_name} --> {$sc.subcategory_name}</option>
                     {/foreach}
                 </select>
             </div>
@@ -36,3 +36,4 @@
         </div>
     </div><!--/add picture-->
 </div><!--/navbar-->
+{include file='view/default/categories/modalAddCategory.html'}

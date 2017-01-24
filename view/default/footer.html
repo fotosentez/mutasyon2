@@ -26,8 +26,6 @@
 </div>
 
 <!-- For alla pages -->
-<script src="{$template_dir}js/jquery.min.js"></script>
-<script src="{$template_dir}js/bootstrap.min.js"></script>
 <script src="{$template_dir}js/icheck/icheck.min.js"></script>
 <script src="{$template_dir}js/jquery-ui.min.js"></script>
 
@@ -49,12 +47,28 @@
 <script src="{$template_dir}js/pace/pace.min.js"></script>
 {/if}
 
-
 {if $pagePath == 'productAdd'}
 <!-- dropzone -->
 <script src="{$template_dir}js/dropzone/dropzone.js"></script>
 <!-- Tinymace -->
 <script src="{$template_dir}js/tinymce/tinymce.min.js"></script>
+{/if}
+
+{if $pagePath == 'invoice/invoices'}
+<script src="{$template_dir}js/datatables/jquery.dataTables.min.js"></script>
+<script src="{$template_dir}js/datatables/dataTables.bootstrap.js"></script>
+<script src="{$template_dir}js/datatables/dataTables.buttons.min.js"></script>
+<script src="{$template_dir}js/datatables/buttons.bootstrap.min.js"></script>
+<script src="{$template_dir}js/datatables/jszip.min.js"></script>
+<script src="{$template_dir}js/datatables/pdfmake.min.js"></script>
+<script src="{$template_dir}js/datatables/vfs_fonts.js"></script>
+<script src="{$template_dir}js/datatables/buttons.html5.min.js"></script>
+<script src="{$template_dir}js/datatables/buttons.print.min.js"></script>
+<script src="{$template_dir}js/datatables/dataTables.fixedHeader.min.js"></script>
+<script src="{$template_dir}js/datatables/dataTables.keyTable.min.js"></script>
+<script src="{$template_dir}js/datatables/dataTables.responsive.min.js"></script>
+<script src="{$template_dir}js/datatables/responsive.bootstrap.min.js"></script>
+<script src="{$template_dir}js/datatables/dataTables.scroller.min.js"></script>
 {/if}
 
 <!-- if page has js -->

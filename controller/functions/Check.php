@@ -77,9 +77,25 @@ Class Check {
     }
     
     //For checking post is a name or not. This can't include numeric
-    public static function isName($name, $inputname)
+    public static function isName($name, $inputname, $required=false)
     {
-        if($name){
+        if($required == true){
+            if($name){
+                if(preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($name))){
+                    Output::cleanRed();
+                    return true;
+                }
+                else{
+                    echo Output::checkError($inputname, 'validateText');
+                    exit();
+                }
+            }
+            else{
+                echo Output::checkError($inputname, 'validateText');
+                exit();
+            }
+        }
+        else{
             if(preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($name))){
                 Output::cleanRed();
                 return true;
@@ -88,10 +104,6 @@ Class Check {
                 echo Output::checkError($inputname, 'validateText');
                 exit();
             }
-        }
-        else{
-            echo Output::checkError($inputname, 'validateText');
-            exit();
         }
     }
     
@@ -121,9 +133,9 @@ Class Check {
     }
     
     //For cheking number of characters
-    public static function numberOfCharacters($value, $limit,  $inputname)
+    public static function numberOfCharacters($value, $min, $max,  $inputname)
     {
-        if(strlen($value) >= $limit){
+        if( $min <= strlen($value) AND strlen($value) <= $max ){
             Output::cleanRed();
             return true;
         }
@@ -192,6 +204,19 @@ Class Check {
         }
         else{//if address not valid
             Output::checkError($inputname, 'validateText');
+            exit();
+        }
+    }
+    
+    //Checking for url is valid
+    public static function isUrl($url, $inputname)
+    {
+        if (preg_match( '/^[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}'.'((:[0-9]{1,5})?\\/.*)?$/i' ,$url)) {
+            Output::cleanRed();
+            return true;
+        }
+        else{//if url not valid
+            Output::checkError($inputname, 'validateUrl');
             exit();
         }
     }

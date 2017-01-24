@@ -1,0 +1,80 @@
+<!-- Small modal -->
+<div class="modal fade addCategoryModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">{Lang::getLang("addCategory")}</h4>
+            </div>
+            <div class="modal-body">
+                
+                <form class="form-horizontal noload" method="post" action="controller/categories/addcategory.php">
+                    
+                    <div class="form-group">
+                        <label class="control-label col-xs-12"></label>
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-2">
+                            <label>{Lang::getLang('mainCategory')}</label> 
+                            <input type="radio" name="categoryType" id="typeM" value="mainCategory" required />
+                            <label>{Lang::getLang('subCategory')}</label> 
+                            <input type="radio" name="categoryType" id="typeS" value="subCategory" required />
+                        </div>
+                    </div>
+                    <!--Inputs -->
+                    <div class="item form-group">
+                        <label class="control-label col-xs-2">{Lang::getLang('name')} 
+                            <span class="required">*</span>
+                        </label>
+                        <div class="col-xs-10">
+                            <input class="form-control col-md-7 col-xs-12" name="name" type="text" required />
+                            <input  name="modal" type="hidden" value="modal" />
+                        </div>
+                    </div>
+                    
+                    <!--Desc -->
+                    <div class="item form-group">
+                        <label class="control-label col-xs-2" for="textarea">{Lang::getLang('desc')} 
+                        </label>
+                        <div class="col-xs-10">
+                            <textarea name="desc" class="form-control col-xs-12"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group subCategory displayNone">
+                        <div class="item form-group">
+                            <label class="control-label col-xs-2">{Lang::getLang('productPrefix')} 
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-xs-10">
+                                <input class="form-control col-xs-12" name="prefix" type="text" required />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-xs-2">{Lang::getLang('category')} 
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-xs-10">
+                                <select class="form-control col-xs-12" name="category">
+                                    <option value="none"></option>
+                                    {foreach $getMainCategories as $mc}
+                                    <option value="{$mc.maincategory_id}">{$mc.maincategory_name}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <button id="send" type="submit" class="btn btn-success">{Lang::getLang('submit')}</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /modals -->

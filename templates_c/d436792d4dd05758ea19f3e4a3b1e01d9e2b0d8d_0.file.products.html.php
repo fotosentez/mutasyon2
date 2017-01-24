@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-15 13:46:01
+/* Smarty version 3.1.30, created on 2017-01-24 17:53:39
   from "/var/www/html/mutasyon2/view/default/products.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_587b52e99c2fe5_63548896',
+  'unifunc' => 'content_58876a73038487_30186875',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd436792d4dd05758ea19f3e4a3b1e01d9e2b0d8d' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/products.html',
-      1 => 1484477155,
+      1 => 1485269615,
       2 => 'file',
     ),
   ),
@@ -21,13 +21,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:view/default/products/categories.html' => 1,
   ),
 ),false)) {
-function content_587b52e99c2fe5_63548896 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58876a73038487_30186875 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once '/var/www/html/mutasyon2/model/libs/plugins/modifier.truncate.php';
 ?>
 <div class="col-xs-12">
     <table class="table filter">
         <tbody>
-            <tr>
+            <tr class="productFilter">
                 <th>
                     <a href="javascript:removeOther('stock=outstock', 'stock=instock');"><i class="fa fa-check-square-o"></i> <span class="hidden-xs">Stokta Olanlar</span></a>
                 </th>
@@ -38,10 +38,10 @@ if (!is_callable('smarty_modifier_truncate')) require_once '/var/www/html/mutasy
                     <a href="javascript:removeOther('stock=instock', 'stock=outstock');"><i class="fa fa-battery-empty"></i> <span class="hidden-xs">Tükenenler</span></a>
                 </th>
                 <th class="gridList">
-                    <a class="list"><i class="fa fa-bars"></i> <span class="hidden-xs">Liste</span></a>
+                    <a href="#" class="list"><i class="fa fa-bars"></i> <span class="hidden-xs">Liste</span></a>
                 </th>
                 <th class="gridList">
-                    <a class="grid"><i class="fa fa-th-large"></i> <span class="hidden-xs">Tablo</span></a>
+                    <a href="#" class="grid"><i class="fa fa-th-large"></i> <span class="hidden-xs">Tablo</span></a>
                 </th>
             </tr>
         </tbody>
@@ -63,7 +63,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['pr']->value) {
     <div class="row prlist">
         <div class="col-sm-4 col-xs-6">
             <img class="vbestseller" src="view/img/crown.png" />
-            <img class="vprimage" src="view/img/products/37/big/51.jpg" />
+            <img class="vprimage" src="view/img/products/<?php echo $_smarty_tpl->tpl_vars['pr']->value['products_id'];?>
+/big/<?php echo $_smarty_tpl->tpl_vars['pr']->value['cover'];?>
+.jpg" />
         </div>
         <div class="col-sm-8 col-xs-6">
             <div class="row listPrname">

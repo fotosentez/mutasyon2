@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-22 17:22:07
+/* Smarty version 3.1.30, created on 2017-01-24 18:32:05
   from "/var/www/html/mutasyon2/view/default/invoice/addProductInvoice.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5884c00fe66887_17261736',
+  'unifunc' => 'content_58877375b9b2f6_33748609',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '83045917f84df7a5fb5a78ac4aca94fb6102c7a4' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/invoice/addProductInvoice.html',
-      1 => 1485094924,
+      1 => 1485245305,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5884c00fe66887_17261736 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58877375b9b2f6_33748609 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Search product -->
 <div class="row">
     <div class="col-xs-12">
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 relative">
             <input type="text" id="addToCart" class="autocomplete form-control" name="term" placeholder="Ürün adı veya SKU" />
-            <button type="button" class="btn btn-primary getProductList" data-toggle="modal" data-target=".bs-example-modal-md" />
+            <button type="button" class="btn btn-primary getProductList" data-toggle="modal" data-target=".getProductsList">
                     <i class="glyphicon glyphicon-th-list"></i>
-                </button>
+            </button>
         </div>
         
         <input type="hidden" id="productPrice" />
@@ -64,7 +64,7 @@ function content_5884c00fe66887_17261736 (Smarty_Internal_Template $_smarty_tpl)
 
 <!-- Small modal -->
 
-<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade getProductsList" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             

@@ -56,14 +56,14 @@
     background: #fff url('../images/desen.png') no-repeat right bottom;
 }
 .vlist img.vprimage{
-    width: 100%;
-    height: auto;
+    width: 160px;
+    height: 120px;
     border-right: 1px solid #eee;
     padding: 3px;
     margin-left: -12px;
     margin-top: 1px;
 }
-.vlist  .ablock{
+.vlist .ablock{
     position:absolute;
     bottom:4px;
 }
@@ -108,11 +108,11 @@
     height:30px;
 }
 .vlist .listPrname{
-    height:60px;
+    height:35px;
     overflow:hidden;
 }
 .vlist .listPrsname{
-    height:65px;
+    height:30px;
     overflow:hidden;
 }
 .relative{
@@ -187,10 +187,9 @@ table.filter .fa{
     font-size:20px;
     position:absolute;
 }
-.gridList{
-    background:#000;
+.productFilter th.gridList a{
+    float:right !important;
 }
-.gridList a{
-    float:right;
-    color:#fff;
+.productFilter th a{
+    float:left;
 }

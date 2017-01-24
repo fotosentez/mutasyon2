@@ -43,6 +43,13 @@ class DB
         $res = $updateOneRow->execute();
     }
     
+    /** DELETE Value eg: $dbase->delete('product', 'id_product = 8') **/
+    public static function delete($table,  $condition) {
+        global $db;
+        $deleteRow = $db->query('DELETE FROM '.$table.' WHERE '.$condition.' LIMIT 1', PDO::FETCH_ASSOC);
+        return $deleteRow;
+    }
+    
     /** GET eg: $dbase->get('*', 'customer', 'id_customer = 1') **/
     public static function get($which, $table,  $condition) {
         global $db;
@@ -87,12 +94,6 @@ class DB
         }
     }
     
-    /** DELETE Value eg: $dbase->delete('product', 'id_product = 8') **/
-    public static function delete($table,  $condition) {
-        global $db;
-        $deleteRow = $db->query('DELETE FROM '.$table.' WHERE '.$condition.' LIMIT 1', PDO::FETCH_ASSOC);
-        return $deleteRow;
-    }
     
     /** GET CONFIGS eg: $dbase->config('Config name') ***/
     public static function config($value) {

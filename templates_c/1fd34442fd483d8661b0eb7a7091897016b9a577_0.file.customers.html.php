@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-13 17:05:07
+/* Smarty version 3.1.30, created on 2017-01-24 18:27:48
   from "/var/www/html/mutasyon2/view/default/customers.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5878de93ea02f7_95165369',
+  'unifunc' => 'content_5887727474f8a7_75739550',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1fd34442fd483d8661b0eb7a7091897016b9a577' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/customers.html',
-      1 => 1484314231,
+      1 => 1485271664,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5878de93ea02f7_95165369 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5887727474f8a7_75739550 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
@@ -52,7 +52,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
                     </ul>
                 </div>
                 <div class="right col-xs-5 text-center">
-                    <img src="view/img/1.jpg" alt="" class="img-circle img-responsive">
+                    <img src="view/img/user.png" alt="" class="img-circle img-responsive">
                     </div>
                 </div>
                 <div class="col-xs-12 bottom text-center">
@@ -113,6 +113,5 @@ echo AddHtml::addPagination($_smarty_tpl->tpl_vars['totalPage']->value,"customer
 
         <?php }?>
         <?php }?>
-    </div>
-</div><?php }
+    </div><?php }
 }
