@@ -26,7 +26,8 @@ Class Lang{
             "validateNumber" 				=> "Lütfen yalnızca numara giriniz!",
             "validateMail" 				=> "Lütfen geçerli bir e-posta giriniz!",
             "validateDiscount" 				=> "İndirim miktarı toplamdan büyük olamaz!",
-            "validateDate" 				=> "Lütfen geçerli bir tarih formatı giriniz! Örn: 2017.01.01",
+            "validateDate" 				=> "Lütfen geçerli bir tarih formatı giriniz! Örn: 2017-01-01",
+            "validateIBAN" 				=> "Lütfen geçerli bir IBAN formatı giriniz!",
             "contentExist" 				=> "Böyle bir içerik zaten var!",
             "cantBlank" 			        => "Bu alan boş olamaz!",
             "proccessSuccess" 				=> "İşlem başarıyla tamamlandı",
@@ -43,8 +44,7 @@ Class Lang{
             "notEnoughStock" 		                => "Stokta yeterli ürün yok!",
             "productNotFound" 		                => "Ürün bulunamadı yada stokta yok!",
             "errorChangeValue" 		                => "Gönderilen veri değiştirildi yada gönderilemedi!",
-            
-            
+            "customerNotFound" 		                => "Müşteri Bulunamadı!",
             
             //Left Menu
             "index" 					=> "Anasayfa",
@@ -55,6 +55,7 @@ Class Lang{
             "customers" 				=> "Müşteriler",
             "addCustomer" 				=> "Müşteri Ekle",
             "sellers" 					=> "Satıcılar",
+            "addSeller" 				=> "Satıcı Ekle",
             "serviceProviders" 				=> "Hizmet Sağlayıcılar",
             "stockManagements" 				=> "Stok Yönetimi",
             "stockLists" 				=> "Stok Listesi",
@@ -62,6 +63,9 @@ Class Lang{
             "payments" 					=> "Ödemeler",
             "providers" 				=> "Hizmet Sağlayıcı",
             "addProviders" 				=> "Hizmet Sağlayıcı Ekle",
+            "cash" 				        => "Kasa Hesapları",
+            "addCash" 				        => "Kasa Hesabı Ekle",
+            "settings" 				        => "Ayarlar",
             
             //Title of name
             "title_name" 				=> "Sayın",
@@ -119,6 +123,7 @@ Class Lang{
             "refresh" 				        => "Listeyi yenile",
             "web" 				        => "Web Adresi",
             "connectedPerson" 				=> "Sorumlu Kişi",
+            "iban" 				        => "IBAN",
             
             
             //Menu Names
@@ -129,13 +134,10 @@ Class Lang{
             "menuSettings" 				=> "Ayarlar",
             "menuModules" 				=> "Modüller",
             
-            //Menu Names
-            "bank" 				        => "Banka",
-            
             //Invoice List
             "invoiceNo" 				=> "Fatura No",
             "customer" 					=> "Müşteri",
-            "bankName/providersName" 		        => "Banka/H. Sağlayıcı",
+            "cashName/providersName" 		        => "Kasa/H. Sağlayıcı",
             "paidLeft" 					=> "Kalan",
             "invoiceExpiry" 				=> "Ödeme Tarihi",
             "addInvoice" 				=> "Fatura Oluştur",

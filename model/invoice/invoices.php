@@ -5,7 +5,7 @@ INNER JOIN customers ON invoice_customer_id = customers_id
 INNER JOIN superuser ON invoice_superuser_id = superuser_id
 LEFT JOIN providers ON providers_id = invoice_providers_id
 LEFT JOIN payments ON payments_invoice_id = invoice_id
-LEFT JOIN bank ON bank_id = payments_id
+LEFT JOIN cash ON cash_id = payments_id
 ';
 
 $extra = '

@@ -22,13 +22,13 @@ $amount = Get::post('amount');
 $stepOne = 0;
 $stepProduct=0;
 $stepService = 0;
-if(Check::isNumeric($customerId, "customer-name")){
-    $getCustomer = $dbase->getRow('customers', 'customers_status = 1 AND customers_id = '.$customerId.' ', 'customers_id');
-    if($getCustomer){
+if(Check::isNumeric($customerId, "customer-name") AND $customerId != ""){
+    $getCustomer = $dbase->isExist('customers', 'customers_id = '.$customerId.'');
+    if($getCustomer == 1){
         if(Check::isDate($date, "date")){
             if(Check::isDate($dueDate, "dueDate")){
                 if( strtotime($date) <= strtotime($dueDate) ){
-                    if(Check::isNumeric($prefix, "prefix")){
+                    if(Check::isNumeric($prefix, "prefix") AND $prefix != ""){
                         if(Check::isNumeric($discount, 'discount') OR $discount == ""){
                             if($discountType == "percent" OR $discountType == "same"){
                                 if(Check::isProductName($desc, "desc") OR $desc == ""){
@@ -70,6 +70,10 @@ if(Check::isNumeric($customerId, "customer-name")){
                             }
                         }
                     }
+                    else{
+                        Output::checkError("prefix", "cantBlank");
+                        exit();
+                    }
                 }
                 else{
                     Output::checkError("dueDate", "doeDateCantSmall");
@@ -79,9 +83,13 @@ if(Check::isNumeric($customerId, "customer-name")){
         }
     }
     else{
-        Output::checkError("customer-name", "validateText");
+        Output::checkError("customer-name", "customerNotFound");
         exit();
     }
+}
+else{
+    Output::checkError("customer-name", "customerNotFound");
+    exit();
 }
 
 //If a product invoice

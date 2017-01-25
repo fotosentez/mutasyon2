@@ -8,4 +8,4 @@ $smarty->assign ( array (
 ) );
 
 
-Page::create("addCustomer", "addCustomer", "addCustomer", "addCustomer");
+Page::create("customers/addCustomer", "addCustomer", "addCustomer", "");

@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__).'/../model/settings/settings.php'); // Get All Functions
+require_once(dirname(__FILE__).'/../../model/settings/settings.php'); // Get All Functions
 
 
 // Get informations

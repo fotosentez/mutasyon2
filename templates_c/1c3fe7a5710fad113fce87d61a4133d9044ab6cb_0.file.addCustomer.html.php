@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-24 18:09:21
+/* Smarty version 3.1.30, created on 2017-01-24 21:02:41
   from "/var/www/html/mutasyon2/view/default/addCustomer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58876e21e96052_22124422',
+  'unifunc' => 'content_588796c13f3805_91930236',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1c3fe7a5710fad113fce87d61a4133d9044ab6cb' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/addCustomer.html',
-      1 => 1485270554,
+      1 => 1485279520,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58876e21e96052_22124422 (Smarty_Internal_Template $_smarty_tpl) {
+function content_588796c13f3805_91930236 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/mutasyon2/model/libs/plugins/modifier.date_format.php';
 ?>
-<form class="form-horizontal noload" method="post" action="controller/addCustomer.php">
+<form class="form-horizontal noload" method="post" action="controller/customers/addCustomer.php">
     
     <!--Inputs -->
     <div class="item form-group">
@@ -33,7 +33,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/mut
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <input id="name" class="form-control col-md-7 col-xs-12" name="name" type="text" required />
-            <input class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="<?php echo smarty_modifier_date_format(time(),'%Y.%m.%d');?>
+            <input class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="<?php echo smarty_modifier_date_format(time(),'%Y-%m-%d');?>
 " />
         </div>
     </div>

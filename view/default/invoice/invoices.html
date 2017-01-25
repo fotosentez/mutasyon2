@@ -8,7 +8,7 @@
                                 <th>{Lang::getLang("desc")}</th>
                                 <th>{Lang::getLang("admin")}</th>
                                 <th>{Lang::getLang("customer")}</th>
-                                <th>{Lang::getLang("bank")}</th>
+                                <th>{Lang::getLang("cash")}</th>
                                 <th>{Lang::getLang("total")}</th>
                                 <th>{Lang::getLang("date")}</th>
                                 <th>{Lang::getLang("invoiceExpiry")}</th>
@@ -29,8 +29,8 @@
                                 <td>{$i.superuser_name}</td>
                                 <td>{$i.customers_name} {$i.customers_surname}</td>
                                 <td>
-                                    {if $i.bank_name != NULL}
-                                        <a>{$i.bank_name}</a>
+                                    {if $i.cash_name != NULL}
+                                        <a>{$i.cash_name}</a>
                                     {else if $i.providers_name != NULL}
                                         <a>{$i.providers_name}</a>
                                     {else}

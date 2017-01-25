@@ -1,3 +1,4 @@
+$(":input").inputmask();
 //Do all #date inputs to date
 $(function() {
     $( ".date" ).datepicker({ dateFormat: 'yy-mm-dd'}); 

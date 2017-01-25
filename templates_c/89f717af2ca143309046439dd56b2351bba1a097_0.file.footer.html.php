@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-23 19:58:02
+/* Smarty version 3.1.30, created on 2017-01-24 23:08:53
   from "/var/www/html/mutasyon2/view/default/footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5886361a0f7065_22881531',
+  'unifunc' => 'content_5887b45502f167_44577638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89f717af2ca143309046439dd56b2351bba1a097' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/footer.html',
-      1 => 1485190664,
+      1 => 1485288529,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5886361a0f7065_22881531 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5887b45502f167_44577638 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
         </div>
     </div>
@@ -81,6 +81,11 @@ js/progressbar/bootstrap-progressbar.min.js"><?php echo '</script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/nicescroll/jquery.nicescroll.min.js"><?php echo '</script'; ?>
 >
+<!-- input mask -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/input_mask/jquery.inputmask.js"><?php echo '</script'; ?>
+>
 
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
@@ -91,12 +96,7 @@ js/custom.js"><?php echo '</script'; ?>
 js/styles.js"><?php echo '</script'; ?>
 >
 
-<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'addCustomer') {?>
-<!-- input mask -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
-js/input_mask/jquery.inputmask.js"><?php echo '</script'; ?>
->
+<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'customers/addCustomer') {?>
 <!-- pace -->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
@@ -104,7 +104,7 @@ js/pace/pace.min.js"><?php echo '</script'; ?>
 >
 <?php }?>
 
-<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'productAdd') {?>
+<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'products/productAdd') {?>
 <!-- dropzone -->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>

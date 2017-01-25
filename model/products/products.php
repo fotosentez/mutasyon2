@@ -43,4 +43,4 @@ $smarty->assign ( array (
     "subCategories" => $subCategories,
     "urlName" => $urlName,
     ) );
-Page::create("products", 'products', 'products', 'products');
+Page::create("products/products", 'products', 'products', 'products');

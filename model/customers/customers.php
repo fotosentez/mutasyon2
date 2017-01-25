@@ -49,4 +49,4 @@ $smarty->assign ( array (
     "totalPage" => $totalPage,
     ) );
     
-    Page::create("customers", "customers", "customers");
+    Page::create("customers/customers", "customers", "customers");

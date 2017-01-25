@@ -1,6 +1,6 @@
 <?php
-require_once(dirname(__FILE__).'/../model/settings/settings.php'); // Get All Functions
-require_once(dirname(__FILE__).'/../model/settings/pic_upload.php'); // Get pic_upload for resize to image
+require_once(dirname(__FILE__).'/../../model/settings/settings.php'); // Get All Functions
+require_once(dirname(__FILE__).'/../../model/settings/pic_upload.php'); // Get pic_upload for resize to image
 
 $productName = Get::post('newproductname');
 

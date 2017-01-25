@@ -12,4 +12,4 @@ $smarty->assign ( array (
         "getMainCategories" => $getMainCategories
 ));
     
-    Page::create("productAdd", "productAdd", "productAdd", "productAdd");
+    Page::create("products/productAdd", "productAdd", "productAdd", "productAdd");
