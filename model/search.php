@@ -42,3 +42,41 @@ if($id == "customers"){
         }
     }
 }
+if($id == "seller-name"){
+    if($term){
+        if(preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($term))){
+            $getCustomers = $dbase->get('*', 'seller', 'seller_name LIKE "%'.$term.'%" OR seller_address LIKE "%'.$term.'%" ');
+            if ( $getCustomers )
+            {
+                $data = array();
+                foreach ( $getCustomers as $row ){
+                    $data[] = array(
+                        'value' => $row['seller_name'],
+                        'sId' => $row['seller_id'],
+                        );
+                }
+                echo json_encode($data);
+            }//rowCount
+        }
+    }
+}
+if($id == "products"){
+    if($term){
+        
+        if(preg_match('/^[^<>;=#{}]*$/ui', $term)){
+            $getProduct = $dbase->get('*', 'products', 'products_name LIKE "%'.$term.'%" OR SKU LIKE "%'.$term.'%" ');
+            if ( $getProduct )
+            {
+                $data = array();
+                foreach ( $getProduct as $row ){
+                    $data[] = array(
+                        'value' => $row['products_name'],
+                        'SKU' => $row['products_prefix'].$row['SKU'],
+                        'prefix' => $row['products_prefix'],
+                        );
+                }
+                echo json_encode($data);
+            }//rowCount
+        }
+    }
+}

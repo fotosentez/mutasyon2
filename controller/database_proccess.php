@@ -36,7 +36,7 @@ class DB
         $res = $sth->execute($values);
     }
     
-    /*** UPDATE one row of database **/
+    /** Update one row Value eg: $dbase->updateOneRow('product', 'product_name = "New Name" ', 'id_product = 8') **/
     public static function updateOneRow($table,  $row, $condition) {
         global $db;
         $updateOneRow = $db->prepare("UPDATE ".$table." SET ".  $row ."  WHERE ".$condition."");

@@ -7,11 +7,11 @@ Class Lang{
             "myCompany" 				=> "Bizim Şirket",
             "invoiceFrom" 				=> "Kimden",
             "invoiceTo" 				=> "Kime",
-            "admin" 					=> "Kullanıcı",
             "paid" 					=> "Ödenen",
             "currency" 					=> "TRY",
             "totalInput" 				=> "Toplam Veri",
             "all" 					=> "Tümü",
+            "addBuyPayment" 				=> " numaralı alım faturası ödemesi",
             
             //Login form
             "signin" 					=> "Giriş",
@@ -41,16 +41,25 @@ Class Lang{
             "cantLogin" 			        => "Kullanıcı adı yada şifre yanlış!",
             "validateShortInput" 		        => "Geçerli sayıda karakter girmediniz!",
             "doeDateCantSmall" 		                => "Vade tarihi oluşturma tarihinden önce olamaz!",
+            "payCantBigTotal" 		                => "Ödeme miktarı toplam miktardan büyük olamaz!",
             "notEnoughStock" 		                => "Stokta yeterli ürün yok!",
             "productNotFound" 		                => "Ürün bulunamadı yada stokta yok!",
             "errorChangeValue" 		                => "Gönderilen veri değiştirildi yada gönderilemedi!",
+            "errorUpdateRow" 		                => "Tablo güncellenemedi!",
             "customerNotFound" 		                => "Müşteri Bulunamadı!",
+            "sellerNotFound" 		                => "Satıcı Bulunamadı!",
+            "areYouSureForDelete" 		        => "Silme işlemini onaylıyor musunuz?",
+            "areYouSureForChange" 		        => "İçerik kaydelicek onaylıyor musunuz?",
+            "cantDeleteDefault" 		        => "Öntanımlı içeriği silemezsiniz!",
+            "validateStar" 		                => "Yıldız sayısı 0 ile 5 arasında olmalıdır!",
+            "ifCheckDontPay" 		                => "(Seçilirse ödeme yapılmadan ürün eklenecektir)",
             
             //Left Menu
             "index" 					=> "Anasayfa",
             "invoices" 					=> "Faturalar",
             "invoiceList" 				=> "Fatura Listesi",
             "addInvoice" 				=> "Fatura Ekle",
+            "addBuyInvoice" 				=> "Alım Faturası Ekle",
             "current" 					=> "Cari",
             "customers" 				=> "Müşteriler",
             "addCustomer" 				=> "Müşteri Ekle",
@@ -108,6 +117,7 @@ Class Lang{
             "pageTitleBlank" 				=> " ",
             "productAdd" 				=> "Yeni Ürün Ekle",
             "addInvoice" 				=> "Yeni Fatura Oluştur",
+            "profile" 				        => "Hesabım",
             
             //Buttons and labels
             "cancel" 					=> "İptal",
@@ -124,6 +134,28 @@ Class Lang{
             "web" 				        => "Web Adresi",
             "connectedPerson" 				=> "Sorumlu Kişi",
             "iban" 				        => "IBAN",
+            "updateInf" 				=> "Bilgileri Güncelle",
+            "infos" 				        => "Bilgiler",
+            "edit" 				        => "Düzenle",
+            "add" 				        => "Yeni Ekle",
+            "currencyName" 				=> "Kur Adı",
+            "currencyCode" 				=> "Kur Kodu",
+            "addCurrency" 				=> "Yeni Kur Ekle",
+            "addPrefix" 				=> "Yeni Önek Ekle",
+            "doDefault" 				=> "Öntanımlı Yap",
+            "addPaytype" 				=> "Ödeme Yöntemi Ekle",
+            "paytype" 				        => "Ödeme Yöntemi",
+            "addCompanyInfs" 				=> "Şirket Bilgisi Ekle",
+            "companyInfs" 				=> "Şirket Bilgileri",
+            "companyName" 				=> "Şirket Adı",
+            "addGroup" 				        => "Grup Ekle",
+            "star" 				        => "Yıldız",
+            "customersGroups" 				=> "Müşteri Grupları",
+            "virtualProduct" 				=> "Sanal Ürün",
+            "payAmount" 				=> "Ödeme Miktarı",
+            "priceIn" 				        => "Alış Fiyatı",
+            "priceOut" 				        => "Satış Fiyatı",
+            "addRow" 				        => "Satır Ekle",
             
             
             //Menu Names
@@ -158,12 +190,12 @@ Class Lang{
             "sku" 					=> "SKU",
             "delete" 					=> "Kaldır",
             "price" 					=> "Fiyat",
+            "salePrice" 				=> "Satış Fiyatı",
             "buy" 					=> "Satın Al",
             "cartList" 					=> "Ürün Listesi",
             
             //Customers
             "discountRate" 				=> "İndirim Oranı",
-            "viewProfile" 				=> "Profile Bak",
             "noGroup" 					=> "Grup Yok",
             "address" 					=> "Adres",
             "viewProfil" 				=> "Profile Bak",
@@ -177,6 +209,24 @@ Class Lang{
             "city" 				        => "Şehir",
             "country" 				        => "Ülke",
             "group" 				        => "Grup",
+
+            //Mouths
+            "01" 				        => "Ocak",
+            "02" 				        => "Şubat",
+            "03" 				        => "Mart",
+            "04" 				        => "Nisan",
+            "05" 				        => "Mayıs",
+            "06" 				        => "Haziran",
+            "07" 				        => "Temmuz",
+            "08" 				        => "Ağustos",
+            "09" 				        => "Eylül",
+            "10" 				        => "Ekim",
+            "11" 				        => "Kasım",
+            "12" 				        => "Aralık",
+
+            //Admin Status
+            "superuser" 				=> "Yetkili Kullanıcı",
+            "admin" 				        => "Kullanıcı",
             
             );
             return $value[$a];

@@ -1,0 +1,105 @@
+<div class="navbar container-fluid">
+    <form action="controller/invoice/addBuyInvoice.php" method="post" class="noload">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="margin-top relative">
+                    <label>{Lang::getLang('sellers')}</label>
+                    <span class="input-group-addon addCustomer">
+                        <a data-toggle="collapse" href="#addseller" aria-expanded="false" title="{Lang::getLang('addSeller')}">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </span>
+                    <input id="seller-name" type="text" name="seller-name" required="required" class="autocomplete form-control" />
+                    <input id="sellerId" name="sellerId" type="hidden" />
+                </div>
+                <div class="margin-top">
+                    <label>{Lang::getLang('tax')}</label>
+                    <select id="tax" class="form-control" name="tax">
+                        <option value="empty" ></option>
+                        {foreach $tax as $t}
+                        <option value="{$t.tax_id}" >{$t.tax_amount}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="margin-top">
+                    <label>{Lang::getLang('desc')}</label>
+                    <textarea id="buyinvoicedesc" class="form-control" type="text" name="buyinvoicedesc"></textarea>
+                </div>
+            </div><!--/col-sm-3-->
+            <div class="col-sm-3 col-sm-offset-5">
+                <div class="margin-top">
+                    <label>{Lang::getLang('date')}</label>
+                    <input type="date" id="date" class="form-control date" name="date" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
+                </div>
+                <div class="margin-top">
+                    <label>
+                        <input type="checkbox" class="js-switch" name="virtual" /> <i class="notvirtual">{Lang::getLang('virtualProduct')}</i>
+                    </label>
+                    <span class="btn-info"> {Lang::getLang('ifCheckDontPay')}</span>
+                </div>
+                <div class="buybank margin-top">
+                    <label>{Lang::getLang('payAmount')}</label>
+                    <input id="buypayment" type="number" name="buypayment" class="form-control payprice notpay" step="0.01" autocomplete="off" placeholder="{Lang::getLang('price')}" />
+                    <label>{Lang::getLang('cash')}</label>
+                    <select id="cash" class="form-control notpay" name="cash">
+                        {foreach $cash as $ca}
+                        <option value="{$ca.cash_id}" >{$ca.cash_name}</option>
+                        {/foreach}
+                    </select>
+                    <div class="margin-top">
+                        <div class="btn-group paytype" data-toggle="buttons">
+                            <label>{Lang::getLang('paytype')}</label><br />
+                            {foreach $payType as $p}
+                            <label class="btn btn-default">
+                                <input class="notpay" name="paytype" id="paytype" type="radio" value="{$p.paytype_id}" /> {$p.paytype_name}
+                            </label>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top">
+            <!-- Search product -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 relative">
+                        <input type="text" id="products" class="autocomplete form-control" name="term" placeholder="Ürün adı veya SKU" />
+                        <button type="button" class="btn btn-primary getProductList" data-toggle="modal" data-target=".getProductsList">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                        </button>
+                    </div>
+                    <input type="hidden" id="productSKU" />
+                </div>
+            </div>
+            <!-- /serach product	     -->
+            
+            <!-- Basket -->
+            <h4 class="cartListheader">{Lang::getLang("cart")}</h4>
+            <div class="cartList">
+                <div id="urunler"  class="urunler row">
+                    <ul class="baslik">
+                        <li class="col-xs-2">{Lang::getLang("sku")}</li>
+                        <li class="col-xs-5">{Lang::getLang("productName")}</li>
+                        <li class="col-xs-2">{Lang::getLang("amount")}</li>
+                        <li class="col-xs-1">{Lang::getLang("price")}</li>
+                        <li class="col-xs-1">{Lang::getLang("salePrice")}</li>
+                        <li class="col-xs-1">{Lang::getLang("delete")}</li>
+                    </ul>
+                    <div class="clear"></div>
+                    <ul id="cart" class="icerik">
+                        
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="pull-right" id="total">{Lang::getLang("total")}: <span></span></div>
+            <input id="totalInput" type="hidden" name="total" />
+            <!-- /Basket -->
+        </div>
+        <div class="clear"></div>
+        <div class="x_content">
+            <button type="submit" class="btn btn-success">{Lang::getLang("submit")}</button>
+        </div>
+    </form>
+</div><!--navbar-->

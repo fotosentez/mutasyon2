@@ -29,4 +29,4 @@ $smarty->assign ( array (
     "buyActions" => $buyActions,
     ) );
     
-    Page::create("productDetail", "productDetail", "productDetail", "productDetail");
+    Page::create("products/productDetail", "productDetail", "productDetail", "productDetail");

@@ -64,15 +64,33 @@ Class Check {
     //List of all functions for mutasyon2
     
     //For checking post numeric or not
-    public static function isNumeric($value, $inputname)
+    public static function isNumeric($value, $inputname, $required=false)
     {
-        if(preg_match('/^[+0-9. ()\/-]*$/', $value)){
-            Output::cleanRed();
-            return true;
+        if($required == true){
+            if($value){
+                if(preg_match('/^[+0-9. ()\/-]*$/', $value)){
+                    Output::cleanRed();
+                    return true;
+                }
+                else{
+                    echo Output::checkError($inputname, 'validateNumber');
+                    exit();
+                }
+            }
+            else{
+                echo Output::checkError($inputname, 'validateText');
+                exit();
+            }
         }
         else{
-            echo Output::checkError($inputname, 'validateNumber');
-            exit();
+            if(preg_match('/^[+0-9. ()\/-]*$/', $value)){
+                Output::cleanRed();
+                return true;
+            }
+            else{
+                echo Output::checkError($inputname, 'validateNumber');
+                exit();
+            }
         }
     }
     
@@ -120,15 +138,33 @@ Class Check {
     }
     
     //For cheking product name. This can inlude numeric
-    public static function isProductName($name, $inputname)
+    public static function isProductName($name, $inputname, $required=false)
     {
-        if(preg_match('/^[^<>;=#{}]*$/ui', $name)){
-            Output::cleanRed();
-            return true;
+        if($required == true){
+            if($name){
+                if(preg_match('/^[^<>;=#{}]*$/ui', $name)){
+                    Output::cleanRed();
+                    return true;
+                }
+                else{//if address not valid
+                    Output::checkError($inputname, 'validateText');
+                    exit();
+                }
+            }
+            else{
+                echo Output::checkError($inputname, 'validateText');
+                exit();
+            }
         }
-        else{//if address not valid
-            Output::checkError($inputname, 'validateText');
-            exit();
+        else{
+            if(preg_match('/^[^<>;=#{}]*$/ui', $name)){
+                Output::cleanRed();
+                return true;
+            }
+            else{//if address not valid
+                Output::checkError($inputname, 'validateText');
+                exit();
+            }
         }
     }
     
@@ -166,7 +202,9 @@ Class Check {
     //Checking for date
     public static function isDate($date, $inputname)
     {
-        if(preg_match('/^([0-9]{4}).((0?[0-9])|(1[0-2])).((0?[0-9])|([1-2][0-9])|(3[01]))( [0-9]{2}:[0-9]{2}:[0-9]{2})?$/', $date)){
+        $d = DateTime::createFromFormat('Y-m-d', $date);
+        $check = $d && $d->format('Y-m-d') === $date;
+        if($check == true){
             Output::cleanRed();
             return true;
         }
@@ -174,12 +212,6 @@ Class Check {
             Output::checkError($inputname, 'validateDate');
             exit();
         }
-    }
-    
-    //Checking for link
-    public static function isLink($gelen)
-    {
-        return preg_match('/^[_a-z0-9-]+$/ui', $gelen);
     }
     
     //Checking for address

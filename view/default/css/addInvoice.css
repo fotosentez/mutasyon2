@@ -78,3 +78,17 @@ border-bottom:1px solid #eee;
 #cart{
     overflow:auto;
 }
+.addCustomer {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    line-height: 20px;
+}
+#seller-name {
+    margin-left: 34px;
+    width: 86%;
+}
+.paytype .btn{
+    width: 79px;
+    font-size: 10px;
+}

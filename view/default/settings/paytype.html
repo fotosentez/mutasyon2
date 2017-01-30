@@ -1,0 +1,25 @@
+<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:90%">{Lang::getLang('paytype')}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $paytype as $py}
+        <tr class="currencyList">
+            <td><input type="text" class="form-control name" value="{$py.paytype_name}" name="name" /></td>
+            <td class="buttons">
+                <a type="button" id="pyIdEdit{$py.paytype_id}" class="btn btn-info btn-xs" kml="{$py.paytype_id}" onClick="editValue('pyIdEdit{$py.paytype_id}', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
+                <a type="button" class="btn btn-danger btn-xs" onClick="deleteRow({$py.paytype_id}, 'pyIdDelete', '{Lang::getLang('areYouSureForDelete')}');"><i class="fa fa-close"></i></a>
+            </td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+<div class="ln_solid"></div>
+<div class="form-group">
+    <div class="col-xs-12 pull-left">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target=".addPaytypeModal">{Lang::getLang('addPaytype')}</button>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="" role="tabpanel" data-example-id="togglable-tabs">
+    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#messages" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Satış Hareketleri</a>
+        </li>
+        <li role="presentation"><a href="#invoices" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Satış Hareketleri</a>
+        </li>
+        <li role="presentation" class=""><a href="#buyinvoices" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Satın Alma Hareketleri</a>
+        </li>
+        <li role="presentation" class=""><a href="#pay" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Ödeme Hareketleri</a>
+        </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="messages" aria-labelledby="home-tab">
+            
+            <!-- start recent activity -->
+            <ul class="messages">
+                
+            </ul>
+            <!-- end recent activity -->
+            
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="invoices" aria-labelledby="home-tab">
+            
+            <!-- start recent activity -->
+            <ul class="messages">
+                {foreach $invoices as $i}
+                <li>
+                    <img src="view/img/{$pr.superuser_id}.jpg" class="avatar" alt="Avatar" />
+                    <div class="message_date">
+                        <h3 class="date text-info">{$i.Day}</h3>
+                        <p class="month">{Lang::getLang("{$i.Mouth}")}</p>
+                    </div>
+                    <div class="message_wrapper">
+                        <h4 class="heading">Fatura Ekleme</h4>
+                        <blockquote class="message">{$i.invoice_desc}</blockquote>
+                        <br />
+                        <p class="url">
+                            <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                            <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
+                        </p>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+            <!-- end recent activity -->
+            
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="buyinvoices" aria-labelledby="profile-tab">
+            
+            <!-- start recent activity -->
+            <ul class="messages">
+                {foreach $binvoices as $bi}
+                <li>
+                    <img src="view/img/{$pr.superuser_id}.jpg" class="avatar" alt="Avatar" />
+                    <div class="message_date">
+                        <h3 class="date text-info">{$bi.Day}</h3>
+                        <p class="month">{Lang::getLang("{$bi.Mouth}")}</p>
+                    </div>
+                    <div class="message_wrapper">
+                        <h4 class="heading">Fatura Ekleme</h4>
+                        <blockquote class="message">{$bi.bi_detail}</blockquote>
+                        <br />
+                        <p class="url">
+                            <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                            <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
+                        </p>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+            <!-- end recent activity -->
+            
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="pay" aria-labelledby="profile-tab">
+            <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+                photo booth letterpress, commodo enim craft beer mlkshk </p>
+        </div>
+    </div>
+</div>

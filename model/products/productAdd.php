@@ -5,11 +5,19 @@ $getSubCategory = $dbase->get('*', 'subcategory LEFT JOIN maincategory ON subcat
 //Get main categories
 $getMainCategories = $dbase->get('*', 'maincategory', 'maincategory_status = 1');
 
+//Get attributes
+$attr = $dbase->get('*', 'attributes_contents INNER JOIN attributes_group ON ag_id = ac_attributes_group_id', 'ac_id <> 0');
+$attributesGroup = $dbase->get('*', 'attributes_group INNER JOIN attributes_contents ON ag_id = ac_attributes_group_id', 'ag_id <> 0 GROUP BY ag_name ORDER BY ag_order');
+$attributes = array();
+foreach($attr as $c){$attributes[] = $c;}
+
 
 //Smarty veriables
 $smarty->assign ( array (
-        "getSubCategory" => $getSubCategory,
-        "getMainCategories" => $getMainCategories
-));
+    "getSubCategory" => $getSubCategory,
+    "getMainCategories" => $getMainCategories,
+    "attributes" => $attributes,
+    "attributesGroup" => $attributesGroup,
+    ));
     
-    Page::create("products/productAdd", "productAdd", "productAdd", "productAdd");
+    Page::create("products/productAdd", "productAdd", "products", "productAdd");

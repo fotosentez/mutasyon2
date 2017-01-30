@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-23 20:04:11
+/* Smarty version 3.1.30, created on 2017-01-27 21:28:21
   from "/var/www/html/mutasyon2/view/default/invoice/invoices.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5886378b8c2e34_38614222',
+  'unifunc' => 'content_588b91458779f4_65375502',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9aa5a828af57e356c2368d333f2550c85c2fe84d' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/invoice/invoices.html',
-      1 => 1485191011,
+      1 => 1485289901,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5886378b8c2e34_38614222 (Smarty_Internal_Template $_smarty_tpl) {
+function content_588b91458779f4_65375502 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/mutasyon2/model/libs/plugins/modifier.date_format.php';
 ?>
         <div class="row">
@@ -37,7 +37,7 @@ if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/mut
 </th>
                                 <th><?php echo Lang::getLang("customer");?>
 </th>
-                                <th><?php echo Lang::getLang("bank");?>
+                                <th><?php echo Lang::getLang("cash");?>
 </th>
                                 <th><?php echo Lang::getLang("total");?>
 </th>
@@ -73,8 +73,8 @@ echo $_smarty_tpl->tpl_vars['i']->value['invoice_no'];?>
  <?php echo $_smarty_tpl->tpl_vars['i']->value['customers_surname'];?>
 </td>
                                 <td>
-                                    <?php if ($_smarty_tpl->tpl_vars['i']->value['bank_name'] != NULL) {?>
-                                        <a><?php echo $_smarty_tpl->tpl_vars['i']->value['bank_name'];?>
+                                    <?php if ($_smarty_tpl->tpl_vars['i']->value['cash_name'] != NULL) {?>
+                                        <a><?php echo $_smarty_tpl->tpl_vars['i']->value['cash_name'];?>
 </a>
                                     <?php } elseif ($_smarty_tpl->tpl_vars['i']->value['providers_name'] != NULL) {?>
                                         <a><?php echo $_smarty_tpl->tpl_vars['i']->value['providers_name'];?>

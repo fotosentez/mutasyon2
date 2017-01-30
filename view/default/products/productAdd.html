@@ -1,25 +1,45 @@
 <div class="navbar">  
     <h3>1- {Lang::getLang('productInfs')}</h3>
     <form action="controller/products/productAdd.php" method="post" enctype="multipart/form-data" class="tinyMCE">
-        <div class="well one"><!--add product-->
-            <label class="margin-top">{Lang::getLang('productName')}</label>
-            <input type="text" class="form-control name" placeholder="{Lang::getLang('productName')}" name="product_name" required />
-            <label class="margin-top">{Lang::getLang('shortDesc')}</label>
-            <input type="text" class="form-control shortdesc" placeholder="{Lang::getLang('shortDesc')}" name="short_desc" />
-            <label class="margin-top">{Lang::getLang('desc')}</label>
-            <textarea type="text" class="form-control" placeholder="{Lang::getLang('desc')}" id="editor" name="product_detail"></textarea>
-            <label>{Lang::getLang('category')}</label>
-            <div class="input-group input-group-sm categorylist">
-                <span class="input-group-addon btn btn-primary" data-toggle="modal" data-target=".addCategoryModal" title="{Lang::getLang('addCategory')}">
-                    <i class="fa fa-plus"></i> {Lang::getLang('addCategory')}
-                </span>
-                <select class="form-control" name="category" required>
-                    <option value="none"></option>
-                    {foreach $getSubCategory as $sc}
-                    <option value="{$sc.subcategory_id}">{$sc.maincategory_name} --> {$sc.subcategory_name}</option>
-                    {/foreach}
-                </select>
+        <div class="one"><!--add product-->
+            <div class="col-sm-6 col-xs-12">
+                <label class="margin-top">{Lang::getLang('productName')}</label>
+                <input type="text" class="form-control name" placeholder="{Lang::getLang('productName')}" name="product_name" />
+                <label class="margin-top">{Lang::getLang('shortDesc')}</label>
+                <input type="text" class="form-control shortdesc" placeholder="{Lang::getLang('shortDesc')}" name="short_desc" />
+                <label class="margin-top">{Lang::getLang('desc')}</label>
+                <textarea type="text" class="form-control" placeholder="{Lang::getLang('desc')}" id="editor" name="product_detail"></textarea>
+                <label>{Lang::getLang('category')}</label>
+                <div class="input-group input-group-sm categorylist">
+                    <span class="input-group-addon btn btn-primary" data-toggle="modal" data-target=".addCategoryModal" title="{Lang::getLang('addCategory')}">
+                        <i class="fa fa-plus"></i> {Lang::getLang('addCategory')}
+                    </span>
+                    <select class="form-control" name="category" required>
+                        <option value="none"></option>
+                        {foreach $getSubCategory as $sc}
+                        <option value="{$sc.subcategory_id}">{$sc.maincategory_name} --> {$sc.subcategory_name}</option>
+                        {/foreach}
+                    </select>
+                </div>
             </div>
+            <div class="col-sm-6 col-xs-12">
+                <h4>Öznitelikler</h4>
+                {foreach $attributesGroup as $ag}
+                <div class="col-sm-4 col-xs-6">
+                    <div class="row margin-top">
+                        <label>{$ag.ag_name}</label>
+                    </div>
+                    {foreach $attributes as $at}
+                        {if $ag.ag_id == $at.ac_attributes_group_id}
+                        <div class="checkboxs">
+                            <input type="checkbox" name="attributes[]" value="{$at.ac_id}" /> <span>{$at.ac_name}</span>
+                        </div>
+                        {/if}
+                    {/foreach}
+                </div>
+                {/foreach}
+            </div>
+            <div class="clear"></div>
             <button class="btn btn-success margin-top send" type="submit">{Lang::getLang('addNewProduct')}</button>
         </div><!--/add product-->
     </form>
@@ -30,6 +50,7 @@
             <div class="form-group">
                 <form action="controller/products/addImages.php" method="post" class="dropzone" id="addimagesform" enctype="multipart/form-data">
                     <input name="newproductname" class="stname" type="hidden" />
+                    <input name="newcategoryname" class="ctname" type="hidden" />
                 </form>
             </div>
             <a href="?url=products" class="btn btn-success">{Lang::getLang('finishUpload')}</a>

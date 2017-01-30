@@ -146,14 +146,14 @@ if($stepOne==1 AND $stepProduct == 1){
         'invoice_no' => $newNo,
         'invoice_desc' => $desc,
         'invoice_superuser_id' => $adminId,
-        'invoice_customer_id' => $getCustomer,
+        'invoice_customer_id' => $customerId,
         'invoice_discount' => $discount,
         'invoice_discount_type' => $discountType,
         'invoice_date' => $date,
         'invoice_due_date' => $dueDate,
         );
         $insertInvoice = $dbase->insert($table, $values );
-        $getInvoiceId = $dbase->getRow('invoice', 'invoice_superuser_id = 1 ORDER BY invoice_id DESC ', 'invoice_id');
+        $getInvoiceId = $dbase->getRow('invoice', 'invoice_superuser_id = '.$adminId.' ORDER BY invoice_id DESC ', 'invoice_id');
         
         if($insertInvoice){
             $x = 0;

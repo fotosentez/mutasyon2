@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-24 23:08:53
+/* Smarty version 3.1.30, created on 2017-01-27 11:52:08
   from "/var/www/html/mutasyon2/view/default/footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5887b45502f167_44577638',
+  'unifunc' => 'content_588b0a38b53584_17200157',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89f717af2ca143309046439dd56b2351bba1a097' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/footer.html',
-      1 => 1485288529,
+      1 => 1485507126,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5887b45502f167_44577638 (Smarty_Internal_Template $_smarty_tpl) {
+function content_588b0a38b53584_17200157 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
         </div>
     </div>
@@ -85,6 +85,10 @@ js/nicescroll/jquery.nicescroll.min.js"><?php echo '</script'; ?>
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/input_mask/jquery.inputmask.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/switchery/switchery.min.js"><?php echo '</script'; ?>
 >
 
 <?php echo '<script'; ?>
@@ -173,6 +177,50 @@ js/datatables/responsive.bootstrap.min.js"><?php echo '</script'; ?>
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
 js/datatables/dataTables.scroller.min.js"><?php echo '</script'; ?>
+>
+<?php }?>
+
+<?php if ($_smarty_tpl->tpl_vars['pagePath']->value == 'profile/profile') {?>
+<!-- image cropping -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/cropping/cropper.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/cropping/main.js"><?php echo '</script'; ?>
+>
+
+<!-- daterangepicker -->
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/moment/moment.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/datepicker/daterangepicker.js"><?php echo '</script'; ?>
+>
+
+<!-- chart js -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/chartjs/chart.min.js"><?php echo '</script'; ?>
+>
+
+<!-- moris js -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/moris/raphael-min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/moris/morris.min.js"><?php echo '</script'; ?>
+>
+
+<!-- pace -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['template_dir']->value;?>
+js/pace/pace.min.js"><?php echo '</script'; ?>
 >
 <?php }?>
 

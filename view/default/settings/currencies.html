@@ -1,0 +1,28 @@
+<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:60%">{Lang::getLang('currencyName')}</th>
+            <th class="hidden-xs">{Lang::getLang('currencyCode')}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $currency as $cr}
+        <tr class="currencyList {if $cr.currency_default == 1}default{/if}">
+            <th><input type="text" class="form-control name" value="{$cr.currency_name}" name="name" /></th>
+            <td class="hidden-xs"><input type="text" class="form-control code" value="{$cr.currency_code}" name="code" /></td>
+            <td class="buttons">
+                <a type="button" id="crIdEdit{$cr.currency_id}" kml="{$cr.currency_id}" class="btn btn-info btn-xs" onClick="editValue('crIdEdit{$cr.currency_id}', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
+                <a type="button" class="btn btn-default btn-xs" onClick="changeDefault({$cr.currency_id}, 'crIdUpdate', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-check-circle"></i></a>
+                <a type="button" class="btn btn-danger btn-xs" onClick="deleteRow({$cr.currency_id}, 'crIdDelete', '{Lang::getLang('areYouSureForDelete')}');"><i class="fa fa-close"></i></a>
+            </td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+<div class="ln_solid"></div>
+<div class="form-group">
+    <div class="col-xs-12 pull-left">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target=".addCurrenciesModal">{Lang::getLang('addCurrency')}</button>
+    </div>
+</div>

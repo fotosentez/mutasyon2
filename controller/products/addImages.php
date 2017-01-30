@@ -3,6 +3,7 @@ require_once(dirname(__FILE__).'/../../model/settings/settings.php'); // Get All
 require_once(dirname(__FILE__).'/../../model/settings/pic_upload.php'); // Get pic_upload for resize to image
 
 $productName = Get::post('newproductname');
+$categoryName = Get::post('newcategoryname');
 
 //Get image informations
 $image = $_FILES['file']['tmp_name'];
@@ -35,23 +36,23 @@ else{
 
 //Check folder named product id exist.
 if($vimage == 1){
-    $productId = $dbase->getRow('products', 'products_name = "'.$productName.'" ', 'products_id');
-    $folder = "../view/img/products/" . $productId;
-    $folderBig = "../view/img/products/" . $productId . "/big";
-    $folderSmall = "../view/img/products/" . $productId . "/small";
+$productId = $dbase->getRow('products', 'products_name = "'.$productName.'" and products_category = "'.$categoryName.'" ', 'products_id');
+    $folder = "../../view/img/products/" . $productId;
+    $folderBig = "../../view/img/products/" . $productId . "/big";
+    $folderSmall = "../../view/img/products/" . $productId . "/small";
     
     if (!file_exists($folderBig) OR !file_exists($folderSmall) OR !file_exists($folder)) {
         if(!file_exists($folder)){
             mkdir($folder, 0775);
-            copy("../model/files/index.php", $folder."/index.php");
+            copy("../../model/files/index.php", $folder."/index.php");
         }
         if(!file_exists($folderBig)){
             mkdir($folderBig, 0775);
-            copy("../model/files/index.php", $folderBig."/index.php");
+            copy("../../model/files/index.php", $folderBig."/index.php");
         }
         if(!file_exists($folderSmall)){
             mkdir($folderSmall, 0775);
-            copy("../model/files/index.php", $folderSmall."/index.php");
+            copy("../../model/files/index.php", $folderSmall."/index.php");
         }
         $vfolder = 1;
     }

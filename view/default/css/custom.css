@@ -5419,9 +5419,17 @@ ul.notifications {
     border: 1px solid #000;
     border-radius: 10px;
 }
-.active a{
-    color:#fff !important;
-}
 a:hover{
     text-decoration:none;
+}
+.active a{
+    color:#000;
+}
+.margin-top{
+    margin-top:10px;
+}
+.checkError {
+    color: #E9EDEF !important;
+    background-color: rgba(231, 76, 60, 0.88) !important;
+    border-color: rgba(231, 76, 60, 0.88) !important;
 }

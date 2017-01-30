@@ -7,6 +7,7 @@ require_once(dirname(__FILE__).'/../../controller/functions/Check.php');
 require_once(dirname(__FILE__).'/../../controller/functions/Get.php');
 require_once(dirname(__FILE__).'/../../controller/functions/Math.php');
 require_once(dirname(__FILE__).'/../../controller/functions/Output.php');
+require_once(dirname(__FILE__).'/../../controller/functions/CheckStatus.php');
 
 require_once(dirname(__FILE__).'/../../controller/database_proccess.php'); // Process and Function
 include(dirname(__FILE__).'/../languages/turkish.php'); // languages
@@ -16,8 +17,7 @@ $template 		= $dbase->config('Template');
 $siteName 	        = $dbase->config('SiteName');
 $siteDesc		= $dbase->config('SiteDesc');
 $path 			= $dbase->config('Path');
-$currencyID 		= $dbase->config('currency');
-$currency               = $dbase->getRow('currency', 'currency_id = '.$currencyID.'', 'currency_code');
+$currency               = $dbase->getRow('currency', 'currency_default = 1', 'currency_code');
 
 /** Site Link **/
 $DOCUMENT_ROOT ='';

@@ -10,6 +10,10 @@ $("input[name='product_name']").change(function(){
     var stname = $("input[name='product_name']").val();
     $(".stname").val(stname);
 });
+$("select[name='category']").change(function(){
+    var ctname = $("select[name='category']").val();
+    $(".ctname").val(ctname);
+});
 
 new Dropzone("#addimagesform", { 
     maxFilesize: 2, // MB
