@@ -1,15 +1,17 @@
     {foreach $productDetail as $p}
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="product-image">
-            <img src="view/img/products/{$p.products_id}/big/{$p.cover}.jpg" alt="{$p.products_name}" />
+            <img id="cover" src="view/img/products/{$p.products_id}/big/{$p.cover}.jpg" alt="{$p.products_name}" />
         </div>
-        <div class="product_gallery">
+        <div class="product_gallery relative primages">
             {foreach $getImages as $images}
-            <a>
+            <a onClick = "changeImage({$images.products_images_id}, {$p.products_id})">
                 <img src="view/img/products/{$p.products_id}/small/{$images.products_images_id}.jpg" alt="{$p.products_name}" />
             </a>
             {/foreach}
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".addImagesModal"><i class="fa fa-plus-square-o"></i></button>
         </div>
+        <div class="clear"></div>
     </div>
     
     <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
@@ -21,15 +23,15 @@
         
         {if $isAttributes == 1}
         <div class="">
-            <h2>Öznitelikler</h2>
+            <h2>{Lang::getLang('attributes')}</h2>
             <ul class="list-inline prod_color">
                 {foreach $attr as $ga}
-                {if $ga.color == NULL}
-                <li>
-                    <label>{$ga.ag_name}</label><br />
-                    <button type="button" class="btn btn-default btn-xs">{$ga.ac_name}</button>
-                </li>
-                {/if}
+                    {if $ga.color == NULL}
+                    <li>
+                        <label>{$ga.ag_name}</label><br />
+                        <button type="button" class="btn btn-default btn-xs">{$ga.ac_name}</button>
+                    </li>
+                    {/if}
                 {/foreach}
             </ul>
         </div>
@@ -42,7 +44,7 @@
                 {foreach $attr as $color}
                 {if $color.color != NULL}
                 <li>
-                    <div class="color" style="background-color:#{$color.color}"></div>
+                    <div class="color" style="background-color:{$color.color}"></div>
                 </li>
                 {/if}
                 {/foreach}
@@ -52,15 +54,17 @@
         
         <div class="">
             <div class="product_price">
-                <h1 class="price">{$currency}{$p.sp_price}</h1>
-                <span class="price-tax">{Lang::getLang('exTax')}: {$currency}{Math::findTax($p.tax_amount, $p.sp_price)}</span>
+                <h1 class="price">
+                    {$currency} {Math::findTotalPrice($p.bp_price, $p.tax_amount, $p.bp_profit, $p.bp_profit_method)}
+                </h1>
+                <span class="price-tax">{Lang::getLang('exTax')}: {$currency} {Math::findTotalPrice($p.bp_price, 0, $p.bp_profit, $p.bp_profit_method)}</span>
                 <br>
                 </div>
             </div>
             
             <div class="">
-                <button type="button" class="btn btn-default btn-lg">{Lang::getLang('addToCart')}</button>
-                <button type="button" class="btn btn-default btn-lg">{Lang::getLang('addToStock')}</button>
+                <button type="button" class="btn btn-default btn-lg" onClick="addToCartButton( {$p.products_id}, '');">{Lang::getLang('addToCart')}</button>
+                <button type="button" class="btn btn-default btn-lg" onClick="addToCartButton('', {$p.products_id});">{Lang::getLang('addToStock')}</button>
             </div>
             
             <div class="product_social">
@@ -79,7 +83,7 @@
         </div>
         
         
-        <div class="col-md-12">
+        <div class="col-md-12 margin-top">
             
             <div class="" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -130,3 +134,4 @@
             
         </div>
     {/foreach}
+    {include file='view/default/products/modalAddImages.html'}

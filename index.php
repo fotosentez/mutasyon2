@@ -8,12 +8,6 @@ if (isset ( $_SESSION ["mutasyon_session"] )) {
         case "invoices" :
             include ("model/invoice/invoices.php");
             break;
-        case "invoices/add" :
-            include ("model/invoice/addInvoice.php");
-            break;
-        case "buyInvoices/add" :
-            include ("model/invoice/addBuyInvoice.php");
-            break;
         case "customers" :
             include ("model/customers/customers.php");
             break;
@@ -55,6 +49,12 @@ if (isset ( $_SESSION ["mutasyon_session"] )) {
             break;
         case "profile" :
         include ("model/profile/profile.php");
+            break;
+        case "cart" :
+        include ("model/cart/cart.php");
+            break;
+        case "buyCart" :
+        include ("model/cart/buyCart.php");
             break;
         default:
             include ("model/mainPage.php");

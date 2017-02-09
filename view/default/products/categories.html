@@ -1,10 +1,10 @@
 <!-- start accordion -->
-<div class="accordion hidden-xs" id="accordion" role="tablist" aria-multiselectable="true">
-    <h2><i class="fa fa-align-left"></i> Kategoriler</h2>
+<div class="accordion hidden-xs categorylist" id="accordion" role="tablist" aria-multiselectable="true">
+    <h2><button class="fa fa-plus-square-o btn btn-default" data-toggle="modal" data-target=".addCategoryModal" title="{Lang::getLang('addCategory')}"></button> {Lang::getLang('category')}</h2>
     <a class="panel-heading collapsed" href="?url=products">
-        <h4 class="panel-title"><i class="fa fa-home"></i> Tüm Ürünler</h4>
+        <h4 class="panel-title"><i class="fa fa-home"></i> {Lang::getLang('all')}</h4>
     </a>
-    {foreach $mainCategories as $mc}
+    {foreach $getMainCategories as $mc}
     <div class="panel">
         <a class="panel-heading collapsed" role="tab" id="{$mc.maincategory_name}" data-toggle="collapse" data-parent="#accordion" href="#{$mc.maincategory_id}" aria-expanded="false" aria-controls="{$mc.maincategory_id}">
             <h4 class="panel-title"><i class="fa fa-home"></i> {$mc.maincategory_name}</h4>
@@ -33,19 +33,33 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel2">Kategoriler</h4>
+                    <h4><button class="fa fa-plus-square-o btn btn-primary btn-xs" data-toggle="modal" data-target=".addCategoryModal" title="{Lang::getLang('addCategory')}"></button> {Lang::getLang('category')}</h4>
                 </div>
                 <div class="modal-body">
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row"><a href="?url=products"><i class="fa fa-caret-right"></i> Tüm Ürünler</a></th>
+                                <th scope="row"><a href="?url=products"><i class="fa fa-caret-right"></i> {Lang::getLang('all')}</a></th>
                             </tr>
-                            {foreach $subCategories as $sc}
                             <tr>
-                                <th scope="row"><a href="?url=products&cid={$sc.subcategory_id}"><i class="fa fa-caret-right"></i> {$sc.subcategory_name}</a></th>
+                                {foreach $getMainCategories as $mc}
+                                <div class="panel">
+                                    <a class="panel-heading collapsed" role="tab" id="{$mc.maincategory_name}1" data-toggle="collapse" data-parent="#accordion" href="#{$mc.maincategory_id}1" aria-expanded="false" aria-controls="{$mc.maincategory_id}1">
+                                        <h4 class="panel-title"><i class="fa fa-home"></i> {$mc.maincategory_name}</h4>
+                                        <small>{$mc.maincategory_desc}</small>
+                                    </a>
+                                    <div id="{$mc.maincategory_id}1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{$mc.maincategory_name}">
+                                        <div class="panel-body">
+                                            {foreach $subCategories as $sc}
+                                            {if $mc.maincategory_id == $sc.subcategory_main}
+                                            <p><a href="?url=products&cid={$sc.subcategory_id}"><i class="fa fa-caret-right"></i> {$sc.subcategory_name}</a></p>
+                                            {/if}
+                                            {/foreach}
+                                        </div>
+                                    </div>
+                                </div>
+                                {/foreach}
                             </tr>
-                            {/foreach}
                         </tbody>
                     </table>
                 </div>

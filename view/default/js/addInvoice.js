@@ -23,6 +23,7 @@ $( ".autocomplete" ).autocomplete({
     select: function(event, ui){
         if(ui.item.cId){
             $("#customerId").val(ui.item.cId);
+            $(".discount").val(ui.item.group);
         }
         if(ui.item.SKU){
             $("#productSKU").val(ui.item.SKU);
@@ -65,7 +66,7 @@ function addToCart() {
         });
         
         totalPrice += 1*productPrice;
-        var add = '<div id="row'+i+'" class="siralar col-xs-12"><input type="text" value="'+ productSKU +'" class="col-xs-2" name="SKU[]" /><input type="text" value="'+ productName +'" class="prname col-sm-6 col-xs-5" name="productname[]" /><input onChange="changeAmount('+i+')" id="amount'+i+'" type="number" value="1" class="prAmount col-sm-1 col-xs-2" name="amount[]" /><input id="price'+i+'" type="number" value="'+ productPrice +'" class="prPrice col-xs-2" name="price[]" /><input id="priceh'+i+'" type="hidden" value="'+ productPrice +'" /><li class="col-xs-1 colorRed"><a class="sil btn btn-link"  onClick="delBasketPr('+i+')"><i class="fa fa-times"></i></a></li></div>';
+        var add = '<div id="row'+i+'" class="siralar col-xs-12"><input autocomplete="off" type="text" value="'+ productSKU +'" class="SKU'+i+' col-xs-2" name="SKU[]" /><input autocomplete="off" type="text" value="'+ productName +'" class="productname'+i+' prname col-sm-6 col-xs-5" name="productname[]" /><input autocomplete="off" onChange="changeAmount('+i+')" id="amount'+i+'" type="number" value="1" class="amount'+i+' prAmount col-sm-1 col-xs-2" name="amount[]" /><input autocomplete="off" id="price'+i+'" type="number" value="'+ productPrice +'" class="price'+i+' prPrice col-xs-2" name="price[]" /><input autocomplete="off" id="priceh'+i+'" type="hidden" value="'+ productPrice +'" /><li class="col-xs-1 removeButton"><a class="sil btn btn-danger btn-xs"  onClick="delBasketPr('+i+')"><i class="fa fa-times"></i></a></li></div>';
         document.getElementById("cart").innerHTML += add;
         writeTotal();
         

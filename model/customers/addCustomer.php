@@ -1,6 +1,6 @@
 <?php
 
-$getGroup = DB::get(' * ', ' costumers_groups ', ' costumers_groups_status = 1 ');
+$getGroup = DB::get(' * ', ' costumers_groups ', ' costumers_groups_id <> 0 ');
 
 //Smarty veriables
 $smarty->assign ( array (

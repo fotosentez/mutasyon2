@@ -7,7 +7,21 @@ $(".editConfig").click(function(){
 
 //Delete input
 function deleteRow(id, valueName, lang){
-    if(confirm(lang)){
+    (new PNotify({
+        title: lang,
+        icon: 'glyphicon glyphicon-question-sign',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            text: 'Fries',
+            addClass: 'btn-primary',
+        },
+        history: {
+            history: false
+        }
+    })).get().on('pnotify.confirm', function() {
         $.ajax({
             type:'POST',
             url: 'controller/settings/settings.php',
@@ -20,15 +34,28 @@ function deleteRow(id, valueName, lang){
                 });
             }
         });
-    }
-    else{
+    }).on('pnotify.cancel', function() {
         return false;
-    }
+    });
 }
 
 //Update information
 function changeDefault(id, where, lang){
-    if(confirm(lang)){
+    (new PNotify({
+        title: lang,
+        icon: 'glyphicon glyphicon-question-sign',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            text: 'Fries',
+            addClass: 'btn-primary',
+        },
+        history: {
+            history: false
+        }
+    })).get().on('pnotify.confirm', function() {
         $.ajax({
             type:'POST',
             url: 'controller/settings/settings.php',
@@ -41,19 +68,32 @@ function changeDefault(id, where, lang){
                 });
             }
         });
-    }
-    else{
+    }).on('pnotify.cancel', function() {
         return false;
-    }
+    });
 }
 
 //Edit information
 function editValue(where, lang){
-    var name = $('#'+where).parent('td').parent('tr').find('.name').val();
+    var name = $('#'+where).parent('div').parent('div').find('.name').val();
     var id = $('#'+where).attr('kml');
-    var code = $('#'+where).parent('td').parent('tr').find('.code').val();
-    var star = $('#'+where).parent('td').parent('tr').find('.star').val();
-    if(confirm(lang)){
+    var code = $('#'+where).parent('div').parent('div').find('.code').val();
+    var star = $('#'+where).parent('div').parent('div').find('.star').val();
+    (new PNotify({
+        title: lang,
+        icon: 'glyphicon glyphicon-question-sign',
+        hide: false,
+        confirm: {
+            confirm: true
+        },
+        buttons: {
+            text: 'Fries',
+            addClass: 'btn-primary',
+        },
+        history: {
+            history: false
+        }
+    })).get().on('pnotify.confirm', function() {
         $.ajax({
             type:'POST',
             url: 'controller/settings/settings.php',
@@ -66,8 +106,8 @@ function editValue(where, lang){
                 });
             }
         });
-    }
-    else{
+    }).on('pnotify.cancel', function() {
         return false;
-    }
+    });
+
 }

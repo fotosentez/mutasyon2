@@ -129,10 +129,6 @@ Class AddHtml
         {
             $start = 0;
         }
-        if(!$page)
-        {
-            echo '<script type="text/javascript">window.location.href="?url='.$urlName.'&page=1";</script>';
-        }
         
         //Smarty veriables
         $smarty->assign ( array (

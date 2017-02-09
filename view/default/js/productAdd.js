@@ -15,20 +15,6 @@ $("select[name='category']").change(function(){
     $(".ctname").val(ctname);
 });
 
-new Dropzone("#addimagesform", { 
-    maxFilesize: 2, // MB
-    acceptedFiles: 'image/*',
-    init: function() {
-        this.on("success", function(file, responseText) {
-            new PNotify({
-                title: false,
-                text: responseText,
-                type: 'info',
-            });
-        });
-    }
-});
-
 //For add category
 $("#typeS").on("click", function(){
     $(".subCategory").removeClass("displayNone");

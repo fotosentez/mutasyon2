@@ -4,9 +4,9 @@
         <div class="one"><!--add product-->
             <div class="col-sm-6 col-xs-12">
                 <label class="margin-top">{Lang::getLang('productName')}</label>
-                <input type="text" class="form-control name" placeholder="{Lang::getLang('productName')}" name="product_name" />
+                <input autocomplete="off" type="text" class="form-control name" placeholder="{Lang::getLang('productName')}" name="product_name" />
                 <label class="margin-top">{Lang::getLang('shortDesc')}</label>
-                <input type="text" class="form-control shortdesc" placeholder="{Lang::getLang('shortDesc')}" name="short_desc" />
+                <input autocomplete="off" type="text" class="form-control shortdesc" placeholder="{Lang::getLang('shortDesc')}" name="short_desc" />
                 <label class="margin-top">{Lang::getLang('desc')}</label>
                 <textarea type="text" class="form-control" placeholder="{Lang::getLang('desc')}" id="editor" name="product_detail"></textarea>
                 <label>{Lang::getLang('category')}</label>
@@ -17,22 +17,27 @@
                     <select class="form-control" name="category" required>
                         <option value="none"></option>
                         {foreach $getSubCategory as $sc}
-                        <option value="{$sc.subcategory_id}">{$sc.maincategory_name} --> {$sc.subcategory_name}</option>
+                        <option value="{$sc.subcategory_id}">{$sc.maincategory_name} > {$sc.subcategory_name}</option>
                         {/foreach}
                     </select>
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12">
-                <h4>Öznitelikler</h4>
+                <h4>{Lang::getLang('attributes')}</h4>
                 {foreach $attributesGroup as $ag}
-                <div class="col-sm-4 col-xs-6">
-                    <div class="row margin-top">
-                        <label>{$ag.ag_name}</label>
+                <div class="col-xs-12">
+                    <div class="row margin-top attrName">
+                        <label class="attrHeader relative">{Lang::getLang("{$ag.ag_name}")}</label>
                     </div>
                     {foreach $attributes as $at}
                         {if $ag.ag_id == $at.ac_attributes_group_id}
-                        <div class="checkboxs">
-                            <input type="checkbox" name="attributes[]" value="{$at.ac_id}" /> <span>{$at.ac_name}</span>
+                        <div class="col-xs-6 col-sm-4">
+                            <div class="col-xs-4">
+                                <label>{$at.ac_name}</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <label for="default{$at.ac_id}" class=""><input value="{$at.ac_id}" type="checkbox" name="attributes[]" id="default{$at.ac_id}" class="badgebox"><span class="badge">&check;</span></label>
+                            </div>
                         </div>
                         {/if}
                     {/foreach}
@@ -45,16 +50,7 @@
     </form>
     
     <div class="two displayNone"><!--add picture-->
-        <h3>2- {Lang::getLang('uploadImages')}</h3>
-        <div class="form-group margin-top well ">
-            <div class="form-group">
-                <form action="controller/products/addImages.php" method="post" class="dropzone" id="addimagesform" enctype="multipart/form-data">
-                    <input name="newproductname" class="stname" type="hidden" />
-                    <input name="newcategoryname" class="ctname" type="hidden" />
-                </form>
-            </div>
-            <a href="?url=products" class="btn btn-success">{Lang::getLang('finishUpload')}</a>
-        </div>
+        
     </div><!--/add picture-->
 </div><!--/navbar-->
 {include file='view/default/categories/modalAddCategory.html'}

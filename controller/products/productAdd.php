@@ -45,6 +45,10 @@ if($checkOne == 1){
         exit();
     }
     else{
+        if($short_desc == ""){
+            $short_desc = $product_name;
+        }
+        
         //Write inf to db
         $table = 'products';
         $values = array(
@@ -57,8 +61,8 @@ if($checkOne == 1){
         );
         $insert = $dbase->insert($table, $values );
         if($insert){
+            $getId = $dbase->getRow('products', 'products_name = "'.$product_name.'" and products_category = "'.$category.'" ', 'products_id');
             if($attributes){
-                $getId = $dbase->getRow('products', 'products_name = "'.$product_name.'" and products_category = "'.$category.'" ', 'products_id');
                 foreach($attributes as $a){
                     $table = 'products_attributes';
                     $values = array(
@@ -67,12 +71,10 @@ if($checkOne == 1){
                     );
                     $insert = $dbase->insert($table, $values );
                 }
-                echo Lang::getLang('proccessSuccess');
-                echo '<script>$("div.one").slideUp("slow");$("div.two").addClass("displayBlock")</script>';
+                echo '<script type="text/javascript">window.location.href="index.php?url=products/detail&id='.$getId.'";</script>'.Lang::getLang("proccessSuccess");
             }
             else{
-                echo Lang::getLang('proccessSuccess');
-                echo '<script>$("div.one").slideUp("slow");$("div.two").addClass("displayBlock")</script>';
+                echo '<script type="text/javascript">window.location.href="index.php?url=products/detail&id='.$getId.'";</script>'.Lang::getLang("proccessSuccess");
             }
         }
     }

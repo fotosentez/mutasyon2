@@ -1,14 +1,16 @@
 <!-- top navigation -->
 <div class="top_nav">
     <div class="nav_menu">
-        <nav class="" role="navigation">
+        <nav class="" role="navigation relative">
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="view/img/1.jpg" alt="">John Doe
+            <ul class="nav navbar-nav navbar-right col-xs-12">
+                <!--Settings -->            
+                <div class="pull-right col-xs-4 col-sm-2 topButtons">
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="view/img/1.jpg" alt="" />John Doe
                             <span class=" fa fa-angle-down"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -17,43 +19,60 @@
                                 <a href="?url=settings">{Lang::getLang('settings')}</a>
                             </li>
                             <li><a href="javascript:;">Help</a></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                            </li>
+                            <li><a href="controller/session/destroySession.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                         </ul>
                     </li>
-                    
-                    <li role="presentation" class="dropdown">
+                </div>
+                
+                <!--Sell Cart -->
+                <div class="pull-right col-xs-2 col-sm-1 topButtons">
+                    <li role="presentation" class="dropdown topCart">
                         <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-green">6</span>
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="badge bg-green">{$smarty.session.cart|@count}</span>
                         </a>
-                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                        <ul class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
                             <li>
-                                <a>
-                                    <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                    <span>
-                                        <span>John Smith</span>
-                                        <span class="time">3 mins ago</span>
-                                    </span>
-                                    <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-                                </a>
+                                
                             </li>
-                            <li>
-                                <div class="text-center">
-                                    <a href="inbox.html">
-                                        <strong>See All Alerts</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
+                            <a type="button" href="?url=cart" class="btn btn-success" >Sepete Git</a>
                         </ul>
                     </li>
-                </ul>
-            </nav>
-        </div>
+                </div>
+                
+                <!--Buy Cart -->            
+                <div class="pull-right col-xs-2 col-sm-1 topButtons">
+                    <li role="presentation" class="dropdown topBuyCart">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-shopping-cart"></i>
+                            <div class="refreshTopBuyCartSpan">
+                                <span class="badge bg-red">{$smarty.session.buyCart|@count}</span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu list-unstyled msg_list animated fadeInDown col-xs-12" role="menu">
+                            <div class="refreshTopBuyCartTopList">
+                                <h3>Sepet</h3>
+                                {foreach $getBuyProducts as $gbp}
+                                <li>
+                                    <div class="col-sm-1">
+                                        <img src="view/img/products/{$gbp.products_id}/small/{$gbp.cover}.jpg" alt="{$gbp.products_name}" />
+                                    </div>
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <a href="#">{$gbp.products_name}</a>
+                                    </div>
+                                </li>
+                                {/foreach}
+                                <li>
+                                    <div class="text-center">
+                                        <a type="button" href="?url=buyCart" class="btn btn-success" >Satın Al</a>
+                                    </div>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+        </nav>
     </div>
-    <!-- /top navigation -->
+</div>
+<!-- /top navigation -->

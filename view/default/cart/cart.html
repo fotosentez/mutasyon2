@@ -1,0 +1,76 @@
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th class="text-center">Vergi</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $getProduct as $gp}
+            <tr>
+                <td class="col-sm-8 col-md-5">
+                    <div class="media">
+                        <a class="pull-left" href="?url=products/detail&id={$gp.products_id}"> <img id="cover" src="view/img/products/{$gp.products_id}/small/{$gp.cover}.jpg" alt="{$gp.products_name}" /> </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="#">{$gp.products_name}</a></h4>
+                            <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
+                            <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                        </div>
+                    </div>
+                </td>
+                <td class="col-sm-1 col-md-2" style="text-align: center">
+                    <input type="number" id="{$gp.products_id}" price="{$gp.sp_price}" class="form-control" onChange="changeProductTotal({$gp.products_id});" value="1" />
+                </td>
+                <td class="col-sm-1 col-md-1 text-center">
+                    <strong>{$gp.tax_amount}</strong>
+                    <input type="hidden" value="{Math::findTax($gp.tax_amount, $gp.sp_price)}"
+                </td>
+                <td class="col-sm-1 col-md-2 text-center">{$currency} <strong>{$gp.sp_price}</strong></td>
+                <td class="col-sm-1 col-md-1 text-center">{$currency} <strong class="productTotal productTotal{$gp.products_id}">{$gp.sp_price}</strong></td>
+                <td class="col-sm-1 col-md-1">
+                    <a type="button" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+            {/foreach}
+            <tr>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+                <td><h5>Subtotal</h5></td>
+                <td class="text-right"><h5>{$currency} <strong class="cartTotal">0</strong></h5></td>
+            </tr>
+            <tr>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+                <td><h5>Estimated shipping</h5></td>
+                <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+            </tr>
+            <tr>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+                <td><h3>Total</h3></td>
+                <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+            </tr>
+            <tr>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+                <td>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                        </button></td>
+                <td>
+                    <button type="button" class="btn btn-success">
+                        Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

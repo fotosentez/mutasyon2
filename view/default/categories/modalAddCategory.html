@@ -16,9 +16,9 @@
                         <label class="control-label col-xs-12"></label>
                         <div class="col-xs-12 col-sm-6 col-sm-offset-2">
                             <label>{Lang::getLang('mainCategory')}</label> 
-                            <input type="radio" name="categoryType" id="typeM" value="mainCategory" required />
+                            <input autocomplete="off" type="radio" name="categoryType" id="typeM" class="categoryType" value="mainCategory" required />
                             <label>{Lang::getLang('subCategory')}</label> 
-                            <input type="radio" name="categoryType" id="typeS" value="subCategory" required />
+                            <input autocomplete="off" type="radio" name="categoryType" id="typeS" class="categoryType" value="subCategory" required />
                         </div>
                     </div>
                     <!--Inputs -->
@@ -27,8 +27,8 @@
                             <span class="required">*</span>
                         </label>
                         <div class="col-xs-10">
-                            <input class="form-control col-md-7 col-xs-12" name="name" type="text" required />
-                            <input  name="modal" type="hidden" value="modal" />
+                            <input autocomplete="off" class="form-control col-md-7 col-xs-12 name" name="name" type="text" required />
+                            <input autocomplete="off"  name="modal" type="hidden" value="modal" />
                         </div>
                     </div>
                     
@@ -37,7 +37,7 @@
                         <label class="control-label col-xs-2" for="textarea">{Lang::getLang('desc')} 
                         </label>
                         <div class="col-xs-10">
-                            <textarea name="desc" class="form-control col-xs-12"></textarea>
+                            <textarea name="desc" class="form-control col-xs-12 desc"></textarea>
                         </div>
                     </div>
                     
@@ -47,7 +47,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-xs-10">
-                                <input class="form-control col-xs-12" name="prefix" type="text" required />
+                                <input autocomplete="off" class="form-control col-xs-12 prefix" name="prefix" type="text" required />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -55,7 +55,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-xs-10">
-                                <select class="form-control col-xs-12" name="category">
+                                <select class="form-control col-xs-12 category" name="category">
                                     <option value="none"></option>
                                     {foreach $getMainCategories as $mc}
                                     <option value="{$mc.maincategory_id}">{$mc.maincategory_name}</option>

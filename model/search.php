@@ -7,7 +7,7 @@ $id = Get::post('extraParams');
 if($id == "addToCart"){
     if($term){
         if(preg_match('/^[^<>;=#{}]*$/ui', $term)){
-            $getProduct = $dbase->get('*', 'products INNER JOIN sale_price ON sp_products_id = products_id', 'products_name LIKE "%'.$term.'%" OR SKU LIKE "%'.$term.'%" ');
+            $getProduct = $dbase->get('*', 'products INNER JOIN sale_price ON sp_products_id = products_id', 'products_name LIKE "%'.$term.'%" OR SKU LIKE "%'.$term.'%" ORDER BY sp_id DESC LIMIT 1 ');
             if ( $getProduct )
             {
                 $data = array();
@@ -27,7 +27,7 @@ if($id == "addToCart"){
 if($id == "customers"){
     if($term){
         if(preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($term))){
-            $getCustomers = $dbase->get('*', 'customers', 'customers_name LIKE "%'.$term.'%" OR customers_surname LIKE "%'.$term.'%" ');
+            $getCustomers = $dbase->get('*', 'customers LEFT JOIN costumers_groups ON costumers_groups_id = customers_group', 'customers_name LIKE "%'.$term.'%" OR customers_surname LIKE "%'.$term.'%" ');
             if ( $getCustomers )
             {
                 $data = array();
@@ -35,6 +35,7 @@ if($id == "customers"){
                     $data[] = array(
                         'value' => $row['customers_name'].' '.$row['customers_surname'],
                         'cId' => $row['customers_id'],
+                        'group' => $row['costumers_groups_discount'],
                         );
                 }
                 echo json_encode($data);
@@ -60,7 +61,9 @@ if($id == "seller-name"){
         }
     }
 }
-if($id == "products"){
+
+//For search products for add to buy cart and cart
+if($id == "products" OR $id == "buyCart"){
     if($term){
         
         if(preg_match('/^[^<>;=#{}]*$/ui', $term)){
@@ -73,6 +76,7 @@ if($id == "products"){
                         'value' => $row['products_name'],
                         'SKU' => $row['products_prefix'].$row['SKU'],
                         'prefix' => $row['products_prefix'],
+                        'buy' => $row['products_id'],
                         );
                 }
                 echo json_encode($data);

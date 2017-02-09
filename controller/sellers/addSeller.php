@@ -19,6 +19,15 @@ if(Check::isName($name, "name", true)){
                         if($iban == "" OR Check::checkIBAN($iban, "iban")){
                             $isProviderExist = $dbase->isExist('seller', 'seller_name = "'.$name.'" ');
                             if($isProviderExist != 1){
+                                //Check default value
+                                $checkDefault = $dbase->isExist('seller', 'seller_default = 1 ');
+                                if($checkDefault == 1){
+                                    $default = 0;
+                                }
+                                else{
+                                    $default = 1;
+                                }
+                                
                                 $table = 'seller';
                                 $values = array(
                                     'seller_name' => $name,
@@ -26,6 +35,7 @@ if(Check::isName($name, "name", true)){
                                     'seller_tel' => $phone,
                                     'seller_address' => $address,
                                     'seller_web' => $web,
+                                    'seller_default' => $default,
                                     'seller_mail' => $mail,
                                     'seller_add_date' => $addDate,
                                     );

@@ -25,3 +25,20 @@ $getCompany = $dbase->get('*', 'company', 'company_id = 1');
 //         "companyTel" => $companyTel,
 //         ) );
 // }
+
+if(@$_SESSION['buyCart']){
+    $buyCart = $_SESSION['buyCart'];
+    
+    $buyProductsID = 0;
+    foreach ($buyCart as $c)
+    {
+        $buyProductsID.= ', '.$c;
+    }
+    $buy = $dbase->get('*, (SELECT products_images_id FROM products_images WHERE products_images_product = products_id AND products_images_cover = 1 ) AS cover', 'products', 'products_id IN('.$buyProductsID.')');
+    $getBuyProducts = array();
+    foreach($buy as $c){$getBuyProducts[] = $c;}
+}
+//Smarty veriables
+$smarty->assign ( array (
+"getBuyProducts" => @$getBuyProducts,
+));

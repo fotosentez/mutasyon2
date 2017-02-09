@@ -1,8 +1,19 @@
 <?php
+
 $productId = Get::post("id");
+if($productId == ""){
+    header('Location: index.php?url=index');
+}
+
+
+$productJoins = "
+LEFT JOIN subcategory ON products_category = subcategory_id 
+LEFT JOIN boughtProducts ON bp_products_id = products_id
+LEFT JOIN tax ON tax_id = bp_tax
+";
 
 //Get product inf and cover images
-$productDetail = $dbase->get('*, (SELECT products_images_id FROM products_images WHERE products_images_product = products_id AND products_images_cover = 1 ) AS cover', 'products LEFT JOIN subcategory ON products_category = subcategory_id LEFT JOIN sale_price ON products_id = sp_products_id LEFT JOIN tax ON tax_id = sp_tax_id ', 'products_status = 1 AND products_id = "'.$productId.'" ');
+$productDetail = $dbase->get('*, (SELECT products_images_id FROM products_images WHERE products_images_product = products_id AND products_images_cover = 1 ) AS cover', 'products '.$productJoins.' ', 'products_status = 1 AND products_id = "'.$productId.'" ORDER BY bp_id DESC LIMIT 1 ');
 
 //Get product images
 $getImages = $dbase->get('*', 'products_images', 'products_images_status = 1 AND products_images_product = "'.$productId.'" ');
@@ -18,7 +29,7 @@ foreach($getAttributes as $a){
 $isAttributes = $dbase->isExist(' products_attributes ',  'pa_products_id = '.$productId.' ');
 
 //Buy actions
-$buyActions = $dbase->get('*', 'boughtProducts LEFT JOIN buyInvoice ON bp_bi_id = bi_id LEFT JOIN products ON bp_products_id = products_id LEFT JOIN seller ON bi_seller_id = seller_id ', 'bp_products_id = '.$productId.' GROUP BY bi_id ');
+$buyActions = $dbase->get('*', 'boughtProducts LEFT JOIN buyInvoice ON bp_bi_id = bi_id LEFT JOIN products ON bp_products_id = products_id LEFT JOIN seller ON bi_seller_id = seller_id LEFT JOIN tax ON tax_id = bp_tax ', 'bp_products_id = '.$productId.' GROUP BY bi_id ');
 
 //Smarty veriables
 $smarty->assign ( array (
@@ -29,4 +40,4 @@ $smarty->assign ( array (
     "buyActions" => $buyActions,
     ) );
     
-    Page::create("products/productDetail", "productDetail", "productDetail", "productDetail");
+    Page::create("products/productDetail", "productDetail", "products", "productDetail");

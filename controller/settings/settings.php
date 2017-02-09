@@ -95,34 +95,50 @@ if($where == "crIdAdd"){
     if($addName AND Check::isName($addName, "addName")){
         if(Check::isName($addCode, "addCode") AND Check::numberOfCharacters($addCode, 3, 3,  "addCode")){
             $newCode = strtoupper($addCode);
-            $isExist = $dbase->isExist('currency', 'currency_code = "'.$newCode.'" ');
-            if($isExist == 0){
-                if($addDoDefault == "on"){
-                    $updateBeforeDefault = $dbase->updateOneRow('currency', 'currency_default = 0 ', 'currency_default = 1');
-                    $table = 'currency';
-                    $values = array(
-                        'currency_name' => $addName,
-                        'currency_code' => $newCode,
-                        'currency_default' => 1,
-                        );
-                        $insert = $dbase->insert($table, $values );
-                        echo Lang::getLang('proccessSuccess');
-                        Output::refreshDiv('#currency');
+            //Check table is null or not
+            $isBlank = $dbase->isExist('currency', 'currency_id <> 0 ');
+            
+            if($isBlank == 1){
+                $isExist = $dbase->isExist('currency', 'currency_code = "'.$newCode.'" ');
+                if($isExist == 0){
+                    if($addDoDefault == "on"){
+                        $updateBeforeDefault = $dbase->updateOneRow('currency', 'currency_default = 0 ', 'currency_default = 1');
+                        $table = 'currency';
+                        $values = array(
+                            'currency_name' => $addName,
+                            'currency_code' => $newCode,
+                            'currency_default' => 1,
+                            );
+                            $insert = $dbase->insert($table, $values );
+                            echo Lang::getLang('proccessSuccess');
+                            Output::refreshDiv('#currency');
+                    }
+                    else{
+                        $table = 'currency';
+                        $values = array(
+                            'currency_name' => $addName,
+                            'currency_code' => $newCode,
+                            );
+                            $insert = $dbase->insert($table, $values );
+                            echo Lang::getLang('proccessSuccess');
+                            Output::refreshDiv('#currency');
+                    }
                 }
                 else{
-                    $table = 'currency';
-                    $values = array(
-                        'currency_name' => $addName,
-                        'currency_code' => $newCode,
-                        );
-                        $insert = $dbase->insert($table, $values );
-                        echo Lang::getLang('proccessSuccess');
-                        Output::refreshDiv('#currency');
+                    echo Lang::getLang("contentExist");
+                    exit();
                 }
             }
-            else{
-                echo Lang::getLang("contentExist");
-                exit();
+            else{//If table null
+                $table = 'currency';
+                $values = array(
+                    'currency_name' => $addName,
+                    'currency_code' => $newCode,
+                    'currency_default' => 1,
+                    );
+                    $insert = $dbase->insert($table, $values );
+                    echo Lang::getLang('proccessSuccess');
+                    Output::refreshDiv('#currency');
             }
         }
     }
@@ -144,8 +160,8 @@ if($where == "crIdDelete"){
     }
 }
 
-//Update for default value
-if($where == "crIdUpdate"){
+//DoDefault for default value
+if($where == "crIdDoDefault"){
     if(Check::isNumeric($id, "")){
         $check = $dbase->getRow('currency', 'currency_default = 1', 'currency_id');
         if($check){
@@ -157,12 +173,12 @@ if($where == "crIdUpdate"){
     }
 }
 
-//Update values
+//DoDefault values
 if($where == "crIdEdit".$id){
     if(Check::isNumeric($id, "")){
-        if(Check::isName($name, "name")){
-            if(Check::isName($code, "name")){
-                if(Check::numberOfCharacters($code, 3, 3,  "code")){
+        if(Check::isName($name, "name".$id."")){
+            if(Check::isName($code, "code".$id."")){
+                if(Check::numberOfCharacters($code, 3, 3,  "code".$id."")){
                     $table = 'currency';
                     $values = array(
                         'currency_name' => $name,
@@ -183,15 +199,16 @@ if($where == "crIdEdit".$id){
 
 //Edit the value
 if($where === "prIdEdit".$id){
-    if(Check::isName($name, 'name', true) AND Check::numberOfCharacters($name, 3, 3,  "name")){
-        $edit = $dbase->updateOneRow('prefix', 'prefix_name = "'.$name.'" ', 'prefix_id = '.$id.' ');
+    if(Check::isName($name, $id, true) AND Check::numberOfCharacters($name, 3, 3,  $id)){
+        $newCode = strtoupper($name);
+        $edit = $dbase->updateOneRow('prefix', 'prefix_name = "'.$newCode.'" ', 'prefix_id = '.$id.' ');
         echo Lang::getLang('proccessSuccess');
         Output::refreshDiv('#prefix');
     }
 }
 
-//Update for default value
-if($where == "prIdUpdate"){
+//DoDefault for default value
+if($where == "prIdDoDefault"){
     if(Check::isNumeric($id, "")){
         $check = $dbase->getRow('prefix', 'prefix_default = 1', 'prefix_id');
         if($check){
@@ -222,32 +239,48 @@ if($where == "prIdDelete"){
 if($where == "prIdAdd"){
     if(Check::isName($addName, "addName") AND Check::numberOfCharacters($addName, 3, 3,  "addName")){
         $newName = strtoupper($addName);
-        $isExist = $dbase->isExist('prefix', 'prefix_name = "'.$newName.'" ');
-        if($isExist == 0){
-            if($addDoDefault == "on"){
-                $updateBeforeDefault = $dbase->updateOneRow('prefix', 'prefix_default = 0 ', 'prefix_default = 1');
-                $table = 'prefix';
-                $values = array(
-                    'prefix_name' => $newName,
-                    'prefix_default' => 1,
-                    );
-                    $insert = $dbase->insert($table, $values );
-                    echo Lang::getLang('proccessSuccess');
-                    Output::refreshDiv('#prefix');
-            }
-            else{
-                $table = 'prefix';
-                $values = array(
-                    'prefix_name' => $newName,
-                    );
-                    $insert = $dbase->insert($table, $values );
-                    echo Lang::getLang('proccessSuccess');
-                    Output::refreshDiv('#prefix');
-            }
+        
+        //Check prefix table is null or not
+        $isBlank = $dbase->isExist('prefix', 'prefix_id <>0');
+        
+        if($isBlank == 0){//If Null
+            $table = 'prefix';
+            $values = array(
+                'prefix_name' => $newName,
+                'prefix_default' => 1,
+                );
+                $insert = $dbase->insert($table, $values );
+                echo Lang::getLang('proccessSuccess');
+                Output::refreshDiv('#prefix');
         }
         else{
-            echo Lang::getLang("contentExist");
-            exit();
+            $isExist = $dbase->isExist('prefix', 'prefix_name = "'.$newName.'" ');
+            if($isExist == 0){
+                if($addDoDefault == "on"){
+                    $updateBeforeDefault = $dbase->updateOneRow('prefix', 'prefix_default = 0 ', 'prefix_default = 1');
+                    $table = 'prefix';
+                    $values = array(
+                        'prefix_name' => $newName,
+                        'prefix_default' => 1,
+                        );
+                        $insert = $dbase->insert($table, $values );
+                        echo Lang::getLang('proccessSuccess');
+                        Output::refreshDiv('#prefix');
+                }
+                else{
+                    $table = 'prefix';
+                    $values = array(
+                        'prefix_name' => $newName,
+                        );
+                        $insert = $dbase->insert($table, $values );
+                        echo Lang::getLang('proccessSuccess');
+                        Output::refreshDiv('#prefix');
+                }
+            }
+            else{
+                echo Lang::getLang("contentExist");
+                exit();
+            }
         }
     }
 }
@@ -257,8 +290,8 @@ if($where == "prIdAdd"){
  */
 
 //Edit the value
-if($where === "pyIdEdit".$id){
-    if(Check::isName($name, 'name', true)){
+if($where == "pyIdEdit".$id){
+    if(Check::isName($name, $id, true)){
         $edit = $dbase->updateOneRow('paytype', 'paytype_name = "'.$name.'" ', 'paytype_id = '.$id.' ');
         echo Lang::getLang('proccessSuccess');
         Output::refreshDiv('#paytype');
@@ -297,16 +330,11 @@ if($where == "pyIdAdd"){
  * *******************************CUSTOMERS GROUP********************************
  */
 if($where == "cgIdEdit".$id){
-    if(Check::isName($name , "name", true)){
-        if(Check::isNumeric($code, "code", true)){
-            if(Check::isNumeric($star, "star", true)){
-                if(0 < $star AND $star <= 5){
-                    $isExist = $dbase->isExist('costumers_groups', 'costumers_groups_name = "'.$name.'" ');
-                    if($isExist == 1){
-                        echo Lang::getLang("contentExist");
-                        exit();
-                    }
-                    else{
+    if(Check::isName($name , $id, true)){
+        if(Check::isNumeric($code, "code".$id."", true)){
+            if(0 <= $code and $code <= 100){
+                if(Check::isNumeric($star, "star".$id."", true)){
+                    if(0 < $star AND $star <= 5){
                         $table = 'costumers_groups';
                         $values = array(
                             'costumers_groups_name' => $name,
@@ -317,11 +345,15 @@ if($where == "cgIdEdit".$id){
                             echo Lang::getLang('proccessSuccess');
                             Output::refreshDiv('#customersGroups');
                     }
+                    else{
+                        echo Output::checkError("star", "validateStar");
+                        exit();
+                    }
                 }
-                else{
-                    echo Output::checkError("star", "validateStar");
-                    exit();
-                }
+            }
+            else{
+                echo Output::checkError("code".$id."", "validateDiscount");
+                exit();
             }
         }
     }
@@ -342,29 +374,35 @@ $addStar = Get::post("addStar");
 if($where == "cgIdAdd"){
     if(Check::isName($addName, "addName", true)){
         if(Check::isNumeric($addDiscount, "addDiscount", true)){
-            if(Check::isNumeric($addStar, "addStar", true)){
-                if(0 < $addStar AND $addStar <= 5){
-                    $isExist = $dbase->isExist('costumers_groups', 'costumers_groups_name = "'.$addName.'" ');
-                    if($isExist == 1){
-                        echo Lang::getLang("contentExist");
-                        exit();
+            if(0 <= $addDiscount and $addDiscount <= 100){
+                if(Check::isNumeric($addStar, "addStar", true)){
+                    if(0 < $addStar AND $addStar <= 5){
+                        $isExist = $dbase->isExist('costumers_groups', 'costumers_groups_name = "'.$addName.'" ');
+                        if($isExist == 1){
+                            echo Lang::getLang("contentExist");
+                            exit();
+                        }
+                        else{
+                            $table = 'costumers_groups';
+                            $values = array(
+                                'costumers_groups_name' => $addName,
+                                'costumers_groups_discount' => $addDiscount,
+                                'costumers_groups_star' => $addStar,
+                                );
+                                $insert = $dbase->insert($table, $values);
+                                echo Lang::getLang('proccessSuccess');
+                                Output::refreshDiv('#customersGroups');
+                        }
                     }
                     else{
-                        $table = 'costumers_groups';
-                        $values = array(
-                            'costumers_groups_name' => $addName,
-                            'costumers_groups_discount' => $addDiscount,
-                            'costumers_groups_star' => $addStar,
-                            );
-                            $insert = $dbase->insert($table, $values);
-                            echo Lang::getLang('proccessSuccess');
-                            Output::refreshDiv('#customersGroups');
+                        echo Output::checkError("addStar", "validateStar");
+                        exit();
                     }
                 }
-                else{
-                    echo Output::checkError("addStar", "validateStar");
-                    exit();
-                }
+            }
+            else{
+                echo Output::checkError("addDiscount", "validateDiscount");
+                exit();
             }
         }
     }

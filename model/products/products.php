@@ -1,4 +1,5 @@
 <?php
+
 //get category id
 if(Get::post('cid') AND Check::isNumeric(Get::post('cid'), '')){
     $cid = "AND products_category = ".Get::post('cid');
@@ -24,12 +25,17 @@ else{
 
 
 //Get all products
-$products = $dbase->get('*, (SELECT products_images_id FROM products_images WHERE products_images_product = products_id AND products_images_cover = 1 ) AS cover', 'products', 'products_status = 1 '.$cid.' '.$page.' ');
+$productExtra = "
+(SELECT products_images_id FROM products_images WHERE products_images_product = products_id AND products_images_cover = 1 ) AS cover,
+(SELECT sp_price FROM sale_price WHERE sp_products_id = products_id ORDER BY sp_id DESC LIMIT 1) AS price
+";
+
+$products = $dbase->get('*, '.$productExtra.' ', 'products', 'products_status = 1 '.$cid.' '.$page.' ');
 
 //Get categories
 $main = $dbase->get('*', 'maincategory', 'maincategory_status = 1');
-$mainCategories = array();
-foreach($main as $c){$mainCategories[] = $c;}
+$getMainCategories = array();
+foreach($main as $c){$getMainCategories[] = $c;}
 
 //Get sub categories
 $sub = $dbase->get('*', 'subcategory INNER JOIN maincategory ON maincategory_id = subcategory_main', 'subcategory_status = 1');
@@ -39,7 +45,7 @@ foreach($sub as $c){$subCategories[] = $c;}
 //Smarty veriables
 $smarty->assign ( array (
     "products" => $products,
-    "mainCategories" => $mainCategories,
+    "getMainCategories" => $getMainCategories,
     "subCategories" => $subCategories,
     "urlName" => $urlName,
     ) );

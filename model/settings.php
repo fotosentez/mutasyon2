@@ -18,4 +18,4 @@ $smarty->assign ( array (
 "superuser" => $superuser,
 "company" => $company,
 ));
-Page::create("settings/settings", "settings", "settings", "settings");
+Page::create("settings/settings", "settings", "settings", "settings", false);

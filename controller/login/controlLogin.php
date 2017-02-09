@@ -17,6 +17,8 @@ if(Check::isMd5($token)){
                             $_SESSION ["mutasyon_session"] = 4;
                             $_SESSION ["email"] = $username;
                             $_SESSION ["view"] = "";
+                            $_SESSION ["cart"] = "";
+                            $_SESSION ["buyCart"] = "";
                             echo '<script type="text/javascript">window.location.href="index.php?url=index";</script>'.Lang::getLang('doLogin');
                         } else {
                             echo '<script type="text/javascript">window.location.href="index.php?url=login";</script>'.Lang::getLang('cantLogin');

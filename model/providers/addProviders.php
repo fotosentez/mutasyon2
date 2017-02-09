@@ -1,4 +1,4 @@
 <?php
 
 
-Page::create("providers/addProviders", "addProviders", "", "");
+Page::create("providers/addProviders", "addProviders", "", "", false);

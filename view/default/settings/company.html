@@ -1,56 +1,53 @@
 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th style="width:95%">{Lang::getLang('companyInfs')}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
         {foreach $company as $co}
-        <tr class="currencyList">
-            <td><input type="text" class="form-control name" value="{$co.company_name}" name="coName" /></td>
-            <td class="buttons">
+        <div class="currencyList">
+            <div class="col-xs-10">
+                <label>{Lang::getLang('name')}</label>
+                <input autocomplete="off" type="text" class="form-control name coName" value="{$co.company_name}" name="coName" />
+            </div>
+            <div class="col-xs-2 margin-top settingsButtons">
                 <a type="button" id="coName" class="btn btn-info btn-xs" kml="{$co.company_id}" onClick="editValue('coName', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
-                
-                
-            </td>
-        </tr>
-        <tr class="currencyList">
-            <td><input type="text" class="form-control name" value="{$co.company_address}" name="coAddress" /></td>
-            <td class="buttons">
+            </div>
+        </div>
+        <div class="currencyList">
+            <div class="col-xs-10">
+                <label>{Lang::getLang('address')}</label>
+                <input autocomplete="off" type="text" class="form-control name coAddress" value="{$co.company_address}" name="coAddress" />
+            </div>
+            <div class="col-xs-2 margin-top settingsButtons">
                 <a type="button" id="coAddress" class="btn btn-info btn-xs" kml="{$co.company_id}" onClick="editValue('coAddress', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
-                
-                
-            </td>
-        </tr>
-        <tr class="currencyList">
-            <td><input type="text" class="form-control name" value="{$co.company_web}" name="coWeb" /></td>
-            <td class="buttons">
+            </div>
+         </div>
+         <div class="currencyList">
+            <div class="col-xs-10">
+                <label>{Lang::getLang('web')}</label>
+                <input autocomplete="off" type="text" class="form-control name coWeb" value="{$co.company_web}" name="coWeb" />
+            </div>
+            <div class="col-xs-2 margin-top settingsButtons">
                 <a type="button" id="coWeb" class="btn btn-info btn-xs" kml="{$co.company_id}" onClick="editValue('coWeb', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
-                
-                
-            </td>
-        </tr>
-        <tr class="currencyList">
-            <td><input type="text" class="form-control name" value="{$co.company_mail}" name="coMail" /></td>
-            <td class="buttons">
+            </div>
+         </div>
+         <div class="currencyList">
+            <div class="col-xs-10">
+                <label>{Lang::getLang('mail')}</label>
+                <input autocomplete="off" type="text" class="form-control name coMail" value="{$co.company_mail}" name="coMail" />
+            </div>
+            <div class="col-xs-2 margin-top settingsButtons">
                 <a type="button" id="coMail" class="btn btn-info btn-xs" kml="{$co.company_id}" onClick="editValue('coMail', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
-                
-                
-            </td>
-        </tr>
-        <tr class="currencyList">
-            <td><input type="text" class="form-control name" value="{$co.company_tel}" name="coTel" /></td>
-            <td class="buttons">
+            </div>
+         </div>
+         <div class="currencyList">
+            <div class="col-xs-10">
+                <label>{Lang::getLang('phone')}</label>
+                <input autocomplete="off" type="text" class="form-control name coTel" value="{$co.company_tel}" name="coTel" />
+            </div>
+            <div class="col-xs-2 margin-top settingsButtons">
                 <a type="button" id="coTel" class="btn btn-info btn-xs" kml="{$co.company_id}" onClick="editValue('coTel', '{Lang::getLang('areYouSureForChange')}');"><i class="fa fa-pencil-square-o"></i></a>
-                
-                
-            </td>
-        </tr>
+            </div>
+        </div>
         {/foreach}
-    </tbody>
 </table>
-<div class="ln_solid"></div>
+<div class="ln_solid col-xs-12"></div>
 <div class="form-group">
     <div class="col-xs-12 pull-left">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target=".addCompanyModal">{Lang::getLang('addCompanyInfs')}</button>

@@ -6,8 +6,8 @@
             <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="name" type="text" required />
-            <input class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
+            <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12 name" name="name" type="text" required />
+            <input autocomplete="off" class="form-control col-md-7 col-xs-12 addDate" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
         </div>
     </div>
     
@@ -17,7 +17,7 @@
             <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input class="form-control col-md-7 col-xs-12" name="surname" type="text" required/>
+            <input autocomplete="off" class="form-control col-md-7 col-xs-12 surname" name="surname" type="text" required />
         </div>
     </div>
     
@@ -26,7 +26,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">{Lang::getLang('address')} 
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <textarea id="textarea" name="address" class="form-control col-md-7 col-xs-12"></textarea>
+            <textarea id="textarea" name="address" class="address form-control col-md-7 col-xs-12"></textarea>
         </div>
     </div>
     
@@ -35,7 +35,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">{Lang::getLang('phone')} 
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input class="form-control" name="phone" data-inputmask="'mask' : '(999) 999-9999'" type="text">
+            <input autocomplete="off" class="form-control phone" name="phone" data-inputmask="'mask' : '(999) 999-9999'" type="text">
             </div>
         </div>
         
@@ -44,7 +44,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mail">{Lang::getLang('mail')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="mail" type="text" />
+                <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12 mail" name="mail" type="text" />
             </div>
         </div>
         
@@ -53,7 +53,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">{Lang::getLang('city')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="city" type="text" />
+                <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12 city" name="city" type="text" />
             </div>
         </div>
         
@@ -62,7 +62,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">{Lang::getLang('country')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="country" type="text" />
+                <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12 country" name="country" type="text" />
             </div>
         </div>
         
@@ -70,7 +70,7 @@
         <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">{Lang::getLang('group')}</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <select class="form-control" name="group">
+                <select class="form-control group" name="group">
                     <option value="">{Lang::getLang('noGroup')}</option>
                     {foreach $getGroup as $g}
                     <option value="{$g.costumers_groups_id}">{$g.costumers_groups_name}</option>

@@ -6,15 +6,15 @@
             <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="name" type="text" required />
-            <input class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
+            <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12" name="name" type="text" required />
+            <input autocomplete="off" class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
         </div>
     </div>
     
     <div class="item form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('connectedPerson')}</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="connectedPerson" type="text" />
+            <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12" name="connectedPerson" type="text" />
         </div>
     </div>
     
@@ -32,7 +32,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">{Lang::getLang('phone')} 
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input class="form-control" name="phone" data-inputmask="'mask' : '(999) 999-9999'" type="text">
+            <input autocomplete="off" class="form-control" name="phone" data-inputmask="'mask' : '(999) 999-9999'" type="text">
             </div>
         </div>
         
@@ -41,7 +41,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">{Lang::getLang('mail')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="mail" type="text" />
+                <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12" name="mail" type="text" />
             </div>
         </div>
         
@@ -50,7 +50,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="web">{Lang::getLang('web')} 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="name" class="form-control col-md-7 col-xs-12" name="web" type="text" placeholder="www.gozdesm.com" />
+                <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12" name="web" type="text" placeholder="www.gozdesm.com" />
             </div>
         </div>
         <!--inputs -->

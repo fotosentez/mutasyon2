@@ -1,3 +1,3 @@
 <?php
 
-Page::create("cash/addCash", "addCash", "", "");
+Page::create("cash/addCash", "addCash", "", "", false);

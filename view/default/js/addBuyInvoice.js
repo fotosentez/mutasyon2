@@ -1,5 +1,12 @@
-$('.notvirtual').click(function(){
+$('.virtual').click(function(){
     var inp = $('.buybank').find('.notpay');
+    $(inp).prop('disabled', function(i, val){
+        return !val;
+    });
+});
+
+$('#ready').click(function(){
+    var inp = $(':input[type="submit"]');
     $(inp).prop('disabled', function(i, val){
         return !val;
     });
@@ -27,11 +34,7 @@ $( ".autocomplete" ).autocomplete({
 
 $(document).keypress(function(e) {
     if(e.which == 13) {
-        $(':input[type="submit"]').prop('disabled', true);
         addToCart();
-    }
-    if (e.ctrlKey && e.keyCode == 13) {
-        $(':input[type="submit"]').prop('disabled', false);
     }
 });
 
@@ -53,11 +56,24 @@ function addToCart() {
             var amount = $(this).parent().find('.prAmount').val();
             if(writeVal == value){
                 $("#products").val("").focus();
-                exit();
+                return false;
             }
         });
         
-        var add = '<div id="row'+i+'" class="siralar col-xs-12"><input type="text" value="'+ productSKU +'" class="col-xs-2" name="SKU[]" id="SKU'+i+'" /><input type="text" value="'+ productName +'" class="prname col-xs-6" name="productname[]" id="productname'+i+'" /><input onChange="changeAmount('+i+')" id="amount'+i+'" type="number" value="1" class="prAmount col-xs-1" name="amount[]" /><input id="price'+i+'" type="number" onChange="changeAmount('+i+')"  class="prPrice col-xs-1" name="price[]" /><input type="number" class="prPrice col-xs-1" name="salePrice[]" id="salePrice'+i+'" /><input id="priceh'+i+'" class="priceh" type="hidden" /><li class="col-xs-1 colorRed"><a class="sil btn btn-link"  onClick="delBasketPr('+i+')"><i class="fa fa-times"></i></a></li></div>';
+        var add = 
+        '<div id="row'+i+'" class="siralar col-xs-12">'+
+            '<input autocomplete="off" type="text" value="'+ productSKU +'" class="hidden-xs col-sm-2" name="SKU[]" id="SKU'+i+'" />'+
+            '<input autocomplete="off" type="text" value="'+ productName +'" class="prname col-xs-8 col-sm-6 productname'+i+'" name="productname[]" />'+
+            '<input autocomplete="off" onChange="changeAmount('+i+')" type="number" value="1" class="amount'+i+' prAmount col-xs-1" name="amount[]" />'+
+            '<input autocomplete="off" type="number" onChange="changeAmount('+i+')" class="price'+i+' prPrice col-xs-1" name="price[]" />'+
+            '<input autocomplete="off" id="priceh'+i+'" class="priceh" type="hidden" />'+
+            '<span class="subTotal'+i+' col-xs-1 subTotal">{{$currency}} 0</span>'+
+            '<li class="col-xs-1 removeButton">'+
+                '<a class="btn btn-danger btn-xs"  onClick="delBasketPr('+i+')">'+
+                    '<i class="fa fa-times"></i>'+
+                '</a>'+
+            '</li>'+
+        '</div>';
         document.getElementById("cart").innerHTML += add;        
         
         $("#products").val("").focus();
@@ -66,8 +82,8 @@ function addToCart() {
 
 //Delete product from basket
 function delBasketPr(e) {
-    var amount = $("#amount"+e).val();
-    var price = $("#price"+e).val();
+    var amount = $(".amount"+e).val();
+    var price = $(".price"+e).val();
     var lastTotal = $("#total span").text();
     var delPrice = amount*price;
     var nowTotal = lastTotal-delPrice;
@@ -79,8 +95,9 @@ function delBasketPr(e) {
 }
 
 function changeAmount(e){
-    var price = $("#price"+e).val();
-    var amount = $("#amount"+e).val();
+    var price = $(".price"+e).val();
+    var amount = $(".amount"+e).val();
+    $(".subTotal"+e).text(price*amount);
     $("#priceh"+e).val(price*amount);
     writeTotal();
 }

@@ -2,12 +2,21 @@
 
 Class Math
 {
-    //Find tax
-    public static function findTax($tax, $price)
+    //Find total price its included tax and profit
+    public static function findTotalPrice($purchasePrice, $tax, $profit, $method="")
     {
         $one = 1;
-        $getTax = round($price/(($one.$tax)/100), 2);
-        return $getTax;
+        if($method == "percent"){
+            $total = ($purchasePrice*($tax/100 + 1))*(($profit/100 + 1));
+            return round($total, 2);
+        }
+        else if($method == "amount"){
+            $total = ($purchasePrice*(1 + $tax/100))+$profit;
+            return $total;
+        }
+        else{
+            echo "0.00";
+        }
     }
     
 }

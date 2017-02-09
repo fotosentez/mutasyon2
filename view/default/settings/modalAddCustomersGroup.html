@@ -6,7 +6,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel2">{Lang::getLang('addPrefix')}</h4>
+                <h4 class="modal-title" id="myModalLabel2">{Lang::getLang('addGroup')}</h4>
             </div>
             <div class="modal-body">
                 
@@ -19,20 +19,20 @@
                                 <label class="control-label">{Lang::getLang('name')} 
                                     <span class="required">*</span>
                                 </label>
-                                <input class="form-control" name="addName" type="text" required />
-                                <input class="form-control" name="where" type="hidden" value="cgIdAdd" />
+                                <input autocomplete="off" class="form-control addName" name="addName" type="text" required />
+                                <input autocomplete="off" class="form-control" name="where" type="hidden" value="cgIdAdd" />
                             </div>
                             <div class="col-sm-4 col-xs-12">
                                 <label class="control-label">{Lang::getLang('discount')} 
                                     <span class="required">*</span>
                                 </label>
-                                <input class="form-control" name="addDiscount" type="number" required />
+                                <input autocomplete="off" class="form-control addDiscount" name="addDiscount" type="number" required />
                             </div>
                             <div class="col-sm-4 col-xs-12">
                                 <label class="control-label">{Lang::getLang('star')} 
                                     <span class="required">*</span>
                                 </label>
-                                <input class="form-control" name="addStar" type="number" required />
+                                <input autocomplete="off" class="form-control addStar" name="addStar" type="number" required />
                             </div>
                         </div>
                     </div>                    

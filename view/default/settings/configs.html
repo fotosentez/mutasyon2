@@ -21,10 +21,10 @@
                     </select>
                 </td>
                 {else}
-                <td><input type="text" class="form-control name" value="{$c.value}" name="value[]" disabled /></td>
+                <td><input autocomplete="off" type="text" class="form-control name" value="{$c.value}" name="value[]" disabled /></td>
                 {/if}
                 <td>
-                    <label><input class="editConfig" type="checkbox"> Düzenle</label>
+                    <label><input autocomplete="off" class="editConfig" type="checkbox"> Düzenle</label>
                     </td>
                 </tr>
                 {/foreach}

@@ -1,0 +1,75 @@
+<form action="controller/invoice/addBuyInvoice.php" method="post" class="noload">
+    {include file='view/default/cart/forBuyCart.html'}
+    <div class="col-xs-12 margin-top refreshTopBuyCart">
+        <div class="col-sm-4 hidden-xs cartHeader"><label>{Lang::getLang('productName')}</label></div>
+        <div class="col-sm-8 hidden-xs cartHeader">
+            <div class="col-sm-2 hidden-xs cartHeader"><label>{Lang::getLang('amount')}</label></div>
+            <div class="col-sm-2 hidden-xs cartHeader"><label>{Lang::getLang('priceIn')}</label></div>
+            <div class="col-sm-2 hidden-xs cartHeader"><label>{Lang::getLang('tax')}</label></div>
+            <div class="col-sm-3 hidden-xs cartHeader"><label>{Lang::getLang('profitType')}</label></div>
+            <div class="col-sm-2 hidden-xs cartHeader"><label>{Lang::getLang('profit')}</label></div>
+            <div class="col-sm-1 hidden-xs cartHeader"></div>
+        </div>
+        <div class="clear"></div>
+        {foreach $getBuyProducts as $gp}
+        <div class="row cartList">
+            <div class="col-sm-4 col-xs-6">
+                <div class="media">
+                    <a class="pull-left" href="?url=products/detail&id={$gp.products_id}"> <img id="cover" src="view/img/products/{$gp.products_id}/small/{$gp.cover}.jpg" alt="{$gp.products_name}" /></a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="#">{$gp.products_name}</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 col-xs-6">
+                <div class="col-sm-2 col-xs-12">
+                    <input type="number" class="form-control amount{$gp.products_id}" value="1" onChange="changeProductTotal('{$gp.products_id}')" name="amount[]" />
+                </div>
+                
+                <div class="col-sm-2 col-xs-12">
+                    <input id="subPrice{$gp.products_id}" type="number" class="form-control price{$gp.products_id}" onChange="changeProductTotal('{$gp.products_id}')" name="price[]" />
+                    <input type="hidden" name="productID[]" value="{$gp.products_id}" />
+                    <input type="hidden" class="forSum forSum{$gp.products_id}" value="0" />
+                </div>
+                
+                <div class="col-sm-2 col-xs-12">
+                    <select id="tax" class="form-control tax{$gp.products_id}" name="tax[]">
+                        {foreach $tax as $t}
+                        <option value="{$t.tax_id}" >{$t.tax_amount}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                
+                <div class="col-sm-3 col-xs-12">
+                    <select class="form-control method{$gp.products_id}" name="method[]">
+                        <option value="percent">{Lang::getLang('percent')}</option>
+                        <option value="amount">{Lang::getLang('amount')}</option>
+                    </select>
+                </div>
+                
+                <div class="col-sm-2 col-xs-12">
+                    <input type="number" class="form-control profit{$gp.products_id}" name="profit[]" />
+                </div>
+                
+                <div class="col-sm-1 col-xs-12">
+                    <a type="button" onClick="removeFromCart({$gp.products_id}, 'buy')" class="btn btn-danger pull-right btn-xs"><span class="fa fa-close"></span></a>
+                </div>
+            </div>
+        </div>
+        {/foreach}
+        <div class="col-xs-12 text-right">
+            <h4>{$currency} <strong class="cartTotal">0.00</strong></h4>
+            <input type="hidden" class="cartTotali" name="cartTotal" />
+        </div>
+        <div class="col-xs-6 text-right">
+            <a type="button" class="btn btn-default" href="?url=products">
+                <span class="fa fa-angle-double-left"></span> {Lang::getLang('back')}
+            </a>
+        </div>
+        <div class="col-xs-6 text-right">
+            <button type="submit" class="btn btn-success"> {Lang::getLang('finish')} 
+                <span class="fa fa-angle-double-right"></span>
+            </button>
+        </div>
+    </div>
+</form>

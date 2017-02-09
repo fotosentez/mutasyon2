@@ -1,3 +1,3 @@
 <?php
 
-Page::create("sellers/addSeller", "addSeller", "", "");
+Page::create("sellers/addSeller", "addSeller", "", "", false);

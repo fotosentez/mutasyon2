@@ -14,12 +14,12 @@
                 <div>
                     <div class="relative">
                         <label>{Lang::getLang("username")}</label><br />
-                        <input type="text" class="input" name="username" value="deneme@deneme.com" />
+                        <input autocomplete="off" type="text" class="input" name="username" value="deneme@deneme.com" />
                     </div>
                     <div class="relative">
                         <label>{Lang::getLang("password")}</label><br />
-                        <input type="password" class="input" name="password" value="deneme1" />
-                        <input id="token" type="hidden" value="{$makeToken}" name="token" />
+                        <input autocomplete="off" type="password" class="input" name="password" value="deneme1" />
+                        <input autocomplete="off" id="token" type="hidden" value="{$makeToken}" name="token" />
                     </div>
                     <div class="buttondiv">
                         <button type="submit">{Lang::getLang("login")}</button>

@@ -2,14 +2,14 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 relative">
-            <input type="text" id="addToCart" class="autocomplete form-control" name="term" placeholder="Ürün adı veya SKU" />
+            <input autocomplete="off" type="text" id="addToCart" class="autocomplete form-control" name="term" placeholder="Ürün adı veya SKU" />
             <button type="button" class="btn btn-primary getProductList" data-toggle="modal" data-target=".getProductsList">
                     <i class="glyphicon glyphicon-th-list"></i>
             </button>
         </div>
         
-        <input type="hidden" id="productPrice" />
-        <input type="hidden" id="productSKU" />
+        <input autocomplete="off" type="hidden" id="productPrice" />
+        <input autocomplete="off" type="hidden" id="productSKU" />
     </div>
 </div>
 <!-- /serach product	     -->
@@ -28,7 +28,7 @@
     <div class="clear"></div>
 </div>
 <div class="pull-right" id="total">{Lang::getLang("total")}: <span></span></div>
-<input id="totalInput" type="hidden" name="total" />
+<input autocomplete="off" id="totalInput" type="hidden" name="total" />
 <!-- /Basket -->
 
 <!-- Small modal -->

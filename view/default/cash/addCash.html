@@ -6,15 +6,15 @@
             <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="name" type="text" required />
-            <input class="form-control col-md-7 col-xs-12" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
+            <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12 name" name="name" type="text" required />
+            <input autocomplete="off" class="form-control col-md-7 col-xs-12 addDate" name="addDate" type="hidden" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
         </div>
     </div>
     
     <div class="item form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{Lang::getLang('iban')}</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="iban" type="text" />
+            <input autocomplete="off" id="name" class="form-control col-md-7 col-xs-12 iban" name="iban" type="text" />
         </div>
     </div>
     <!--inputs -->

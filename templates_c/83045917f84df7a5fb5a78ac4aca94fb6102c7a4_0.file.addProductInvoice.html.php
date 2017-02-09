@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-24 18:32:05
+/* Smarty version 3.1.30, created on 2017-02-01 17:19:42
   from "/var/www/html/mutasyon2/view/default/invoice/addProductInvoice.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58877375b9b2f6_33748609',
+  'unifunc' => 'content_5891ee7e2e5613_60876109',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '83045917f84df7a5fb5a78ac4aca94fb6102c7a4' => 
     array (
       0 => '/var/www/html/mutasyon2/view/default/invoice/addProductInvoice.html',
-      1 => 1485245305,
+      1 => 1485872728,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58877375b9b2f6_33748609 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5891ee7e2e5613_60876109 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Search product -->
 <div class="row">
     <div class="col-xs-12">
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 relative">
-            <input type="text" id="addToCart" class="autocomplete form-control" name="term" placeholder="Ürün adı veya SKU" />
+            <input autocomplete="off" type="text" id="addToCart" class="autocomplete form-control" name="term" placeholder="Ürün adı veya SKU" />
             <button type="button" class="btn btn-primary getProductList" data-toggle="modal" data-target=".getProductsList">
                     <i class="glyphicon glyphicon-th-list"></i>
             </button>
         </div>
         
-        <input type="hidden" id="productPrice" />
-        <input type="hidden" id="productSKU" />
+        <input autocomplete="off" type="hidden" id="productPrice" />
+        <input autocomplete="off" type="hidden" id="productSKU" />
     </div>
 </div>
 <!-- /serach product	     -->
@@ -59,7 +59,7 @@ function content_58877375b9b2f6_33748609 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 <div class="pull-right" id="total"><?php echo Lang::getLang("total");?>
 : <span></span></div>
-<input id="totalInput" type="hidden" name="total" />
+<input autocomplete="off" id="totalInput" type="hidden" name="total" />
 <!-- /Basket -->
 
 <!-- Small modal -->

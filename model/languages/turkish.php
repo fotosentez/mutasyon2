@@ -43,16 +43,20 @@ Class Lang{
             "doeDateCantSmall" 		                => "Vade tarihi oluşturma tarihinden önce olamaz!",
             "payCantBigTotal" 		                => "Ödeme miktarı toplam miktardan büyük olamaz!",
             "notEnoughStock" 		                => "Stokta yeterli ürün yok!",
-            "productNotFound" 		                => "Ürün bulunamadı yada stokta yok!",
+            "productNotFound" 		                => "Ürün bulunamadı!",
             "errorChangeValue" 		                => "Gönderilen veri değiştirildi yada gönderilemedi!",
             "errorUpdateRow" 		                => "Tablo güncellenemedi!",
             "customerNotFound" 		                => "Müşteri Bulunamadı!",
             "sellerNotFound" 		                => "Satıcı Bulunamadı!",
+            "taxNotFound" 		                => "Vergi Bulunamadı!",
             "areYouSureForDelete" 		        => "Silme işlemini onaylıyor musunuz?",
             "areYouSureForChange" 		        => "İçerik kaydelicek onaylıyor musunuz?",
             "cantDeleteDefault" 		        => "Öntanımlı içeriği silemezsiniz!",
             "validateStar" 		                => "Yıldız sayısı 0 ile 5 arasında olmalıdır!",
+            "validateDiscount" 		                => "İndirim oranı 0 ile 100 arasında olmalıdır!",
             "ifCheckDontPay" 		                => "(Seçilirse ödeme yapılmadan ürün eklenecektir)",
+            "productAddedToCart" 		        => "Ürün sepetinize eklendi",
+            "productAlreadyInCart" 		        => "Ürün zaten sepetinizde",
             
             //Left Menu
             "index" 					=> "Anasayfa",
@@ -102,6 +106,9 @@ Class Lang{
             "eachPrice" 				=> "Birim Fiyat",
             "paidTotal" 				=> "Toplam Ödenen",
             "colors" 				        => "Renk Seçenekleri",
+            "sizes" 				        => "Beden Ölçüleri",
+            "capacities" 				=> "Kapasite",
+            "weight" 				        => "Ağırlık",
             "shortDesc" 				=> "Kısa Açıklama",
             "cart" 				        => "Sepet",
             "productPrefix" 				=> "Önek",
@@ -156,6 +163,15 @@ Class Lang{
             "priceIn" 				        => "Alış Fiyatı",
             "priceOut" 				        => "Satış Fiyatı",
             "addRow" 				        => "Satır Ekle",
+            "attributes" 				=> "Öznitelikler",
+            "outOfStock" 				=> "Stokta Yok!",
+            "topSearchButton" 				=> "Bul!",
+            "topSearchContent" 				=> "Birşeyler yaz...",
+            "profit" 				        => "Kar",
+            "profitType" 				=> "Arttırma Türü",
+            "percent" 				        => "Yüzde",
+            "back" 				        => "Geri",
+            "finish" 				        => "Bitir",
             
             
             //Menu Names
@@ -193,6 +209,8 @@ Class Lang{
             "salePrice" 				=> "Satış Fiyatı",
             "buy" 					=> "Satın Al",
             "cartList" 					=> "Ürün Listesi",
+            "descOfAddInvoice" 				=> " tarihli satın alım faturası",
+            "allThingsReady" 				=> "Herşey hazır!",
             
             //Customers
             "discountRate" 				=> "İndirim Oranı",
