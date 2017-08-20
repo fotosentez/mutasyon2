@@ -1,4 +1,4 @@
-**Mutasyon projesi demo sitesi:** http://www.mutasyon.tk <br/><br/>
+**Mutasyon projesi demo sitesi:** http://mutasyon2.fyazilim.com <br/><br/>
 
 MUTASYON (*Mu*steri *Ta*kip ve *S*tok *Yon*etimi)
 =================================================
