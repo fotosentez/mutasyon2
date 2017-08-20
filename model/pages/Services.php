@@ -72,7 +72,7 @@ Class Services{
         if($what == 'total'){
             if($discountType == 'percent'){$total = $invoiceTotal - $invoiceTotal*$discount/100;}
             else if($discountType == 'amount'){$total = $invoiceTotal - $discount;}
-            else{$total = 0;}
+            else{$total = $invoiceTotal;}
         }
         //------------------------------------------------------------
         
