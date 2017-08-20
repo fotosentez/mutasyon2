@@ -1,3 +1,5 @@
+**Önemli! Mutasyon halen devam etmekte olan bir proje o nedenle demo sayfasında birçok hata mevcuttur lütfen bunu gözönünde bulundurunuz. **
+
 **Mutasyon projesi demo sitesi:** http://mutasyon2.fyazilim.com <br/><br/>
 
 MUTASYON (*Mu*steri *Ta*kip ve *S*tok *Yon*etimi)
