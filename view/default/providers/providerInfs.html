@@ -1,0 +1,29 @@
+<h3>{Providers::getRow('providers_name')}</h3>
+<p class="ratings">
+    {for $i = 1 to Providers::getRow('providers_star')}
+    <a href="#"><span class="fa fa-star"></span></a>
+    {/for}
+    {for $i = 1 to (5-Providers::getRow('providers_star'))}
+    <a href="#"><span class="fa fa-star-o"></span></a>
+    {/for}
+</p>
+<li>
+    <i class="fa fa-male user-profile-icon"></i>
+    {Providers::getRow('providers_connected_person')}
+</li>
+<li>
+    <i class="fa fa-map-marker user-profile-icon"></i>
+    {Providers::getRow('providers_address')}
+</li>
+<li>
+    <i class="fa fa-briefcase user-profile-icon"></i>
+    {Providers::getRow('providers_phone')}
+</li>
+<li>
+    <i class="fa fa-external-link user-profile-icon"></i>
+    {Providers::getRow('providers_web')}
+</li>
+<li>
+    <i class="fa fa-envelope-o user-profile-icon"></i>
+    {Providers::getRow('providers_mail')}
+</li>

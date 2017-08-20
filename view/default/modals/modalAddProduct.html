@@ -1,0 +1,58 @@
+<div class="modal addProductModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">{Lang::getLang('productInfs')}</h4>
+            </div>
+            <div class="modal-body">
+                <form action="controller/products/productAdd.php" method="post" enctype="multipart/form-data" class="noload">
+                    <div class="one"><!--add product-->
+                        <div class="col-xs-12">
+                            
+                            <!--Products name -->
+                            <label class="margin-top">{Lang::getLang('productName')}</label>
+                            <input autocomplete="off" type="text" class="form-control product_name" placeholder="{Lang::getLang('productName')}" name="product_name" />
+                            
+                            <!--Short desc -->
+                            <label class="margin-top">{Lang::getLang('shortDesc')}</label>
+                            <input autocomplete="off" type="text" class="form-control short_desc" placeholder="{Lang::getLang('shortDesc')}" name="short_desc" />
+                            
+                            <!--detail -->
+                            <label class="margin-top">{Lang::getLang('desc')}</label>
+                            <textarea type="text" class="form-control product_detail" placeholder="{Lang::getLang('desc')}" id="editor" name="product_detail"></textarea>
+                        </div>
+
+                        <!--Category -->
+                        <div class="col-xs-12 margin-top">
+                            <label class="margin-top">{Lang::getLang('category')}</label>
+                            <select class="form-control" name="main" onChange="getSubCategory(this);">
+                                <option value="none">{Lang::getLang('select')}</option>
+                                {foreach Categories::getRow('main') as $sc}
+                                <option value="{$sc.maincategory_id}">{$sc.maincategory_name}</option>
+                                {/foreach}
+                            </select>
+                            <select class="form-control margin-top" name="sub" required>
+                                <option value="none"></option>
+                            </select>
+                        </div>
+                        
+                        <!--Brand -->
+                        <div class="col-xs-12 margin-top">
+                            <label>{Lang::getLang('brand')}</label>
+                            <select class="form-control" name="brand">
+                                {foreach Settings::getRow('brand') as $sc}
+                                <option value="{$sc.s_id}">{$sc.s_value}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                        <div class="clear"></div>
+                        <button class="btn btn-success margin-top send" type="submit">{Lang::getLang('addNewProduct')}</button>
+                    </div><!--/add product-->
+                </form>
+            </div><!--/modal-body-->
+        </div><!--/modal-content-->
+    </div><!--/modal-dialog-->
+</div><!--/modal-->

@@ -1,0 +1,21 @@
+<div class="col-xs-12">Başlık</div>
+<div class="col-xs-12">
+    
+    {foreach Events::getRow('', "prp_providers_id = {Get::getValue('id')}") as $e}
+    <div class="col-xs-6 col-sm-1">
+        <img src="{Providers::getRow('image')}" class="avatar" title="{Providers::getRow('providers_name')}" />
+    </div>
+    <div class="col-xs-6 col-sm-11">
+        <div class="col-xs-12">
+            <h4>{Lang::getLang($e.event_type)}</h4>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-9">
+                <blockquote class="message">{$e.prp_desc}</blockquote>
+            </div>
+            <div class="col-xs-3">Tarih</div>
+        </div>
+    </div>
+    {/foreach}
+    
+</div>

@@ -1,0 +1,40 @@
+<div class="x_panel">
+	<div class="x_title">
+	    <h2>Fatura Ödeme Bilgileri</h2>
+	    <div class="clearfix"></div>
+	</div>
+	<div class="x_content invoiceWidgetsB">
+	    
+	    <div class="col-xs-12 donutGraph">
+		<canvas id="canvasDoughnut"></canvas>
+	    </div>
+	    <div class="col-xs-12">
+		<ul class="list-inline widget_tally">
+		    <li>
+			<p>
+			    <span class="month labelallTotal">Toplam fatura tutarı </span>
+			    <span class="count">{Settings::getRow('currency', 'default')} <span class="allTotal">{Functions::findAllInvoiceTotal('total')}</span></span>
+			</p>
+		    </li>
+		    <li>
+			<p>
+			    <span class="month labelallPay">Ödenen tutar </span>
+			    <span class="count">{Settings::getRow('currency', 'default')} <span class="allPay">{Functions::findAllInvoiceTotal('payTotal')}</span></span>
+			</p>
+		    </li>
+		    <li>
+			<p>
+			    <span class="month labelallWait">Bekleyen tutar </span>
+			    <span class="count">{Settings::getRow('currency', 'default')} <span class="allWait">{Functions::findAllInvoiceTotal('waitTotal')}</span></span>
+			</p>
+		    </li>
+		    <li>
+			<p>
+			    <span class="month labelallNo">Ödenmemiş tutar </span>
+			    <span class="count">{Settings::getRow('currency', 'default')} <span class="allNo">{Functions::findAllInvoiceTotal('noTotal')}</span></span>
+			</p>
+		    </li>
+		</ul>
+	    </div>
+	</div>
+    </div>

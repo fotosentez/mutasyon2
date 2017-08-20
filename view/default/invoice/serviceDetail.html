@@ -1,0 +1,23 @@
+<section class="content invoice">
+    {include file='view/default/invoice/services/detailTop.html'}
+    {include file='view/default/invoice/services/detailMiddle.html'}
+    {include file='view/default/invoice/services/detailBottom.html'}
+    
+    <!-- this row will not appear when printing -->
+    <div class="row no-print">
+        <div class="col-xs-12">
+            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> {Lang::getLang('print')}</button>
+            <button class="btn btn-primary" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            
+            
+            {Functions::checkServiceStatus(Get::getValue('id'))}
+        </div>
+    </div>
+</section>
+
+{include file='view/default/modals/modalAddPayments.html'}
+{include file='view/default/invoice/services/addServices.html'}
+{include file='view/default/invoice/services/addPovidersToInvoice.html'}
+{include file='view/default/invoice/services/compromise.html'}
+{include file='view/default/invoice/services/addProviderPayments.html'}
+{include file='view/default/invoice/services/calcelInvoice.html'}

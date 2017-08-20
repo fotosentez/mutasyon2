@@ -1,0 +1,31 @@
+<div class="col-sm-2 col-xs-6 prbox">
+    <div class="prboxinner relative">
+	<div class="row rowImage">
+	    <img class="vbestseller" src="view/img/crown.png" />
+	    <img class="vprimage" src="view/img/products/{$pr.products_id}/big/{$pr.cover}.jpg" onError="this.onerror=null;this.src='view/img/noimage-large.jpg';" />
+	</div>
+	<div class="row vname">
+	    <a href="?u=products/detail&id={$pr.products_id}" title="{$pr.products_name}">
+		<span class="vprname">{$pr.products_name|truncate:40}</span>
+	    </a>
+	</div>
+	<div class="row vpricemobile">
+	    <div class="vprice">
+		<span>{Settings::getRow('currency', 'default')}</span>{Products::getRow('salePrice', $pr.products_id)}
+	    </div>
+	</div>
+	<div class="row prListButtons">
+	    <div class="col-xs-12">
+		<a onClick="addToCartButton('', {$pr.products_id});" class="btn btn-danger btn-xs">
+		    <i class="glyphicon glyphicon-save"></i> Stoğa Ekle
+		</a>
+	    </div>
+	    <div class="col-xs-12">
+		<a onClick="addToCartButton({$pr.products_id}, '');" class="btn btn-success btn-xs">
+		    <i class="glyphicon glyphicon-open"></i> Satış Yap
+		</a>
+		<input autocomplete="off" class="ctname" value="Hafıza Kartı" type="hidden" />
+	    </div>
+	</div>
+    </div>
+</div>

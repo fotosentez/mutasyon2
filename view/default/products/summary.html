@@ -1,0 +1,27 @@
+<div class="col-xs-12 cartListheader">Özellikler</div>
+<div class="col-xs-12 margin-top">
+    <div class="col-sm-4 col-xs-12">
+        <label>Marka :</label>
+        <span>{Products::getRow('brand_name')}</span>
+    </div>
+    <div class="col-sm-4 col-xs-12">
+        <label>SKU :</label>
+        <span>{Products::getRow('sku')}</span> 
+    </div>
+    <div class="col-sm-4 col-xs-12">
+        <label>Stoğa giriş tarihi :</label>
+        <span>{Products::getRow('bi_date')}</span> 
+    </div>
+    <div class="col-sm-4 col-xs-12">
+        <label>Miktar :</label>
+        <span>{Products::getRow('amount')} {Products::getRow('at_name')}</span> 
+    </div>
+    <div class="col-sm-4 col-xs-12">
+        <label>Son Satış tarihi :</label>
+        <span>{Products::getRow('invoice_date')}</span> 
+    </div>
+    <div class="col-sm-4 col-xs-12">
+        <label>Satış Miktarı :</label>
+        <span>{Products::getRow('ps_amount')} {Products::getRow('at_name')}</span> 
+    </div>
+</div>

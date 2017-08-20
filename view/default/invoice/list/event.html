@@ -1,0 +1,64 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Son Hareketler</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content invoiceWidgetsB overflow">
+        {foreach Events::getRow() as $e}
+        <article class="media event">
+            <a class="pull-left date">
+                <span class="image">
+                    {if $e.invoice_no}
+                    <img src="view/img/{$e.invoice_superuser_id}.jpg" />
+                    {else if $e.payments_id}
+                    <img src="{Customers::getRow('image', $e.payments_customers_id)}" />
+                    {else if $e.bi_id}
+                    <img src="view/img/{$e.bi_superuser_id}.jpg" />
+                    {/if}
+                </span>
+            </a>
+            <div class="media-body">
+                {if $e.event_type == 'invoice_added'}
+                <p>
+                    <label>{Superuser::getRow('superuser_name', $e.invoice_superuser_id)}</label> 
+                    <a href="?u=invoices/detail&id={$e.invoice_id}">{Invoice::getRow('no', $e.invoice_id)}</a> faturasını ekledi.
+                </p>
+                {else if $e.event_type == 'payment_added' AND $e.payments_bi_id == NULL AND $e.payments_in_out == "in"}
+                <p>
+                    <label>
+                        {Customers::getRow('fullName', $e.payments_customers_id)}
+                    </label> 
+                    <a href="?u=invoices/detail&id={$e.payments_invoice_id}">{Invoice::getRow('no', $e.payments_invoice_id)}</a> faturası için 
+                    {$e.payments_amount} tutarında ödeme yaptı.
+                </p>
+                {else if $e.event_type == 'payment_added' AND $e.payments_bi_id == NULL AND $e.payments_in_out == "out"}
+                <p>
+                    <label>
+                        {Providers::getRow('providers_name', $e.payments_providers_id)}
+                    </label> 
+                    <a href="?u=invoices/detail&id={$e.payments_invoice_id}">{Invoice::getRow('no', $e.payments_invoice_id)}</a> faturasından
+                    {$e.payments_amount} tutarında ödeme yapıldı.
+                </p>
+                {else if $e.event_type == 'payment_added' AND $e.payments_bi_id != NULL}
+                <p>
+                    <label>
+                        {Seller::getRow('seller_name', $e.payments_seller_id)}
+                    </label> 
+                    için
+                    <a href="?u=invoices/detail&bid={$e.payments_bi_id}">{BuyInvoices::getRow('bi_no', $e.payments_bi_id)}</a> alım faturasına 
+                    {$e.payments_amount} tutarında ödeme yapıldı.
+                </p>
+                {else if $e.bi_id}
+                <p>
+                    <label>
+                        {Superuser::getRow('superuser_name', $e.bi_superuser_id)}
+                    </label> 
+                    <a href="#">{$e.bi_no}</a> numaralalı satın alım faturasını ekledi.
+                </p>
+                {/if}
+                <i>{$e.event_date}</i>
+            </div>
+        </article>
+        {/foreach}
+    </div>
+</div>

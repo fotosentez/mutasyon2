@@ -1,0 +1,15 @@
+<div class="btn-group">
+    <ul class="pagination">
+        <li class="paginate_button previous {if Get::getValue('page') == 1} disabled {/if}" id="datatable_previous">
+            <a href="?u=products&amp;page={Get::getValue('page') - 1}" aria-controls="datatable" data-dt-idx="0" tabindex="0">{Lang::getLang("previous")}</a>
+        </li>
+        {for $i = 1 to 3}
+        <li class="paginate_button {if Get::getValue('page') == $i} active {/if}">
+            <a href="?u=products&amp;page={$i}" aria-controls="datatable" data-dt-idx="1" tabindex="0">{$i}</a>
+        </li>
+        {/for}
+        <li class="paginate_button previous " id="datatable_previous">
+            <a href="?u=products&amp;page={Get::getValue('page') + 1}" aria-controls="datatable" data-dt-idx="0" tabindex="0">{Lang::getLang("next")}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,53 @@
+        </div>
+    </div>
+    <div class="inf displayNone"></div>
+    <!-- footer content -->
+    
+    <footer>
+        <div class="copyright-info">
+            <p class="pull-right">Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>  
+            </p>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+<!-- /page content -->
+
+</div>
+</div>
+
+{include file='view/default/insertButton/insertButton.html'}
+{include file='view/default/modals/modalAddProduct.html'}
+<!-- For all pages -->
+<script src="view/default/js/jquery.min.js"></script>
+<script src="view/default/js/jquery-ui.min.js"></script>
+<script src="view/default/js/bootstrap.min.js"></script>
+
+<!-- PNotify for notify like add to cart or other-->
+<script type="text/javascript" src="view/default/js/pnotify.custom.min.js"></script>
+
+<!-- Change scrollbar view-->
+<!-- <script type="text/javascript" src="view/default/js/scrollbar/perfect-scrollbar.min.js"></script> -->
+
+<!-- Canvas for add graphs-->
+<script type="text/javascript" src="view/default/js/chart/chart.min.js"></script>
+<script type="text/javascript" src="view/default/js/moment/moment.min.js"></script>
+
+<!-- Custom js which written by template -->
+<script src="view/default/js/custom.js"></script>
+
+
+<!-- dropzone upload image-->
+<script src="view/default/js/dropzone/dropzone.js"></script>
+
+<!-- My functions -->
+<script src="view/default/js/myFunctions.js"></script>
+
+<!-- Customs js for special pages -->
+{if Get::getValue('u')=='invoices'}
+<script src="view/default/js/invoices/invoices.js"></script>
+{/if}
+
+</body>
+</html>

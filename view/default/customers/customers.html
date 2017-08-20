@@ -1,0 +1,49 @@
+<div class="row customersList">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+        
+    </div>
+    <div class="clearfix"></div>
+    {foreach Customers::getRow() as $c}
+    <!-- List Start -->
+    <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown customersList">
+        <div class="well profile_view">
+            <div class="col-sm-12">
+                <h4 class="brief"><b><i>{$c.fullName}</i></b></h4>
+                <div class="left col-xs-7">
+                    <h4>{$c.groupName}</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone"></i>{$c.customers_tel}</li>
+                        <p><strong>{Lang::getLang('address')}: </strong>{$c.customers_address}</p>
+                    </ul>
+                </div>
+                <div class="right col-xs-5 text-center">
+                    <img src="{Customers::getRow('image', $c.customers_id)}" alt="" class="img-circle img-responsive">
+                    </div>
+                </div>
+                <div class="col-xs-12 bottom text-center">
+                    <div class="col-xs-12 col-sm-6 emphasis">
+                        <p class="ratings">
+                            {for $i = 1 to 3}
+                            <a href="#"><span class="fa fa-star"></span></a>
+                            {/for}
+                            {for $i = 1 to (5-3)}
+                            <a href="#"><span class="fa fa-star-o"></span></a>
+                            {/for}
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 emphasis">
+                        <button type="button" class="btn btn-success btn-xs"> 
+                            <i class="fa fa-plus"></i> 
+                            <i class="fa-file-text-o"></i> 
+                        </button>
+                        <a href="?u=customers/detail&id={$c.customers_id}" type="button" class="btn btn-primary btn-xs"> 
+                            <i class="fa fa-user"></i> {Lang::getLang('viewProfil')} 
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- List Finish-->
+        {/foreach}
+    </div>
+    {include file='view/default/modals/modalAddCustomer.html'}

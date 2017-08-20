@@ -1,0 +1,39 @@
+<!-- Table row -->
+<div class="row">
+    <div class="col-xs-12 table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{Lang::getLang('amount')}</th>
+                    <th>{Lang::getLang('sku')}</th>
+                    <th style="width:20%">{Lang::getLang('productName')}</th>
+                    <th style="width:30%">{Lang::getLang('desc')}</th>
+                    <th>{Lang::getLang('eachPrice')}</th>
+                    <th>{Lang::getLang('subTotal')}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach Services::getRow('servicesSold') as $p}
+                <tr>
+                    <td class="amount">{$p.ss_amount}</td>
+                    <td>{$p.services__SKU}</td>
+                    <td>{$p.services_name}</td>
+                    <td>{$p.services__detail}</td>
+                    <td>
+                        {Settings::getRow('currency', 'default')}
+                        <span class="price">{$p.ss_price}</span>
+                    </td>
+                    <td>
+                        {Settings::getRow('currency', 'default')}
+                        <span class="eachSubTotal">{$p.total}</span>
+                    </td>
+                </tr>
+                {/foreach}
+            </tbody>
+        </table>
+        {Functions::cehckProvidersAndServices('service', Get::getValue('id'))}
+        {Functions::cehckProvidersAndServices('providers', Get::getValue('id'))}
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

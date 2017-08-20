@@ -1,0 +1,34 @@
+<!-- Invoice -->
+{foreach Settings::getRow('', 'invoice') as $s}
+<div class="col-xs-12 panel">
+    <label>{Lang::getLang($s.s_name)}</label>
+    <div class="{$s.s_name}">
+        <div class="col-xs-12">
+            {foreach Settings::getRow($s.s_name) as $b}
+            <div class="col-sm-10 col-xs-8 name {if $b.s_default == 1}default{/if}">
+                <form action="controller/settings/addValue.php" method="post" enctype="multipart/form-data" id="updateSettings{$b.s_id}" class="noload">
+                    <!--    Name    -->
+                    <div class="col-xs-12 col-sm-10">
+                        <input type="text" class="form-control" value="{$b.s_value}" name="value" />
+                        <input type="hidden" value="{$b.s_id}" name="id" />
+                        <input type="hidden" value="{$b.s_name}" name="what" />
+                    </div>
+                    
+                    <!--    Attributes    -->
+                    <div class="col-xs-12 col-sm-2 tar">
+                        <input type="text" class="form-control" value="{$b.s_attributes}" name="attributes" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-2 col-xs-4 tar settingsButtons">
+                {if $b.s_default == 0}
+                <i class="btn btn-success btn-xs glyphicon glyphicon-pushpin" title="{Lang::getLang('doDefault')}" onclick="changeSettingOption({$b.s_id}, 'default');"></i>
+                {/if}
+                <button class="btn btn-info btn-xs glyphicon glyphicon-edit" onclick="$('#updateSettings{$b.s_id}').submit();"></button>
+                <i class="btn btn-danger btn-xs glyphicon glyphicon-remove" onclick="changeSettingOption({$b.s_id}, 'delete');"></i>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+</div>
+{/foreach}

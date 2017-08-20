@@ -1,0 +1,14 @@
+<div class="product-image">
+    <img src="{Products::getRow('cover')}" alt="{Products::getRow('products_name')}" title="{Products::getRow('sku')}"/>
+</div>
+<div class="clear"></div>
+<div class="product_gallery relative primages col-xs-12">
+    {foreach Products::getRow('images') as $images}
+    <a onmouseover = "changeImage({$images.products_images_id},{Get::getValue('id')})">
+        <img src="view/img/products/{Get::getValue('id')}/small/{$images.products_images_id}.jpg" alt="{Products::getRow('products_name')}" />
+    </a>
+    {/foreach}
+</div>
+<button type="button" class="btn btn-default btnAddProductImage" data-toggle="modal" data-target=".addImagesModal">
+    <i class="fa fa-plus-square-o"></i>
+</button>

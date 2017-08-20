@@ -1,0 +1,276 @@
+/* Filter and view products */
+.prfilter{
+    background: #fff;
+    height: 48px;
+    border: 4px double #eee;
+}
+.firstli {
+    /*     margin-left:-20px !important */
+}
+.prfilter li {
+    float: left;
+    font-weight: bold;
+    margin-left: 5px;
+    font-size: 14px;
+    border: 1px solid #eee;
+    padding-left: 7px;
+    margin-top: 6px;
+    padding-right: 11px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    cursor:pointer;
+}
+.activeli a{
+    color:#fff !important;
+}
+.activeli {
+    background: #000;
+    border: 1px solid #eee;
+    color: #fff;
+}
+/* Product List */
+.vgrid {
+    margin-top:15px;
+}
+.prbox {
+    margin-right: 0px;
+    padding: 0;
+}
+.prboxinner{
+    padding:15px;
+    border: 1px solid #ddd;
+    background: #fff url('../images/desen.png') no-repeat right bottom;
+    margin-left: 10px;
+    height: 285px;
+}
+
+/* List view */
+.vlist{
+    padding-left:3px;
+    padding-right:20px;
+    margin-top:15px;
+}
+.prlist{
+    border:1px solid #eee;
+    margin-top:10px;
+    background: #fff url('../images/desen.png') no-repeat right bottom;
+}
+.vlist img.vprimage{
+    width: 160px;
+    height: 120px;
+    border-right: 1px solid #eee;
+    padding: 3px;
+    margin-left: -12px;
+    margin-top: 1px;
+}
+.vlist .ablock{
+    position:absolute;
+    bottom:4px;
+}
+.vlist .vname {
+    height: 38px;
+    margin-top: 5px;
+}
+.vlist .vprname {
+    font-weight: bold;
+    font-size: 14px;
+}
+.vlist  .vdetail {
+    font-size: 10px;
+    height: 50px;
+    font-style: italic;
+}
+.vlistbuttons a {
+    display: block;
+    margin-bottom: 2px;
+}
+.vlist  .vlabels{
+    margin-top:-5px;
+}
+.vlist .prbox{
+    height: 119px;
+}
+.vlist .vbestseller {
+    width: 24px;
+    position: absolute;
+    top: 0px;
+    margin-left: -13px;
+}
+.vlist .price {
+    font-weight: bold;
+    color: darkred;
+    font-size: 20px;
+    float:right;
+    font-style:italic;
+    padding-right:5px
+}
+.vlist .listPrbuttons{
+    height:30px;
+}
+.vlist .listPrname{
+    height:35px;
+    overflow:hidden;
+}
+.vlist .listPrsname{
+    height:30px;
+    overflow:hidden;
+}
+.relative{
+    position:relative;
+}
+/* Grid view */
+.rowImage{
+    height: 124px;
+}
+.vgrid img.vprimage{
+    width: 100%;
+    height: 100%;
+}
+.vgrid  .ablock{
+    position:absolute;
+    bottom:4px;
+}
+.vgrid .vname {
+    height: 30px;
+}
+.vgrid .vprname {
+    font-weight: bold;
+    font-size: 12px;
+}
+.vgrid  .vdetail {
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 12px;
+    overflow:hidden;
+    height:40px;
+}
+.vgridbuttons a {
+    display: block;
+    margin-bottom: 2px;
+}
+.vgrid  .vlabels{
+    right: 1px;
+    top: -108px;
+    position: absolute;
+}
+.vgrid  .vlabels span{
+    font-size:12px;
+}
+.vgrid .prbox{
+    height: 300px;
+    text-align: center;
+    position:relative;
+}
+.vgrid .vbestseller {
+    width: 27px;
+    position: absolute;
+    top: -2px;
+    left: 1px;
+}
+.vgrid .vpricemobile {
+    height: 36px;
+    font-weight: bold;
+    color: darkred;
+    font-size: 20px;
+    margin-top:10px;
+}
+table.filter{
+    border:1px solid #eee;
+}
+table.filter th{
+    border-top:none;
+    position:relative;
+    height:30px;
+}
+table.filter th span{
+    margin-left:30px;
+}
+table.filter .fa{
+    font-size:20px;
+    position:absolute;
+}
+.productFilter th.gridList a{
+    float:right !important;
+}
+.productFilter th a{
+    float:left;
+}
+
+/* Category List */
+#accordion h2 {
+    border-bottom: 1px dotted #ddd;
+    background: #444;
+    padding: 6px 6px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0px;
+    line-height: 30px;
+    color:#fff;
+}
+
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+    width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+    
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+    text-indent: 0;
+}
+.btn span.glyphicon {    			
+    opacity: 0;				
+}
+.btn.active span.glyphicon {				
+    opacity: 1;				
+}
+.attrName {
+    border-bottom:1px dotted #aaa;
+}
+.attrName  label.attrHeader {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #000;
+    padding: 2px 10px;
+    width: 155px;
+    height: 28px;
+    line-height: 22px;
+}
+.attrName label.attrHeader:after {
+    content: " ";
+    height: 25px;
+    width: 0;
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    margin: 0;
+    pointer-events: none;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 11px solid #000;
+}
+
+/* Product Detail */
+.product_gallery button {
+    position: absolute;
+    margin-top: 24px;
+}

@@ -1,0 +1,60 @@
+<div class="col-xs-12 services">
+    
+    <form class="noload" method="post" action="controller/invoice/addInvoice.php">
+    
+    <div class="col-xs-12 col-sm-4">
+        
+        <!--     Customers      -->
+        <label>Müşteri</label>
+        <select name="customer" class="form-control">
+            {foreach Customers::getRow() as $c}
+            <option value="{$c.customers_id}">{$c.fullName}</option>
+            {/foreach}
+        </select>
+        
+        <!--     Date      -->
+        <label class="margin-top">{Lang::getLang('date')}</label>
+        <input type="date" class="form-control" name="date" value="{IbniYunus::getDate('now')}" />
+        
+        
+        <!--     Prefix      -->
+        <label class="margin-top">{Lang::getLang('prefix')}</label>
+        <select name="prefix" class="form-control">
+            {foreach Settings::getRow('prefix') as $c}
+            <option value="{$c.s_id}">{$c.s_value}</option>
+            {/foreach}
+        </select>
+        
+        
+        <!--     Service inf      -->
+        <label class="margin-top">{Lang::getLang('desc')}</label>
+        <p>Buraya açıklama eklenebilir</p>
+        
+    </div>
+    
+    
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        
+        <!--     SKU      -->
+        <label class="margin-top">{Lang::getLang('sku')}</label>
+        <input type="text" class="form-control" name="sku" />
+        <input type="hidden" name="what" value="service" />
+        
+        
+        <!--     Product desc      -->
+        <label class="margin-top">Ürünün durumu</label>
+        <textarea type="textarea" class="form-control" name="status"></textarea>
+        
+        
+        <!--     Complaint      -->
+        <label class="margin-top">Şikayet sebebi</label>
+        <textarea type="textarea" class="form-control" name="complaint"></textarea>
+        
+    </div>
+    
+    <div class="col-xs-12 col-sm-2 col-sm-offset-10 margin-top tar">
+        <button type="submit" class="btn btn-success">Kaydet <i class="glyphicon glyphicon-forward"></i></button>
+    </div>
+    
+    </form>
+</div>

@@ -1,0 +1,44 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>{Lang::getLang('invoiceList')}</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content invoiceWidgetsB overflow">
+        <table class="table table-striped responsive-utilities jambo_table bulk_action">
+            <thead>
+                <tr class="headings">
+                    <th class="column-title">{Lang::getLang('invoiceNo')}</th>
+                    <th class="column-title">{Lang::getLang('date')} </th>
+                    <th class="column-title">{Lang::getLang('dueDate')} </th>
+                    <th class="column-title">{Lang::getLang('customer')} </th>
+                    <th class="column-title">{Lang::getLang('total')} </th>
+                    <th class="column-title">{Lang::getLang('desc')} </th>
+                    <th class="column-title">{Lang::getLang('status')} </th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {foreach Invoice::getRow() as $i}
+                <tr class="even pointer">
+                    <td class="invoiceList">
+                        <a href="?u=invoices/detail&id={$i.invoice_id}">
+                            {Invoice::getRow('no', $i.invoice_id)}
+                        </a>
+                    </td>
+                    <td class="">{Invoice::getRow('invoice_date', $i.invoice_id)} </td>
+                    <td class="">{Invoice::getRow('invoice_due_date', $i.invoice_id)} </td>
+                    <td class="">{$i.customers_name} {$i.customers_surname}</td>
+                    <td class="">{Invoice::findTotal('total', $i.invoice_id)}</td>
+                    <td class="">{$i.invoice_desc}</td>
+                    <td class="invoiceList">
+                        <span class="btn {Invoice::getRow('status', $i.invoice_id)} btn-xs">
+                            {Lang::getLang(Invoice::getRow('status', $i.invoice_id))}
+                        </span>
+                    </td>
+                </tr>
+                {/foreach}
+            </tbody>
+            
+        </table>
+    </div>
+</div>

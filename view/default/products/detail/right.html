@@ -1,0 +1,69 @@
+<!-- Header -->
+<div class="col-xs-12">
+    <h3 class="prod_title">{Products::getRow("products_name")}</h3>
+    <p>{Products::getRow("products_short_detail")}</p>
+</div>
+<form action="controller/cart/addToCart.php" method="post" id="addToCart" class="noload" enctype="multipart/form-data">
+    <!--options -->
+    <div class="col-xs-12">
+        <h2>
+            {Lang::getLang('options')}
+            <span data-toggle="modal" data-target=".addoptionsModal">
+                <i class="fa fa-plus-square-o"></i>
+            </span>
+        </h2>
+        {foreach Products::options('optionsGroup') as $a}
+        <div class="col-xs-12 margin-top">
+            <div class="col-xs-3"><label>{$a.og_name}</label></div>
+            <div class="col-xs-9 refresh">
+                {foreach Products::options('optionsContents', Get::getValue('id'), $a.og_id) as $b}
+                <input type="radio" name="postedOptions" value="{$b.po_options_id}" />
+                <span class="{$b.po_options_id}">{$b.options_name}</span>
+                {/foreach}
+            </div>                
+        </div>
+        {/foreach}
+    </div>
+    
+    
+    <!--Colors -->
+    <div class="col-xs-12">
+        <h2>{Lang::getLang('colors')}</h2>
+        <ul class="list-inline prod_color">
+            {foreach Products::options('colors') as $color}
+            <li>
+                <input type="radio" name="postedColors" value="{$color.po_colors_id}" />
+                <span class="{$color.po_colors_id}">{$color.s_value}{Products::options('stock', $color.po_colors_id)}</span>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    
+    <!-- Send product id for check options -->
+    <input type="hidden" name="productId" value="{Get::getValue('id')}" />
+    
+    <div class="col-xs-12">
+        <div class="product_price">
+            <h3 class="prices">
+                {Settings::getRow('currency', 'default')}{Products::getRow('salePrice')}
+            </h3>
+            <span class="price-tax">{Lang::getLang('cost')}: {Settings::getRow('currency', 'default')}{Products::getRow('price')}</span>
+        </div>
+    </div>   
+    <div class="col-xs-12">
+        <span class="btn btn-default btn-md" onclick="$('#addToCart').submit();"><i class="glyphicon glyphicon-shopping-cart"></i> {Lang::getLang('sale')}</span>
+        <span class="btn btn-default btn-md" onclick="$('#addToBuyCart').submit();"><i class="glyphicon glyphicon-download-alt"></i> {Lang::getLang('buy')}</span>
+    </div>
+</form>
+<div class="product_social col-xs-12">
+    <ul class="list-inline">
+        <li><a href="#"><i class="fa fa-facebook-square"></i></a>
+        </li>
+        <li><a href="#"><i class="fa fa-twitter-square"></i></a>
+        </li>
+        <li><a href="#"><i class="fa fa-envelope-square"></i></a>
+        </li>
+        <li><a href="#"><i class="fa fa-rss-square"></i></a>
+        </li>
+    </ul>
+</div>

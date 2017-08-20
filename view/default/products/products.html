@@ -1,0 +1,18 @@
+<div class="col-xs-12 sort">
+    {include file='view/default/products/sort.html'}
+</div><!--/prfilter-->
+<div class="col-xs-12 {if $smarty.session['products']['view'] == 'list'}vlist{else}vgrid{/if}">
+    {foreach Products::getAll() as $pr}
+    {if $smarty.session['products']['view'] == 'list'}
+	    {include file='view/default/products/list.html'}
+	{else}
+	    {include file='view/default/products/grid.html'}
+	{/if}
+    {/foreach}
+    <div class="clear"></div>
+    <div class="row hidden-xs">
+         {include file='view/default/pagination/pagination.html'}
+    </div>
+    
+</div>
+{include file='view/default/modals/modalAddCategory.html'}

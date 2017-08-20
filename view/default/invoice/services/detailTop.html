@@ -1,0 +1,40 @@
+<!-- title row -->
+<div class="row">
+    <div class="col-xs-12 invoice-header">
+        <div class="col-xs-12 col-sm-6 pull-left"><h1>#{Services::getRow('no')}</h1></div>
+        <div class="col-xs-12 col-sm-6 pull-right">
+            <h2>
+                <small class="pull-right">{Lang::getLang('date')}: {Services::getRow('invoice_date')}</small><br />
+            </h2>
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- info row -->
+<div class="row invoice-info">
+    <div class="col-sm-4 invoice-col">
+        <label>{Lang::getLang('company')}</label>
+        <address>
+            <strong>{Company::getRow('company_name')}</strong>
+            <br />{Company::getRow('company_address')}
+            <br />Phone: {Company::getRow('company_tel')}
+            <br />Email: {Company::getRow('company_mail')}
+        </address>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-4 invoice-col">
+        <label>{Lang::getLang('customer')}</label>
+        <address>
+            <strong>{Services::getRow('customers_name')} {Services::getRow('customers_surname')}</strong>
+            <br />{Services::getRow('customers_address')}
+            <br />Phone: {Services::getRow('customers_tel')}
+            <br />Email: {Services::getRow('customers_mail')}
+        </address>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-4 invoice-col">
+        <b>{Lang::getLang('dueDate')}:</b> {Services::getRow('invoice_due_date')}
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

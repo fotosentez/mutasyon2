@@ -1,0 +1,28 @@
+<div class="row prlist">
+    <div class="col-sm-4 col-xs-6">
+	<img class="vbestseller" src="view/img/crown.png" />
+	<img class="vprimage" src="view/img/products/{$pr.products_id}/big/{$pr.cover}.jpg" onError="this.onerror=null;this.src='view/img/noimage-large.jpg';" />
+    </div>
+    <div class="col-sm-8 col-xs-6">
+	<div class="row listPrname">
+	    <a href="?u=products/detail&id={$pr.products_id}" title="{$pr.products_name}">
+		<span class="vprname">{$pr.products_name|truncate:50}</span>
+	    </a>
+	</div>
+	<div class="row listPrsname hidden-xs">
+	    <span class="vdetail">{$pr.products_short_detail|truncate:100}</span>
+	</div>
+	<div class="row listPrbuttons">
+	    <span class="price">{Settings::getRow('currency', 'default')}</span>{Products::getRow('salePrice', $pr.products_id)}
+	    <div style="clear:both">
+		<a data-toggle="collapse" href="#buystock" class="btn btn-success btn-xs buystock1" stock="Hafıza Kartı 4 GB" sid="1">
+		    <i class="fa fa-cart-plus"></i> Satın Al
+		</a>
+		<a data-toggle="collapse" href="#sellstock" class="btn btn-dark btn-xs sellstock1" price="10" stockname="Hafıza Kartı 4 GB">
+		    <i class="fa fa-shopping-cart"></i> Satış Yap
+		</a>
+		<input autocomplete="off" class="ctname" value="Hafıza Kartı" type="hidden" />
+	    </div>
+	</div>
+    </div>
+</div>

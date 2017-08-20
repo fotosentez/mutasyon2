@@ -1,0 +1,49 @@
+<div class="col-sm-5 col-xs-6">
+    <div class="col-sm-2 sort-header hidden-xs">
+	Sırala
+    </div>
+    <div class="col-xs-2">
+	<a href="javascript:changeView('name');">
+	    <i class="{Functions::getSession('name')}"></i> 
+	    <span class="hidden-xs">{Lang::getLang('name')}</span>
+	</a>
+    </div>
+    <div class="col-xs-2">
+	<a href="javascript:changeView('order');">
+            <i class="{Functions::getSession('order')}"></i> 
+            <span class="hidden-xs">{Lang::getLang('order')}</span>
+	</a>
+    </div>
+    <div class="col-xs-2">
+	<a href="javascript:changeView('date');">
+	    <i class="{Functions::getSession('date')}"></i> 
+            <span class="hidden-xs">{Lang::getLang('new')}</span>
+	</a>
+    </div>
+    <div class="col-xs-2">
+	<a href="javascript:changeView('stock');">
+	    <i class="{Functions::getSession('stock')}"></i> 
+            <span class="hidden-xs">{Lang::getLang('stock')}</span>
+	</a>
+    </div>
+    <div class="col-xs-2">
+	<a href="javascript:changeView('price');">
+	    <i class="{Functions::getSession('price')}" aria-hidden="true"></i>
+            <span class="hidden-xs">{Lang::getLang('price')}</span>
+	</a>
+    </div>
+</div>
+<div class="col-sm-2 col-xs-3 tar">
+    <select class="form-control" name="category" onchange="changeView('category');">
+        <option value="all" {if $smarty.session.products.category == 'all'} selected="selected"{/if}>Tüm Kategoriler</option>
+        {foreach Categories::getRow('sub') $s}
+        <option value="{$s.subcategory_id}" {if $smarty.session.products.category == $s.subcategory_id} selected="selected"{/if}>{$s.subcategory_name}</option>
+        {/foreach}
+    </select>
+</div>
+
+<div class="col-sm-offset-4 col-sm-1 col-xs-3 tar">
+    <a href="javascript:changeView('view');">
+        <i class="{Functions::getSession('view')}"></i> 
+    </a>
+</div>

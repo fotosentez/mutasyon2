@@ -1,0 +1,27 @@
+<div class="table-responsive col-sm-offset-8">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th style="width:60%">{Lang::getLang('subTotal')}:</th>
+                <td>
+                    {Settings::getRow('currency', 'default')}<span class="subTotal">0.00</span>
+                    <input type="hidden" class="subTotal" name="subTotal" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Finish and back button  -->
+<div class="col-xs-12">
+    <div class="col-xs-6 text-right">
+        <a type="button" class="btn btn-default" href="?u=products">
+            <span class="fa fa-angle-double-left"></span> {Lang::getLang('back')}
+        </a>
+    </div>
+    <div class="col-xs-6 text-right">
+        <button type="submit" class="btn btn-success"> {Lang::getLang('finish')} 
+            <span class="fa fa-angle-double-right"></span>
+        </button>
+    </div>
+</div>

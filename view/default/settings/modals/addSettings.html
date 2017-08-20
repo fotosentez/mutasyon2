@@ -1,0 +1,48 @@
+<div class="modal modalAddSettings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">{Lang::getLang('insert')}</h4>
+            </div>
+            <div class="modal-body">
+                <form action="controller/settings/addValue.php" method="post" enctype="multipart/form-data" class="noload">
+                    
+                    <div class="col-xs-12">
+                        
+                        <!--Value-->
+                        <label>{Lang::getLang('value')}</label>
+                        <input type="text" class="form-control" name="value" placeholder="Örneğin: Türk Lirası" />
+                        
+                        <!--Attributes-->
+                        <label class="margin-top">{Lang::getLang('attributes')}</label>
+                        <input type="text" class="form-control" name="attributes" placeholder="Örneğin: TRY" />
+                        
+                        <!--What -->
+                        <label class="margin-top">{Lang::getLang('what')}</label>
+                        <select class="form-control addSettings" name="what" onchange="disableAttributes();">
+                            <option value="none">{Lang::getLang('select')}</option>
+                            <option value="brand">{Lang::getLang('brand')}</option>
+                            <option value="amountType">{Lang::getLang('amountType')}</option>
+                            <option value="language">{Lang::getLang('language')}</option>
+                            <option value="currency">{Lang::getLang('currencyName')}</option>
+                            <option value="prefix">{Lang::getLang('prefix')}</option>
+                            <option value="payType">{Lang::getLang('payType')}</option>
+                            <option value="cash">{Lang::getLang('cash')}</option>
+                            <option value="customersGroups">{Lang::getLang('customersGroups')}</option>
+                            <option value="colors">{Lang::getLang('colors')}</option>
+                            <option value="themes">{Lang::getLang('themes')}</option>
+                        </select>
+                        
+                    </div>
+                    <div class="col-xs-12">
+                        <button class="btn btn-success margin-top send" type="submit">{Lang::getLang('insert')}</button>
+                    </div>
+                </form>
+            </div><!--/modal-body-->
+        </div><!--/modal-content-->
+    </div><!--/modal-dialog-->
+</div><!--/modal-->

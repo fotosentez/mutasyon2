@@ -1,0 +1,25 @@
+<div class="col-sm-2 col-xs-12">
+    <input type="number" class="form-control amount{$gp}" value="1" onChange="writeInvoiceInfs({$gp})" name="amount[]" />
+</div>
+
+<div class="col-sm-3 col-xs-12">
+   <select class="form-control" name="amountType">
+        {foreach AmountType::getRow() as $a}
+            <option value="{$a.at_id}">{$a.at_code}</option>
+        {/foreach}
+   </select>
+</div>
+
+<div class="col-sm-3 col-xs-12">
+    <input id="subPrice{$gp}" type="number" class="form-control eachPrice{$gp}" onChange="writeInvoiceInfs({$gp})" name="price[]" step="0.01" />
+    <input type="hidden" name="productID[]" value="{$gp}" />
+    <input type="hidden" class="forSum forSum{$gp}" value="0" />
+</div>
+
+<div class="col-sm-3 col-xs-12 tac">
+   {Config::getRow('currency')} <label class="eachSubTotal{$gp} eachSubTotal">0.00</label>
+</div>
+
+<div class="col-sm-1 col-xs-12">
+    <a type="button" onClick="removeFromCart({$gp}, 'buy')" class="btn btn-danger pull-right btn-xs"><span class="fa fa-close"></span></a>
+</div>

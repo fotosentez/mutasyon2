@@ -1,0 +1,37 @@
+<div class="row">
+    <!-- accepted payments column -->
+    <div class="col-xs-12 col-sm-6">
+        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">{Services::getRow('invoice_desc')}</p>
+    </div>
+    <!-- /.col -->
+    <div class="col-xs-12 col-sm-6">
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th style="width:50%">{Lang::getLang('subTotal')}:</th>
+                        <td>{Settings::getRow('currency', 'default')}<span class="subTotal"></span></td>
+                    </tr>
+                    <tr>
+                        <th style="width:50%">{Lang::getLang('discount')}:</th>
+                        <td>{Settings::getRow('currency', 'default')}<span class="discount">{Services::findTotal('discount')}</span></td>
+                    </tr>
+                    <tr>
+                        <th style="width:50%">{Lang::getLang('total')}:</th>
+                        <td>{Settings::getRow('currency', 'default')}<span class="total"></span></td>
+                    </tr>
+                    <tr>
+                        <th style="width:50%">{Lang::getLang('paid')}:</th>
+                        <td>{Settings::getRow('currency', 'default')}<span class="payment">{Services::getRow('payments')}</span></td>
+                    </tr>
+                    <tr>
+                        <th style="width:50%">{Lang::getLang('remain')}:</th>
+                        <td>{Settings::getRow('currency', 'default')}<span class="remain"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

@@ -1,0 +1,46 @@
+<div class="modal modalAddCategory" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">{Lang::getLang('addCategory')}</h4>
+            </div>
+            <div class="modal-body">
+                <form action="controller/products/addCategories.php" method="post" enctype="multipart/form-data" class="noload">
+                    
+                    <div class="col-xs-12">
+                        <div class="col-xs-6">
+                            {Lang::getLang('mainCategory')} 
+                            <input type="radio" name="type" value="main" onclick = "disableMain();" />
+                        </div>
+                        <div class="col-xs-6">
+                            {Lang::getLang('subCategory')}
+                            <input type="radio" name="type" value="sub" onclick = "enableMain();" checked="checked" />
+                        </div>
+                    </div>
+                    
+                    <label class="margin-top">{Lang::getLang('name')}</label>
+                    <input type="text" class="form-control" name="name" />
+                    
+                    <label class="margin-top">{Lang::getLang('desc')}</label>
+                    <input type="text" class="form-control" name="desc" />
+                    
+                    <label class="margin-top">{Lang::getLang('sku')}</label>
+                    <input type="text" class="form-control" name="sku" />
+                    
+                    <label class="margin-top">{Lang::getLang('mainCategory')}</label>
+                    <select name="main" class="form-control">
+                        {foreach Categories::getRow('main') as $c}
+                        <option value="{$c.maincategory_id}">{$c.maincategory_name}</option>
+                        {/foreach}
+                    </select>
+                    <div class="col-xs-12">
+                        <button class="btn btn-success margin-top send" type="submit">{Lang::getLang('addCategory')}</button>
+                    </div>
+                </form>
+            </div><!--/modal-body-->
+        </div><!--/modal-content-->
+    </div><!--/modal-dialog-->
+</div><!--/modal-->

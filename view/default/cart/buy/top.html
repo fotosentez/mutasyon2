@@ -1,0 +1,59 @@
+<div class="col-xs-12 col-sm-5">
+    
+<!--     Seller -->
+    <div class="col-xs-12">
+        <select class="form-control" name="sellerId">
+            {foreach Seller::getRow() as $s}
+            <option value="{$s.seller_id}">{$s.seller_name}</option>
+            {/foreach}
+        </select>
+    </div>
+    
+<!--     Date -->
+    <div class="col-xs-12 margin-top">
+        <input type="date" class="form-control" name="date" value="{IbniYunus::getDate('now')}" />
+    </div>
+    
+<!--     Desc -->
+    <div class="col-xs-12 margin-top">
+        <textarea name="desc" class="form-control"></textarea>
+    </div>
+    
+</div>
+
+<!-- Right -->
+<div class="col-xs-12 col-sm-5 col-sm-offset-2">
+    
+<!-- Virtual -->
+    <div class="col-xs-12">
+        <label for="default">
+            {Lang::getLang('virtualProduct')} 
+            <input type="checkbox" name="virtual" id="default" class="badgebox virtual" />
+            <span class="badge">&check;</span>
+            <span class="btn-info"> {Lang::getLang('ifCheckDontPay')}</span>
+        </label>
+    </div>
+    
+<!--     Payment group -->
+    <div class="col-xs-12 margin-top buybank">
+        <div class="col-xs-12">
+            <input type="number" name="buypayment" class="form-control notpay buypayment subTotal" step='0.01' />
+        </div>
+        
+        <div class="col-xs-12 margin-top">
+            <select class="form-control notpay" name="cash">
+                {foreach Settings::getRow('cash') as $s}
+                <option value="{$s.s_id}">{$s.s_value}</option>
+                {/foreach}
+            </select>
+        </div>
+        
+        <div class="col-xs-12 margin-top">
+            <select class="form-control notpay" name="payType">
+                {foreach Settings::getRow('payType') as $s}
+                <option value="{$s.s_id}">{$s.s_value}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+</div>

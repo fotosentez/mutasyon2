@@ -1,0 +1,117 @@
+<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+    <div class="profile_img">
+        
+        <!-- end of image cropping -->
+        <div id="crop-avatar">
+            <!-- Current avatar -->
+            <div class="avatar-view" title="Change the avatar">
+                <img src="view/img/user.png" alt="Avatar" />
+            </div>
+            {include file='view/default/customers/modalCropimage.html'}
+        </div>
+        <h3>{Customers::getRow("customers_name")} {Customers::getRow("customers_surname")}</h3>
+        {if Customers::getRow("group")}<h5 class="graph_title">({Customers::getRow("group")})</h5>{/if}
+        
+        <ul class="list-unstyled user_data">
+            <li><i class="fa fa-map-marker user-profile-icon"></i> {Customers::getRow("customers_address")}</li>
+            <li><i class="fa fa-briefcase user-profile-icon"></i> {Customers::getRow("customers_phone")}</li>
+            <li class="m-top-xs">
+                <i class="fa fa-external-link user-profile-icon"></i>
+                <a href="http://www.kimlabs.com/profile/" target="_blank">{Customers::getRow("customers_mail")}</a>
+            </li>
+        </ul>
+        
+        <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+        
+    </div>
+    
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        
+        <div class="profile_title">
+            <div class="col-md-6">
+                <h2>User Activity Report</h2>
+            </div>
+            <div class="col-md-6">
+                <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                </div>
+            </div>
+        </div>
+        <!-- start of user-activity-graph -->
+        <div id="graph_bar" style="width:100%; height:280px;"></div>
+        <!-- end of user-activity-graph -->
+        
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Recent Activity</a>
+                </li>
+                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Projects Worked on</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                    
+                    <!-- start recent activity -->
+                    <ul class="messages">
+                        {foreach Event::getRow('customer') as $a}
+                            <div class="col-sm-1"><img src="view/img/user.png" class="avatar" alt="Avatar" /></div>
+                            <div class="col-sm-9">
+                                <div class="message_wrapper">
+                                    <h4 class="heading">{Lang::getLang($a.event_type)}</h4>
+                                    <blockquote class="message">{$a.invoice_desc} {$a.payments_desc}</blockquote>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="message_date">
+                                    <h3 class="date text-info">{$a.day}</h3>
+                                    <p class="month">{Lang::getLang($a.month)}</p>
+                                    <p class="year">{$a.year}</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="url">
+                                    <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                                    <a href="#"><i class="fa fa-paperclip"></i> {$a.invoice_no} faturasına git</a>
+                                </p>
+                            </div>
+                        {/foreach}
+                    </ul>
+                    <!-- end recent activity -->
+                    
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab" style="overflow:auto;width:100%">
+                    
+                    <!-- start user projects -->
+                    <table class="data table table-striped no-margin">
+                        <thead>
+                            <tr>
+                                <th>Fatura No</th>
+                                <th>Açıklama</th>
+                                <th>Toplam</th>
+                                <th class="hidden-phone">Oluşturma Tarihi</th>
+                                <th>Ödeme Tarihi</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach Invoice::getRow('customer') as $inv}
+                            <tr>
+                                <td>{$inv.prefix_name}{$inv.invoice_no}</td>
+                                <td>{$inv.invoice_desc}</td>
+                                <td>{Settings::getRow('currency', 'default')}{Harizmi::findSoldInvoiceTotal($inv.productTotal, $inv.invoice_discount, $inv.invoice_discount_type)}</td>
+                                <td class="hidden-phone">{$inv.invoice_date}</td>
+                                <td class="hidden-phone">{$inv.invoice_due_date}</td>
+                                <td class="vertical-align-mid">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-danger" data-transitiongoal="{($inv.total-$inv.paytotal)}"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                    <!-- end user projects -->
+                </div>
+            </div>
+        </div>
