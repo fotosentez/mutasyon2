@@ -35,6 +35,13 @@
 .btn-purple:hover{
     color:#eee;
 }
+.btn-green{
+    background:#2ECC71;
+    color:#fff;
+}
+.btn-green:hover{
+    color:#eee;
+}
 .btn-yellow{
     background:#ECDD42;
     color:#000;

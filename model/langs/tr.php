@@ -193,7 +193,7 @@ Class Lang{
             "doDefault" 				=> "Öntanımlı Yap",
             "addPaytype" 				=> "Ödeme Yöntemi Ekle",
             "payType" 				        => "Ödeme Yöntemi",
-            "addCompanyInfs" 				=> "Şirket Bilgisi Ekle",
+            "addCompanyInfs" 				=> "Şirk. Bil. Ekle",
             "companyInfs" 				=> "Şirket Bilgileri",
             "companyName" 				=> "Şirket Adı",
             "addGroup" 				        => "Grup Ekle",
@@ -238,6 +238,7 @@ Class Lang{
             "configs" 				        => "Yapılandırma",
             "themes" 				        => "Temalar",
             "sale" 				        => "Ürünü Sat",
+            "other" 				        => "Ürünü Sat",
             
             
             //Payments
