@@ -1,6 +1,6 @@
 <div class="clearfix"></div>
 <div class="col-xs-12">
-<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target=".modalAddSeller">
+    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target=".modalAddSeller">
         <i class="glyphicon glyphicon-plane"></i> {Lang::getLang('add')}
     </button>
 </div>
@@ -9,30 +9,20 @@
 <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown margin-top">
     <div class="well profile_view">
         <div class="col-sm-12">
-            <h4 class="brief"><b><i>{$p.providers_name}</i></b></h4>
+            <h4 class="brief"><b><i>{$p.seller_name}</i></b></h4>
             <div class="left col-xs-7">
                 <ul class="list-unstyled">
-                    <li><i class="fa fa-phone"></i>{$p.providers_phone}</li>
-                    <p><strong>{Lang::getLang('address')}: </strong>{$p.providers_address}</p>
+                    <li><i class="fa fa-phone"></i>{$p.seller_tel}</li>
+                    <p><strong>{Lang::getLang('address')}: </strong>{$p.seller_address}</p>
                 </ul>
             </div>
             <div class="right col-xs-5 text-center">
-                <img src="{Providers::getRow('image', $p.providers_id)}" alt="{Providers::getRow('providers_name', $p.providers_id)}" class="img-circle img-responsive" />
+                <img src="{Seller::getRow('image', $p.seller_id)}" alt="{Seller::getRow('seller_name', $p.seller_id)}" class="img-circle img-responsive" />
             </div>
         </div>
         <div class="col-xs-12 bottom text-center">
             <div class="col-xs-6 emphasis">
-                <p class="ratings">
-                    {for $i = 1 to $p.providers_star}
-                    <a href="#"><span class="fa fa-star"></span></a>
-                    {/for}
-                    {for $i = 1 to (5-$p.providers_star)}
-                    <a href="#"><span class="fa fa-star-o"></span></a>
-                    {/for}
-                </p>
-            </div>
-            <div class="col-xs-6 emphasis">
-                <a href="?u=providers/detail&id={$p.providers_id}" type="button" class="btn btn-primary btn-xs"> 
+                <a href="?u=seller/detail&id={$p.seller_id}" type="button" class="btn btn-primary btn-xs"> 
                     <i class="fa fa-user"></i> {Lang::getLang('viewProfil')} 
                 </a>
             </div>

@@ -17,6 +17,17 @@ Class Seller{
             if($what == "invoices"){
                 return Dbase::getRows('*', 'buyInvoice', 'bi_seller_id = '.$id.' ');
             }
+            
+            
+            /*----------------SELLER IMAGE-----------------------------------------
+             */
+            if($what == "image"){
+                $coverImage = 'view/img/seller/'.$id.'.jpg';
+                if (file_exists($coverImage)) {return $coverImage;} 
+                else {return 'view/img/user.jpg';}
+            }
+            //------------------------------------------------------------------------
+            
             else if($what == "exist"){
                 return Dbase::isExist('seller', 'seller_id = '.$id.' AND seller_status = 1');
             }
