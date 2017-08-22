@@ -15,15 +15,15 @@
         
         
     </div>
-    {foreach Cart::getRow('cart') as $c}
+    {foreach Cart::getRow('buyCart') as $c}
     <div class="col-xs-12 margin-top">
         <div class="col-xs-3">
-            <div class="col-sm-2"><img id="cover" src="{Cart::buyCart('cover', $c)}" /></div>
+            <div class="col-sm-2"><img id="cover" src="{Cart::getRow('cover', $c)}" /></div>
             <div class="col-sm-10">
-                <label>{Cart::buyCart('products_name', $c)}</label><br />
-                <small>{Cart::buyCart('s_value', $c)} {Cart::buyCart('options_name', $c)}</small>
-                <input type="hidden" name="productID[]" value="{Cart::buyCart('id', $c)}" />
-                <input type="hidden" name="what[]" value="{Cart::buyCart('what', $c)}" />
+                <label>{Cart::getRow('products_name', $c)}</label><br />
+                <small>{Cart::getRow('s_value', $c)} {Cart::getRow('options_name', $c)}</small>
+                <input type="hidden" name="productID[]" value="{Cart::getRow('id', $c)}" />
+                <input type="hidden" name="what[]" value="{Cart::getRow('what', $c)}" />
             </div>
         </div>
         
@@ -31,12 +31,12 @@
             
             <!--         Amount -->
             <div class="col-sm-2 col-xs-12">
-                <input type="number" class="form-control amount{Cart::buyCart('id', $c)}" name="amount[]" value="{Cart::getRow('amount', $c)}" onChange="writeInvoiceInfs({Cart::buyCart('id', $c)})" />
+                <input type="number" class="form-control amount{Cart::getRow('id', $c)}" name="amount[]" value="{Cart::getRow('amount', $c)}" onChange="writeInvoiceInfs({Cart::getRow('id', $c)})" />
             </div>
             
             <!--         Amount type -->
             <div class="col-sm-2 col-xs-12">
-                <select class="form-control amountType{Cart::buyCart('id', $c)}" name="amountType[]" >
+                <select class="form-control amountType{Cart::getRow('id', $c)}" name="amountType[]" >
                     {foreach Settings::getRow('amountType') as $a}
                     <option value="{$a.s_id}">{$a.s_value}</option>
                     {/foreach}
@@ -45,13 +45,13 @@
             
             <!--         Price in -->
             <div class="col-sm-2 col-xs-12">
-                <input type="number" class="form-control eachPrice{Cart::buyCart('id', $c)}" name="eachPrice[]" step="0.01" onChange="writeInvoiceInfs({Cart::buyCart('id', $c)})" />
+                <input type="number" class="form-control eachPrice{Cart::getRow('id', $c)}" name="eachPrice[]" step="0.01" onChange="writeInvoiceInfs({Cart::getRow('id', $c)})" />
             </div>
             
             <!--         Sub total -->
             <div class="col-sm-1 col-xs-12">
-                {Settings::getRow('currency', 'default')} <label class="eachSubTotal{Cart::buyCart('id', $c)} eachSubTotal">0.00</label>
-                <input type="hidden" class="eachSubTotal{Cart::buyCart('id', $c)}" name="total" />
+                {Settings::getRow('currency', 'default')} <label class="eachSubTotal{Cart::getRow('id', $c)} eachSubTotal">0.00</label>
+                <input type="hidden" class="eachSubTotal{Cart::getRow('id', $c)}" name="total" />
             </div>
             
             
@@ -68,7 +68,7 @@
             
             <!--         Delete -->
             <div class="col-sm-1 col-xs-12 tar">
-                <a type="button" onClick="removeFromCart({Cart::buyCart('id', $c)}, 'buy')" class="btn btn-danger pull-right btn-xs">
+                <a type="button" onClick="removeFromCart({Cart::getRow('id', $c)}, 'buy')" class="btn btn-danger pull-right btn-xs">
                     <span class="fa fa-close"></span>
                 </a>
             </div>

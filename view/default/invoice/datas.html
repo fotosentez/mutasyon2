@@ -1,43 +1,21 @@
-<div class="col-sm-4 col-sm-offset-8 col-xs-12">
-    <div class="col-xs-12 col-sm-12 datas">
-        <div class="col-xs-6">
-            <div class="col-xs-6 dataLabel"><label>{Lang::getLang('subTotal')}</label></div>
-            <div class="col-xs-6 dataLabel2"><label>:</label></div>
-        </div>
-        <div class="col-xs-6 dataPrice">
-            <span>{Settings::getRow('currency', 'default')}</span>
-            <span class="subTotal">0.00</span>
-        </div>
+<div class="col-xs-3 pull-right datas">
+    
+    <!--Subtoal-->
+    <div class="row">
+        <div class="col-xs-6"><label>{Lang::getLang('subTotal')}:</label></div>
+        <div class="col-xs-6 tar">{Settings::getRow('currency', true)} <span class="subTotal">0.00</span></div>
     </div>
-    <div class="col-xs-12 col-sm-12 datas">
-        <div class="col-xs-6">
-            <div class="col-xs-6 dataLabel"><label>{Lang::getLang('discount')}</label></div>
-            <div class="col-xs-6 dataLabel2"><label>:</label></div>
-        </div>
-        <div class="col-xs-6 dataPrice">
-            <span>{Settings::getRow('currency', 'default')}</span>
-            <span class="discount">0.00</span>
-        </div>
+    
+    <!--Discount-->
+    <div class="row">
+        <div class="col-xs-6"><label>{Lang::getLang('discount')}:</label></div>
+        <div class="col-xs-6 tar">{Settings::getRow('currency', true)} <span class="discount">0.00</span></div>
     </div>
-    <div class="col-xs-12 col-sm-12 datas">
-        <div class="col-xs-6">
-            <div class="col-xs-6 dataLabel"><label>{Lang::getLang('total')}</label></div>
-            <div class="col-xs-6 dataLabel2"><label>:</label></div>
-        </div>
-        <div class="col-xs-6 dataPrice">
-            <span>{Settings::getRow('currency', 'default')}</span>
-            <span class="total">0.00</span>
-	    <input type="hidden" class="total" name="total" />
-        </div>
+    
+    <!--Total-->
+    <div class="row">
+        <div class="col-xs-6"><label>{Lang::getLang('total')}:</label></div>
+        <div class="col-xs-6 tar">{Settings::getRow('currency', true)} <span class="total">0.00</span></div>
     </div>
-</div>
-<div class="col-xs-6 text-right">
-    <a type="button" class="btn btn-default" href="?u=products">
-        <span class="fa fa-angle-double-left"></span> {Lang::getLang('back')}
-    </a>
-</div>
-<div class="col-xs-6 text-right">
-    <button type="submit" class="btn btn-success"> {Lang::getLang('finish')} 
-        <span class="fa fa-angle-double-right"></span>
-    </button>
+    
 </div>

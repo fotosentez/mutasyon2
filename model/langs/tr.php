@@ -238,7 +238,7 @@ Class Lang{
             "configs" 				        => "Yapılandırma",
             "themes" 				        => "Temalar",
             "sale" 				        => "Ürünü Sat",
-            "other" 				        => "Ürünü Sat",
+            "other" 				        => "Diğer",
             
             
             //Payments

@@ -3,7 +3,7 @@
     <h3 class="prod_title">{Products::getRow("products_name")}</h3>
     <p>{Products::getRow("products_short_detail")}</p>
 </div>
-<form action="controller/cart/addToCart.php" method="post" id="addToCart" class="noload" enctype="multipart/form-data">
+<form  id="addToCart" onsubmit="return false">
     <!--options -->
     <div class="col-xs-12">
         <h2>
@@ -51,8 +51,12 @@
         </div>
     </div>   
     <div class="col-xs-12">
-        <span class="btn btn-default btn-md" onclick="$('#addToCart').submit();"><i class="glyphicon glyphicon-shopping-cart"></i> {Lang::getLang('sale')}</span>
-        <span class="btn btn-default btn-md" onclick="$('#addToBuyCart').submit();"><i class="glyphicon glyphicon-download-alt"></i> {Lang::getLang('buy')}</span>
+        <button type="button" class="btn btn-default btn-md" onclick='sendToCart("cart");'>
+            <i class="glyphicon glyphicon-shopping-cart"></i> {Lang::getLang('sale')}
+        </button>
+        <button type="button" class="btn btn-default btn-md" onclick='sendToCart("buyCart");'>
+            <i class="glyphicon glyphicon-download-alt"></i> {Lang::getLang('buy')}
+        </button>
     </div>
 </form>
 <div class="product_social col-xs-12">

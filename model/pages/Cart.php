@@ -9,12 +9,40 @@ Class Cart{
          */
         if($what == "cart"){
             
-            $d = array_unique($_SESSION['cart']);//Remove dublice values
-            return $d;
+            return array_unique($_SESSION['cart']);//Remove dublice values
             
         }
         //----------------------------------------------------------------------------------
         
+        
+        
+        /*----------------GET SALE CART-----------------------------------------------------
+         * E.g. Cart::getRow('saleCart');
+         */
+        else if($what == 'saleCart'){
+            $cart = array();
+            foreach(self::getRow('cart') as $a){
+                $a = explode(',', $a);
+                if($a[2] == 'cart'){array_push($cart, $a[0].','.$a[1].','.$a[2]);}
+            }
+            return $cart;
+        }
+        //----------------------------------------------------------------------------------
+        
+        
+        
+        /*----------------GET BUY CART------------------------------------------------------
+         * E.g. Cart::getRow('buyCart');
+         */
+        else if($what == 'buyCart'){
+            $cart = array();
+            foreach(self::getRow('cart') as $a){
+                $a = explode(',', $a);
+                if($a[2] == 'buyCart'){array_push($cart, $a[0].','.$a[1].','.$a[2]);}
+            }
+            return $cart;
+        }
+        //----------------------------------------------------------------------------------
         
         
         
@@ -22,7 +50,7 @@ Class Cart{
          * Find products total in cart
          * E.g. Cart::getRow('amount', '1,products');
          */
-        else if($what == "amount"){
+        else if($what == "amount" AND $key){
             $countArray = array_count_values($_SESSION['cart']);
             foreach($countArray as $a => $k){
                 if($key == $a){
@@ -35,33 +63,11 @@ Class Cart{
         
         
         
-        /*-----COUNT CART--------------------------------------------------------------------
-         * Find products total in cart
-         * E.g. Cart::getRow('count', '1,products');
-         */
-        else if($what == "count"){
-            return count($_SESSION['cart']);
-        }
-        //-----------------------------------------------------------------------------------
-        
-        
-        else{return false;}
-        
-    }
-    
-    
-    /*------------GET BUY CART----------------------------------------------------------------------------
-     * E.g. Cart::buyCart('produts_name', '1,options');
-     */
-    function buyCart($what, $id){
-        $a = explode(',', $id);
-        
-        
-        
         /*-------GET PRODUCT OR OPTIONS ID------------------------------------------------------------
-         * 
+         * E.g. Cart::getRow('id', '1,options,cart');
          */
-        if($what == "id"){
+        else if($what == "id" AND $key){
+            $a = explode(',', $key);
             return $a[0];
         }
         //--------------------------------------------------------------------------------------------
@@ -70,19 +76,91 @@ Class Cart{
         
         
         /*-----GET TYPE FOR INSERT INVOICE------------------------------------------------------------
-         * 
+         * E.g. Cart::getRow('what', '1,options,cart');
          */
-        else if($what == "what"){
+        else if($what == "what" AND $key){
+            $a = explode(',', $key);
             return $a[1];
         }
         //--------------------------------------------------------------------------------------------
         
         
         
+        
+        /*-----GET CART TYPE--------------------------------------------------------------------------
+         * E.g. Cart::getRow('cartType', '1,options,cart');
+         * For detect buy cart and cart
+         */
+        else if($what == "cartType" AND $key){
+            $a = explode(',', $key);
+            return $a[2];
+        }
+        //--------------------------------------------------------------------------------------------
+        
+        
+        
+        
+        /*-----COUNT CART-----------------------------------------------------------------------------
+         * Find products total in cart
+         * E.g. Cart::getRow('count', 'cart');
+         */
+        else if($what == "count"){
+            
+            $count = array();
+            foreach(@$_SESSION['cart'] as $c){
+                $a = explode(',', $c);
+                array_push($count, $a[2]);
+            }
+            $cart = array_count_values($count);
+            
+            if($key == 'cart'){return @$cart['cart'];}//For count sale cart
+            else if($key == 'buyCart'){return @$cart['buyCart'];}//For count buy cart
+            else{return 0;}
+        }
+        //-------------------------------------------------------------------------------------------
+        
+        
+        
+        
+        /*----FIND SALE PRICE OF OPTIONS--------------------------------------------------------------
+         */
+        else if($what == 'price' AND $key){
+            $a = explode(',', $key);
+            if($a[1] == 'options'){
+                $getInfs = Dbase::getRows('pp_price, pp_profit, pp_profit_method', 'purchasedProducts', 'pp_products_options_id = '.$a[0]);
+                
+                foreach($getInfs as $g){
+                    return Harizmi::getRow('total', array('profit' => $g['pp_profit'], 'price' => $g['pp_price'], 'method' => $g['pp_profit_method']));
+                }
+            }
+            else{
+                return Products::getRow('price', $a[0]);
+            }
+            
+            
+        }
+        //--------------------------------------------------------------------------------------------
+        
+        
+        
+        /*----GET NAME OF OPTIONS---------------------------------------------------------------------
+         */
+        else if($what == 'options_name' AND $key){
+            $a = explode(',', $key);
+            if($a[1] == 'options'){
+                return Dbase::getRow('products_options INNER JOIN options ON po_options_id = options_id', 'po_id = '.$a[0], 'options_name');
+            }
+        }
+        //--------------------------------------------------------------------------------------------
+        
+        
+        
+        
         /*-----GET OTHER VALUES-----------------------------------------------------------------------
-         * 
          */
         else{
+            $a = explode(',', $key);
+            
             if($a[1] == 'options'){
                 $getProductsId = Dbase::getRow('products_options', 'po_id = '.$a[0], 'po_products_id');
                 return Products::getRow($what, $getProductsId);
@@ -91,17 +169,16 @@ Class Cart{
                 return Products::getRow($what, $a[0]);
             } 
         }
-        //--------------------------------------------------------------------------------------------
-    }
-    //----------------------------------------------------------------------------------------------------------
-    
-    
-    
-    
-    function saleCart($what){
         
     }
-
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     //Build page

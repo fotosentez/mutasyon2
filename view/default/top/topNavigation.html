@@ -30,19 +30,19 @@
                         <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-shopping-cart"></i>
                             <div class="refreshTopCartSpan">
-                                <span class="badge bg-green">{Cart::getRow('count')}</span>
+                                <span class="badge bg-green">{Cart::getRow('count', 'cart')}</span>
                             </div>
                         </a>
                         <ul class="dropdown-menu list-unstyled msg_list animated fadeInDown col-xs-12" role="menu">
                             <div class="refreshTopCartTopList">
                                 <h3>Sepet</h3>
-                                {foreach Cart::saleCart() as $gsp}
+                                {foreach Cart::getRow('cart') as $gsp}
                                 <li>
                                 <div class="col-sm-1 topCartImg">
-                                        <img src="{Products::getRow('cover', $gsp)}" alt="{Products::getRow('products_name', $gsp)}" />
+                                        <img src="{Cart::getRow('cover', $gsp)}" alt="{Cart::getRow('products_name', $gsp)}" />
                                     </div>
                                     <div class="col-sm-10 col-sm-offset-1">
-                                    <a href="#">{Products::getRow('products_name', $gsp)}</a>
+                                    <a href="#">{Cart::getRow('products_name', $gsp)}</a>
                                     </div>
                                 </li>
                                 {/foreach}
@@ -62,19 +62,19 @@
                         <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-shopping-cart"></i>
                             <div class="refreshTopBuyCartSpan">
-                                <span class="badge bg-red">{Cart::getRow('count')}</span>
+                                <span class="badge bg-red">{Cart::getRow('count', 'buyCart')}</span>
                             </div>
                         </a>
                         <ul class="dropdown-menu list-unstyled msg_list animated fadeInDown col-xs-12" role="menu">
                             <div class="refreshTopBuyCartTopList">
                                 <h3>Sepet</h3>
-                                {foreach Cart::getRow("buyCart") as $gbp}
+                                {foreach Cart::getRow("cart") as $gbp}
                                 <li>
                                 <div class="col-sm-1 topCartImg">
-                                    <img src="{Products::getRow('cover', $gbp)}" alt="{Products::getRow('products_name', $gbp)}" />
+                                    <img src="{Cart::getRow('cover', $gbp)}" alt="{Cart::getRow('products_name', $gbp)}" />
                                     </div>
                                     <div class="col-sm-10 col-sm-offset-1">
-                                    <a href="#">{Products::getRow('products_name', $gbp)}</a>
+                                    <a href="#">{Cart::getRow('products_name', $gbp)}</a>
                                     </div>
                                 </li>
                                 {/foreach}

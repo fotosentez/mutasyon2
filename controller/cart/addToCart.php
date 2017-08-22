@@ -1,13 +1,18 @@
 <?php
 require_once(dirname(__FILE__).'/../../model/settings/include.php'); // Get All Functions
-/*
- * Contents is contents of options
- * options id is id of products options table
- */
 $error = array();
-$postedOptions = Get::getValue('postedOptions');
-$postedColors = Get::getValue('postedColors');
-$productId = Get::getValue('productId');
+
+$param = array();
+$datastring = Get::getValue('datastring');
+parse_str($datastring, $param);
+
+
+$postedOptions = @$param['postedOptions'];
+$postedColors = @$param['postedColors'];
+$productId = @$param['productId'];
+$what = Get::getValue('what');
+
+
 
 //------------SETTINGS------------------------
 $prID = "po_products_id = ".$productId;
@@ -16,6 +21,8 @@ $optionsID = "po_options_id = ".$postedOptions;
 $stepHaveAll = 0;
 $stepOnlyColors = 0;
 $stepOnlyOptions = 0;
+$stepProductsCart = 0;
+$stepAddOptionsCart = 0;
 //--------------------------------------------
 
 
@@ -104,29 +111,65 @@ if($checkOptions){
     
 }
 else{
-    $getSKU = Dbase::getRow('productsView', 'products_id = '.$productId, 'products_id');
-    $deneme = $getSKU.",products";
-    Session::arrayPush('cart', $deneme);
+    $getId = Dbase::getRow('products', 'products_id = '.$productId, 'products_id');
+    $stepProductsCart = 1;
 }
 
 
 if($stepHaveAll == 1){
-    $getSKU = Dbase::getRow('productsView', 'products_id = '.$productId.' AND '.$colorID.' AND '.$optionsID.' ', 'po_id');
-    $deneme = $getSKU.",options";
-    Session::arrayPush('cart', $deneme);
-    Session::arrayPush('buyCart', $deneme);
+    $getId = Dbase::getRow('products_options', 'po_products_id = '.$productId.' AND '.$colorID.' AND '.$optionsID.' ', 'po_id');
+    $stepAddOptionsCart = 1;
 }
 if($stepOnlyColors == 1){
-    $getSKU = Dbase::getRow('productsView', 'products_id = '.$productId.' AND '.$colorID.' AND po_options_id ISNULL', 'po_id');
-    $deneme = $getSKU.",options";
-    Session::arrayPush('cart', $deneme);
-    Session::arrayPush('buyCart', $deneme);
+    $getId = Dbase::getRow('products_options', 'po_products_id = '.$productId.' AND '.$colorID.' AND po_options_id ISNULL', 'po_id');
+    $stepAddOptionsCart = 1;
 }
 if($stepOnlyOptions == 1){
-    $getSKU = Dbase::getRow('productsView', 'products_id = '.$productId.' AND '.$optionsID.' AND po_colors_id ISNULL', 'po_id');
-    $deneme = $getSKU.",options";
-    Session::arrayPush('cart', $deneme);
-    Session::arrayPush('buyCart', $deneme);
+    $getId = Dbase::getRow('products_options', 'po_products_id = '.$productId.' AND '.$optionsID.' AND po_colors_id ISNULL', 'po_id');
+    $stepAddOptionsCart = 1;
 }
+
+
+/*--------------ADD TO CART--------------------------------------------------------------------------------------------------
+ */
+if($stepAddOptionsCart == 1){
+    if($what == 'buyCart'){
+        $convert = $getId.",options,buyCart";
+        Session::arrayPush('cart', $convert);
+    }
+    
+    
+    else if($what == 'cart'){
+        $checkStock = Dbase::getRow('purchasedProducts', 'pp_products_options_id = '.$getId.'', 'sum(pp_amount)');
+        if($checkStock > 0){
+            $convert = $getId.",options,cart";
+            Session::arrayPush('cart', $convert);
+        }
+        else{
+            echo Lang::getLang('notEnoughStock');
+            exit();
+        }
+    }
+}
+else if($stepProductsCart == 1){
+    if($what == 'buyCart'){
+        $convert = $getId.",products,buyCart";
+        Session::arrayPush('cart', $convert);
+    }
+    
+    
+    else if($what == 'cart'){
+        $checkStock = Dbase::getRow('pp_products_id', 'pp_products_options_id = '.$getId.' pp_products_options_id IS NULL', 'sum(pp_amount)');
+        if($checkStock > 0){
+            $convert = $getId.",products,cart";
+            Session::arrayPush('cart', $convert);
+        }
+        else{
+            echo Lang::getLang('notEnoughStock');
+            exit();
+        }
+    }
+}
+//---------------------------------------------------------------------------------------------------------------------------
 
 ?>

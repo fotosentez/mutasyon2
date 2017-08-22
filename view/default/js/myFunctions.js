@@ -89,7 +89,6 @@ writeInvoiceInfs();
 function writeInvoiceInfs(e){
     var amount = $('.amount' + e).val(); //Get product amount
     
-    var eachPrice = $('.eachPrice' + e).text(); //Get product price (If eachPrice is not input)
     var eachPrice = $('.eachPrice' + e).val(); //Get product price
     
     var eachSubTotal = amount*eachPrice; //Calculate amount*price
@@ -322,3 +321,22 @@ function changeSettingOption(id, what){
     }
 }
 //-----------------------------------------------------------------------------------------------
+
+function sendToCart(what){
+    var datastring = $("#addToCart").serialize();
+    $.ajax({
+        type: "POST",
+        url: "controller/cart/addToCart.php",
+        data: {datastring, what},
+        success:function(t){
+            new PNotify({
+                title: false,
+                text: t,
+                type: 'info',
+            });
+        },
+        error: function() {
+            
+        }
+    });
+}

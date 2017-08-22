@@ -18,26 +18,40 @@
             </div>
         </div>
         <div class="refreshCartTopList">
-            {foreach Cart::getRow('cart') as $gp}
+            {foreach Cart::getRow('saleCart') as $gp}
             <div class="col-sm-12 col-xs-12 margin-top">
-            <div class="col-sm-12 col-xs-12">
-                <div class="col-xs-11">
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="col-xs-2 media"><img src="{Products::getRow('cover', 1)}" class="avatar"/></div>
-                        <div class="col-xs-10">
-                            <label>{Products::getRow('products_name', $gp)}</label><br />
-                            <small>{Products::getRow('s_value', $gp)} {Products::getRow('options_name', $gp)}</small>
+                <div class="col-sm-12 col-xs-12">
+                    <div class="col-xs-11">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="col-xs-2 media"><img src="{Cart::getRow('cover', $gp)}" class="avatar"/></div>
+                            <div class="col-xs-10">
+                                <label>{Cart::getRow('products_name', $gp)}</label><br />
+                                <small>{Cart::getRow('s_value', $gp)} {Cart::getRow('options_name', $gp)}</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-xs-12">
+                            <div class="col-xs-4">
+                                <input type="number" value="{Cart::getRow('amount', $gp)}" class="form-control amount{Cart::getRow('id', $gp)}" onChange="writeInvoiceInfs({Cart::getRow('id', $gp)})" />
+                            </div>
+                            
+                            <div class="col-xs-4">
+                                <span class="">{Settings::getRow('currency', true)} {Cart::getRow('price', $gp)}</span>
+                                <input type="hidden" class="eachPrice eachPrice{Cart::getRow('id', $gp)}" value="{Cart::getRow('price', $gp)}" />
+                            </div>
+                            <div class="col-xs-4">
+                                <label>
+                                    {Settings::getRow('currency', true)} <span class="eachSubTotal eachSubTotal{Cart::getRow('id', $gp)}">{Cart::getRow('price', $gp)*Cart::getRow('amount', $gp)}</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-5 col-xs-12">
-                        <div class="col-xs-4"><input type="numeric" value="1" class="form-control" /></div>
-                        <div class="col-xs-4"><label>{Products::getRow('price', $gp)}</label></div>
-                        <div class="col-xs-4"><label></label></div>
+                    <div class="col-xs-1">
+                        <a type="button" class="btn btn-danger pull-right btn-xs">
+                            <span class="fa fa-close"></span>
+                        </a>
                     </div>
                 </div>
-                <div class="col-xs-1"><label>{Lang::getLang('delete')}</label></div>
             </div>
-        </div>
             {/foreach}
             {include file='view/default/invoice/datas.html'}
         </form>
