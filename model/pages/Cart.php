@@ -113,9 +113,17 @@ Class Cart{
             }
             $cart = array_count_values($count);
             
-            if($key == 'cart'){return @$cart['cart'];}//For count sale cart
-            else if($key == 'buyCart'){return @$cart['buyCart'];}//For count buy cart
-            else{return 0;}
+            if($key == 'cart'){
+                if(empty(self::getRow('cart'))){return 0;}
+                else{return @$cart['cart'];}//For count sale cart
+            }
+            else if($key == 'buyCart'){
+                if(empty(self::getRow('buyCart'))){return 0;}
+                else{return @$cart['buyCart'];}//For count buy cart
+            }
+            else{
+                return 0;
+            }
         }
         //-------------------------------------------------------------------------------------------
         
