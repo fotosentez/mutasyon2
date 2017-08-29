@@ -19,7 +19,7 @@
         </div>
         <div class="refreshCartTopList">
             {foreach Cart::getRow('saleCart') as $gp}
-            <div class="col-sm-12 col-xs-12 margin-top">
+            <div class="col-sm-12 col-xs-12 margin-top {Cart::getRow('id', $gp)}">
                 <div class="col-sm-12 col-xs-12">
                     <div class="col-xs-11">
                         <div class="col-sm-6 col-xs-12">
@@ -27,11 +27,13 @@
                             <div class="col-xs-10">
                                 <label>{Cart::getRow('products_name', $gp)}</label><br />
                                 <small>{Cart::getRow('s_value', $gp)} {Cart::getRow('options_name', $gp)}</small>
+                                <input type="hidden" name="productID[]" value="{Cart::getRow('id', $gp)}" />
+                                <input type="hidden" name="productType[]" value="{Cart::getRow('productType', $gp)}" />
                             </div>
                         </div>
                         <div class="col-sm-5 col-xs-12">
                             <div class="col-xs-4">
-                                <input type="number" value="{Cart::getRow('amount', $gp)}" class="form-control amount{Cart::getRow('id', $gp)}" onChange="writeInvoiceInfs({Cart::getRow('id', $gp)})" />
+                                <input type="number" value="{Cart::getRow('amount', $gp)}" class="form-control amount{Cart::getRow('id', $gp)}" name="amount[]" onChange="writeInvoiceInfs({Cart::getRow('id', $gp)})" />
                             </div>
                             
                             <div class="col-xs-4">

@@ -19,17 +19,88 @@ Class Check {
      */
     public static function control($what, $name, $inputname = '', $required = false)
     {
-        if($what == 'name'){$check = preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($name));}
-        if($what == 'address'){$check = preg_match('/^[^<>;=#{}]*$/ui', $name);}
-        if($what == 'url'){$check = preg_match( '/^[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}'.'((:[0-9]{1,5})?\\/.*)?$/i' ,$name);}
-        if($what == 'numeric'){$check = $name > 0 AND preg_match('/^[+0-9. ()\/-]*$/', $name);}
-        if($what == 'password'){$check = preg_match("#.*^(?=.{5,20})(?=.*[a-z])(?=.*[0-9]).*$#", $name);}
-        if($what == 'productName'){$check = preg_match('/^[^<>;=#{}]*$/ui', $name);}
-        if($what == 'mail'){$check = preg_match('/^[a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]+[.a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]*@[a-z\p{L}0-9]+(?:[.]?[_a-z\p{L}0-9-])*\.[a-z\p{L}0-9]+$/ui', $name);}
-        if($what == 'md5'){$check = preg_match('/^[a-f0-9A-F]{32}$/', $name);}
-        if($what == 'exist'){if($name == 1){$check = true;}else{$check = false;}}
-        if($what == 'equal'){$e = explode(',', $name);if($e[0] != $e[1]){$check = true;}else{$check = false;}}
-        if($what == 'date'){$d = DateTime::createFromFormat('Y-m-d', $name);$check = $d && $d->format('Y-m-d') === $name;}
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for it is name or not. It can not include special characters and numerics
+        *   E.g. Check::control('name', $post, $inputname);
+        */
+        if($what == 'name'){$check = preg_match(Check::cleanUniCode('/^[^0-9!<>,;?=+()@#"°{}_$%:]*$/u'), stripslashes($name));$lang="validateText";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for it is a validate address
+        *   E.g. Check::control('address', $post, $inputname);
+        */
+        if($what == 'address'){$check = preg_match('/^[^<>;=#{}]*$/ui', $name);$lang="validateText";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for it is a valiadete url
+        *   E.g. Check::control('url', $post, $inputname);
+        */
+        if($what == 'url'){$check = preg_match( '/^[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}'.'((:[0-9]{1,5})?\\/.*)?$/i' ,$name);$lang="validateUrl";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for it is a numeric or not if a numeric return true
+        *   E.g. Check::control('numeric', $post, $inputname);
+        */
+        if($what == 'numeric'){
+            if(preg_match('/^[+0-9. ()\/-]*$/', $name)){
+                if($name > 0){
+                    $check = true;
+                }
+                else{
+                    $check = false;
+                }
+            }
+            else{
+                $check = false;
+            }
+            $lang="validateText";
+        }
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check password strange. It must between 5 and 20 letters and include at least one numeric 
+        *   E.g. Check::control('password', $post, $inputname);
+        */
+        if($what == 'password'){
+            $check = preg_match("#.*^(?=.{5,20})(?=.*[a-z])(?=.*[0-9]).*$#", $name);
+            $lang="validatePassword";
+        }
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post like description. It can include numeric and special characters like :,_;
+        *   E.g. Check::control('desc', $post, $inputname);
+        */
+        if($what == 'desc'){$check = preg_match('/^[^<>;=#{}]*$/ui', $name);$lang="validateDesc";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for valiadete mail
+        *   E.g. Check::control('mail', $post, $inputname);
+        */
+        if($what == 'mail'){$check = preg_match('/^[a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]+[.a-z\p{L}0-9!#$%&\'*+\/=?^`{}|~_-]*@[a-z\p{L}0-9]+(?:[.]?[_a-z\p{L}0-9-])*\.[a-z\p{L}0-9]+$/ui', $name);$lang="validateMail";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for validate md5
+        *   E.g. Check::control('md5', $post, $inputname);
+        */
+        if($what == 'md5'){$check = preg_match('/^[a-f0-9A-F]{32}$/', $name);$lang="validateMd5";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for exist or not. If post is 1 when return true else return false 
+        *   E.g. Check::control('exist', $post, $inputname);
+        */
+        if($what == 'exist'){if($name == 1){$check = true;}else{$check = false;}$lang="validateExist";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check equal two post. If two post equal when return true
+        *   E.g. Check::control('equal', 'postOne,postTwo', $inputname);
+        */
+        if($what == 'equal'){$e = explode(',', $name);if($e[0] == $e[1]){$check = true;}else{$check = false;}$lang="validateEqual";}
+        
+        /*-------------------------------------------------------------------------------------------------------------------
+        *   Check post for valiadete date
+        *   E.g. Check::control('date', $post, $inputname);
+        */
+        if($what == 'date'){$d = DateTime::createFromFormat('Y-m-d', $name);$check = $d && $d->format('Y-m-d') === $name;$lang="validateDate";}
+        //-------------------------------------------------------------------------------------------------------------------
         
         global $error;
         
@@ -37,14 +108,14 @@ Class Check {
             if($required == true){
                 if($name){
                     if($check){Output::cleanRed();return true;}
-                    else{return array_push($error, $inputname);}
+                    else{return array_push($error, $inputname.','.$lang);}
                 }
-                else{return array_push($error, $inputname);}
+                else{return array_push($error, $inputname.','.$lang);}
             }
             else{
                 if($name){
                     if($check){Output::cleanRed();return true;}
-                    else{return array_push($error, $inputname);}
+                    else{return array_push($error, $inputname.','.$lang);}
                 }
                 else{return true;}
             }

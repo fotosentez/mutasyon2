@@ -45,13 +45,15 @@ Class Lang{
             "proccessSuccess" 				=> "İşlem başarıyla tamamlandı",
             "checkSuccess" 				=> "Denetim başarılı",
             "checkFailed" 				=> "Denetimde sorun var!",
-	    "changedView" 				=> "Görünüm değiştirildi",
+            "changedView" 				=> "Görünüm değiştirildi",
             "validatePassword" 			        => "Şifreniz 5-20 karakter arasında olmalı ve enaz bir harf ve sayı içermelidir",
             "keyError" 			                => "Anahtar uyuşmuyor",
             "notAnyFile" 			        => "Lütfen bir resim yollayınız!",
             "fileVeryBig" 			        => "Maksimum yükleme boyutu 2 Mb olmalıdır",
             "fileNotJpg" 			        => "Dosya türü olarak JPEG seçiniz!",
             "writeDBError" 			        => "Veritabanına yazılırken hata oluştu!",
+            "writeInvoiceError" 			        => "Fatura eklenirken hata oluştu!",
+            "writeProductsError" 			        => "Ürünler faturaya eklenirken hata oluştu!",
             "doLogin" 			                => "Giriş yapıldı anasayfaya yönlendiiriliyorsunuz",
             "cantLogin" 			        => "Kullanıcı adı yada şifre yanlış!",
             "validateShortInput" 		        => "Geçerli sayıda karakter girmediniz!",
@@ -296,7 +298,7 @@ Class Lang{
             "city" 				        => "Şehir",
             "country" 				        => "Ülke",
             "group" 				        => "Grup",
-
+            
             //Mouths
             "01" 				        => "Ocak",
             "02" 				        => "Şubat",
@@ -310,24 +312,22 @@ Class Lang{
             "10" 				        => "Ekim",
             "11" 				        => "Kasım",
             "12" 				        => "Aralık",
-
+            
             //Admin Status or access informations
             "superuser" 				=> "Yetkili Kullanıcı",
             "admin" 				        => "Kullanıcı",
             "adminLevel" 				=> "Kullanıcı Seviyesi",
             "cannotAccess" 				=> "Bu işlem için yetkili değilsiniz!",
-
+            
             //Errors
-            "errorname" 				=> "Lütfen geçerli bir isim giriniz!<br />",
-            "errorconnectedPerson" 			=> "Lütfen geçerli bir isim giriniz!<br />",
-            "erroraddress" 				=> "Lütfen geçerli bir adres formatı giriniz!<br />",
-            "errorweb" 				        => "Lütfen geçerli bir web adresi giriniz!<br />",
-            "errormail" 				=> "Lütfen geçerli bir mail adresi giriniz!<br />",
-            "errorphone" 				=> "Lütfen geçerli bir telefon numarası giriniz!<br />",
-            "connectionErrorCustomers" 			=> "Müşteri listesine bağlantı hatası",
-            "connectionErrorSettings" 			=> "Ayarlar tablosuna bağlantı hatası",
-            "connectionErrorInvoice" 			=> "Faturalar tablosuna bağlantı hatası",
-            "connectionErrorService" 			=> "Servis tablosuna bağlantı hatası",
+            "errorConnectedPerson" 			=> "Lütfen geçerli bir isim giriniz!<br />",
+            "validateAddress" 				=> "Lütfen geçerli bir adres formatı giriniz!<br />",
+            "validateWeb" 				        => "Lütfen geçerli bir web adresi giriniz!<br />",
+            "valiadteMail" 				=> "Lütfen geçerli bir mail adresi giriniz!<br />",
+            "validatePhone" 				=> "Lütfen geçerli bir telefon numarası giriniz!<br />",
+            "validateDesc" 				=> "Lütfen geçerli bir içerik giriniz!<br />",
+            "validateNumeric" 				=> "Lütfen geçerli bir sayı giriniz!<br />",
+            "validateEqual" 				=> "Lütfen geçerli bir içerik giriniz!<br />",
             
             );
             return $value[$a];

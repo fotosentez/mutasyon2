@@ -12,7 +12,7 @@ $main = Get::getValue("main");
 
 $stepOne = 0;
 if(Check::control('name', $name, 'name', true)){
-    if(Check::control('productName', $desc, 'desc')){
+    if(Check::control('desc', $desc, 'desc')){
         if($type == "sub"){
             if(Check::control('numeric', $main, 'main', true)){
                 if(Check::numberOfCharacters($sku, 3, 3,  'sku')){

@@ -9,7 +9,7 @@ $sku = Get::getValue('sku');
 
 $stepOne = 0;
 if(Check::control('name', $name, 'name', true)){
-    if(Check::control('productName', $desc, 'desc')){
+    if(Check::control('desc', $desc, 'desc')){
         if(Check::numberOfCharacters($sku, 3, 3,  'sku')){
             if(empty($error)){$stepOne = 1; echo Lang::getLang('checkSuccess')."<br />";}
             else{Output::error();}

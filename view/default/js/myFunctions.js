@@ -100,21 +100,29 @@ function writeInvoiceInfs(e){
 	$(".subTotal").text(subTotal.toFixed(2));//write sub total (not include discount)
 	$(".subTotal").val(subTotal.toFixed(2));//write sub total (not include discount)
     });
-    //writeDiscount();
+    writeDiscount();
     writeTotal();
 }
 function writeDiscount(){
-    var discountType = $('.discountType').val();
-    var discountRate = $('.discountRate').val();
+    var discountRate = $('[name=discount]').val();
     var subTotal = $('.subTotal').text();
-    var discountValue = $('.discount').text();
-    alert(discountValue);
-    if(!discountValue){
-	if(discountType == 'percent'){var discount = subTotal*discountRate/100;}else{var discount = discountRate - 0;}
-	$('.discount').text(discount.toFixed(2));
+    var discount;
+    
+    if($('[name=discount]').is(':disabled')){
+        discount = 0;
     }
-    
-    
+    else{
+        var discountType = $('[name=discountType]').val();
+        if(discountType == 'percent'){
+            discount = subTotal*discountRate/100;
+        }
+        if(discountType == 'amount'){
+            discount = discountRate;
+        }
+        
+    }
+    $('.discount').text(discount);
+    writeTotal();
 }
 function writeTotal(){
     var subTotal = $('.subTotal').text();
@@ -139,11 +147,17 @@ function getDiscount(){
         url: 'view/default/php/php.php',
         data : { 'customerId': customerId},
         success:function(t){
-            $('.discountRate').val(t);
+            $('[name=discount]').val(t);
 	    writeInvoiceInfs();
         }
     });
 }
+$('#default').click(function(){
+    $('.customerDiscount').prop('disabled', function(i, v) { 
+        return !v; 
+    });
+    writeInvoiceInfs();
+});
 
 /*---------------------------POST WITHOUT RELOAD PAGE------------------------------------------------------- 
  * Send forms with ajax no reload

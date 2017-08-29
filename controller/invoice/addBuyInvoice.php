@@ -37,7 +37,7 @@ $stepTwo = 0;
 
 //--------------------------CHECK VALUES-------------------------------------------------------------------
 if(Check::control('numeric', $sellerId, 'sellerId', true)){
-    if(Check::control('productName', $desc, 'desc')){
+    if(Check::control('desc', $desc, 'desc')){
         if(Check::control('date', $date, 'date', true)){
             if(Check::control('numeric', $adminId, '', true)){
                 if(Check::control('numeric', $buyPayment, 'buypayment')){

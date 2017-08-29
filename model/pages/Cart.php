@@ -78,7 +78,7 @@ Class Cart{
         /*-----GET TYPE FOR INSERT INVOICE------------------------------------------------------------
          * E.g. Cart::getRow('what', '1,options,cart');
          */
-        else if($what == "what" AND $key){
+        else if($what == "productType" AND $key){
             $a = explode(',', $key);
             return $a[1];
         }
@@ -114,7 +114,7 @@ Class Cart{
             $cart = array_count_values($count);
             
             if($key == 'cart'){
-                if(empty(self::getRow('cart'))){return 0;}
+                if(empty(self::getRow('saleCart'))){return 0;}
                 else{return @$cart['cart'];}//For count sale cart
             }
             else if($key == 'buyCart'){

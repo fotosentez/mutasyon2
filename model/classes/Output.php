@@ -7,8 +7,10 @@ Class Output
     {
         global $error;
         self::cleanRed();
-        if($class == true){foreach($error as $e){echo '<script>$(".'.$e.'").addClass("checkError");</script>'.Lang::getLang('checkFailed')."<br />";}}
-        else{foreach($error as $e){echo '<script>$("*[name='.$e.']").addClass("checkError");</script>'.Lang::getLang('checkFailed')."<br />";}}
+        foreach($error as $e){
+            $a = explode(',', $e);
+            echo '<script>$(".'.$a[0].'").addClass("checkError");$("*[name='.$a[0].']").addClass("checkError");</script>'.Lang::getLang($a[1])."<br />";
+        }
     }
     
     //Add red background to input which gived error (Not clean other inputs)

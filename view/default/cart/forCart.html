@@ -1,18 +1,22 @@
 <div class="col-sm-3 col-xs-12">
     <label>Müşteri</label>
-    <select name="cId" class="form-control customer" onChange="getDiscount()">
+    <select name="customer" class="form-control customer" onChange="getDiscount()">
+        <option value="none">{Lang::getLang('select')}</option>
         {foreach Customers::getRow() as $c}
-        <option value="{$c.customers_id}">{$c.customers_name} {$c.customers_surname}</option>
+        <option value="{$c.customers_id}">{$c.fullName}</option>
         {/foreach}
     </select>
     
     <label class="margin-top" for="default">{Lang::getLang('discount')} 
-        <input type="checkbox" id="default" class="badgebox active"><span class="badge">&check;</span>
+        <input type="checkbox" id="default" class="badgebox active" />
+        <span class="badge">&check;</span>
     </label>
-    <div class="col-xs-12 cartDiscountGroup">
-	<div class="col-xs-5"><input type="number" class="form-control discountRate" name="discountRate" value="" onChange="writeInvoiceInfs();" disabled/></div>
-        <div class="col-xs-7">
-	    <select name="discountType" class="form-control method discountType" onChange="writeInvoiceInfs();" disabled>
+    <div class="row">
+        <div class="col-sm-6">
+            <input type="number" class="form-control customerDiscount" name="discount" onChange="writeDiscount();" disabled/> 
+        </div>
+        <div class="col-sm-6">
+            <select name="discountType" class="form-control customerDiscount" onChange="writeDiscount()" disabled>
                 <option value="percent">{Lang::getLang('percent')}</option>
                 <option value="amount">{Lang::getLang('amount')}</option>
             </select>
@@ -29,6 +33,7 @@
     <input type="date" id="date" class="form-control date" name="date" value="{$smarty.now|date_format:'%Y-%m-%d'}" />
     <label class="margin-top">{Lang::getLang('dueDate')}</label>
     <input type="date" class="form-control date" name="dueDate" value="{'+1 month'|date_format:'%Y-%m-%d'}" />
+    <input type="hidden" name="what" value="invoice" />
     
     <label class="margin-top">{Lang::getLang('prefix')}</label>
     <select name="prefix" class="form-control">

@@ -13,8 +13,8 @@ $stepOne = 0;
 if(Check::control('numeric', $invoiceId, 'invoiceId', true)){
     $checkStatus = Dbase::getRow('invoice', 'invoice_id = '.$invoiceId, 'invoice_cancelled');
     if($checkStatus == 0){
-        if(Check::control('productName', $password, 'password', true)){
-            if(Check::control('productName', $reason, 'reason', true)){
+        if(Check::control('desc', $password, 'password', true)){
+            if(Check::control('desc', $reason, 'reason', true)){
                 if(Check::control('numeric', $cashId, 'cashId', true)){
                     if(empty($error)){
                         if(Check::numberOfCharacters($reason, 30, 200,  'reason')){

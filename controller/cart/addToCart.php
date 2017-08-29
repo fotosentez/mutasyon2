@@ -159,7 +159,7 @@ else if($stepProductsCart == 1){
     
     
     else if($what == 'cart'){
-        $checkStock = Dbase::getRow('pp_products_id', 'pp_products_options_id = '.$getId.' pp_products_options_id IS NULL', 'sum(pp_amount)');
+        $checkStock = Dbase::getRow('purchasedProducts', 'pp_products_id = '.$getId.'', 'sum(pp_amount)');
         if($checkStock > 0){
             $convert = $getId.",products,cart";
             Session::arrayPush('cart', $convert);

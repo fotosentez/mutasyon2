@@ -9,7 +9,7 @@ $type = Get::getValue('type');
 
 
 $stepOne = 0;
-if(Check::control('productName', $name, 'name', true)){
+if(Check::control('desc', $name, 'name', true)){
     if($type == "sub"){
         if(Check::numberOfCharacters($sku, 3, 3,  'sku')){
             if(Check::control('numeric', $main, 'main', true)){

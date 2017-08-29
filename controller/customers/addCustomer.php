@@ -17,9 +17,9 @@ $group = Get::getValue( "group" );
 $stepOne = 0;
 if(Check::control('name', $name, 'name', true)){
     if(Check::control('name', $surname, 'surname', true)){
-        if(Check::control('productName', $address, 'address')){
+        if(Check::control('desc', $address, 'address')){
             if(Check::control('date', $date, 'date', true)){
-                if(Check::control('productName', $phone, 'phone')){
+                if(Check::control('desc', $phone, 'phone')){
                     if(Check::control('mail', $mail, 'mail')){
                         if(Check::control('name', $city, 'city')){
                             if(Check::control('name', $country, 'country')){

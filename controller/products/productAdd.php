@@ -17,9 +17,9 @@ $categoryId = Get::getValue('sub');
 $brand = Get::getValue('brand');
 
 $checkOne =0;
-if(Check::control('productName', $product_name, "product_name", true)){
-    if(Check::control('productName', $short_desc, "short_desc")){
-        if(Check::control('productName', $product_detail, "product_detail")){
+if(Check::control('desc', $product_name, "product_name", true)){
+    if(Check::control('desc', $short_desc, "short_desc")){
+        if(Check::control('desc', $product_detail, "product_detail")){
             if(Check::control('numeric', $categoryId, "categoryId", true)){
                 if(Check::control('numeric', $brand, "brand")){
                     if(empty($error)){$checkOne =1;}

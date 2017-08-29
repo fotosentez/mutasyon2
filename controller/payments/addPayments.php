@@ -33,11 +33,11 @@ if(Check::control('numeric', $invoiceId, 'invoiceId', true)){
                 if($checkPayType){
                     if(empty($error)){
                         if($what == 'invoicePayments'){
-                            if($desc){if(Check::control('productName', $desc, 'desc')){$stepInvoice = 1;}}
+                            if($desc){if(Check::control('desc', $desc, 'desc')){$stepInvoice = 1;}}
                             else{$stepInvoice = 1;}
                         }
                         else if($what == 'providersPayments'){
-                            if($desc){if(Check::control('productName', $desc, 'desc')){$stepProviders = 1;}}
+                            if($desc){if(Check::control('desc', $desc, 'desc')){$stepProviders = 1;}}
                             else{$stepProviders = 1;}
                         }
                     }

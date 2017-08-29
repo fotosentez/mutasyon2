@@ -19,16 +19,10 @@ Class Customers{
         
         else{
             if($what){
-                $customers = Dbase::getRow('customersView', 'customers_id = '.$id.' AND '.$what.' IS NOT NULL ', $what);
+                return Dbase::getRow('customersView', 'customers_id = '.$id.' AND '.$what.' IS NOT NULL ', $what);
             }
             else{
-                $customers = Dbase::getRows('*', 'customersView', 'customers_id <> 0');
-            }
-            if($customers){
-                return $customers;
-            }
-            else{
-                echo $what;
+                return Dbase::getRows('*', 'customersView', 'customers_id <> 0');
             }
         }
     }

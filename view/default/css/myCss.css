@@ -2,6 +2,9 @@
 .checkError{
     background:#FFAEAE !important;
 }
+.displayNone{
+    display:none;
+}
 /* Database Error */
 .databaseError {
     color: #000;

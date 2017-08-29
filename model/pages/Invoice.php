@@ -7,7 +7,14 @@ Class Invoice{
 	if($what){
 	    
 	    //Check gid
-            if(preg_match('/^[+0-9. ()\/-]*$/', $gid)){$id = $gid;}else{$id = Get::getValue('id');}
+            if($gid){
+                if(preg_match('/^[+0-9. ()\/-]*$/', $gid)){
+                    $id = $gid;
+                }
+            }
+            else{
+                $id = Get::getValue('id');
+            }
 	    
 	    
 	    /*--------------------------GET LAST NO---------------------------------------
@@ -54,10 +61,10 @@ Class Invoice{
 	    else if($what == "products"){
 		
 		if($id){
-		    $getTable = Dbase::getRows('*', 'productsSold INNER JOIN products ON products_id = ps_products_id INNER JOIN invoice ON ps_invoice_id = invoice_id', 'ps_invoice_id = '.$id.' '); 
+		    $getTable = Dbase::getRows('*', 'productsSold INNER JOIN invoice ON ps_invoice_id = invoice_id LEFT JOIN products_options ON ps_products_options_id = po_id LEFT JOIN products ON ps_products_id = products_id', 'ps_invoice_id = '.$id.' '); 
 		}
 		else{
-		    $getTable = Dbase::getRows('*', 'productsSold INNER JOIN products ON products_id = ps_products_id INNER JOIN invoice ON ps_invoice_id = invoice_id', 'ps_invoice_id <> 0 ');
+		    $getTable = Dbase::getRows('*', 'productsSold INNER JOIN invoice ON ps_invoice_id = invoice_id', 'ps_invoice_id <> 0 ');
 		}
 		
 	    }
