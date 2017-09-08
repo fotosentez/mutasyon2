@@ -9,11 +9,10 @@
             </div>
             <div class="modal-body">
                 
-                <form class="form-horizontal noload" method="post" action="controller/invoice/cancelInvoice.php">
+                <form class="form-horizontal noload" method="post" action="controller/invoice/cancelServiceInvoice.php">
                     
                     <!--Service id-->
                     <input type="hidden" value="{Get::getValue('id')}" name="invoiceId" />
-                    <input type="hidden" value="service" name="what" />
                     
                     <!--Reason-->                   
                     <label class="margin-top">{Lang::getLang('reason')}</label>
@@ -27,7 +26,7 @@
                     <label class="margin-top">{Lang::getLang('cash')}</label>
                     <select name="cashId" class="form-control">
                         {foreach Settings::getRow('cash') as $c}
-                        <option value="{$c.s_id}">{$c.s_name}</option>
+                        <option value="{$c.s_id}">{$c.s_value}</option>
                         {/foreach}
                     </select>                    
                     
@@ -35,7 +34,7 @@
                     <label class="margin-top">{Lang::getLang('payType')}</label>
                     <select name="payType" class="form-control">
                         {foreach Settings::getRow('payType') as $p}
-                        <option value="{$p.s_id}">{$p.s_name}</option>
+                        <option value="{$p.s_id}">{$p.s_value}</option>
                         {/foreach}
                     </select>                    
                     

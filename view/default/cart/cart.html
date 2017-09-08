@@ -27,8 +27,7 @@
                             <div class="col-xs-10">
                                 <label>{Cart::getRow('products_name', $gp)}</label><br />
                                 <small>{Cart::getRow('s_value', $gp)} {Cart::getRow('options_name', $gp)}</small>
-                                <input type="hidden" name="productID[]" value="{Cart::getRow('id', $gp)}" />
-                                <input type="hidden" name="productType[]" value="{Cart::getRow('productType', $gp)}" />
+                                <input type="hidden" name="infs[]" value="{$gp}" />
                             </div>
                         </div>
                         <div class="col-sm-5 col-xs-12">

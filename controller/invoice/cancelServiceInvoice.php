@@ -7,7 +7,6 @@ $password = Get::getValue('password');
 $reason = Get::getValue('reason');
 $cashId = Get::getValue('cashId');
 $payType = Get::getValue('payType');
-$what = Get::getValue('what');
 
 $stepOne = 0;
 if(Check::control('numeric', $invoiceId, 'invoiceId', true)){
@@ -15,20 +14,23 @@ if(Check::control('numeric', $invoiceId, 'invoiceId', true)){
     if($checkStatus == 0){
         if(Check::control('desc', $password, 'password', true)){
             if(Check::control('desc', $reason, 'reason', true)){
-                if(Check::control('numeric', $cashId, 'cashId', true)){
-                    if(empty($error)){
-                        if(Check::numberOfCharacters($reason, 30, 200,  'reason')){
-                            if($payType == "invoice" OR $payType == "transfer" OR $payType == "return"){
-                                $stepOne = 1;
+                if(Check::numberOfCharacters($reason, 30, 200,  'reason')){
+                    if(Check::control('numeric', $payType, 'payType', true)){
+                        if(Check::control('numeric', $cashId, 'cashId', true)){
+                            $checkPayType = Dbase::isExist('settings', 's_name = "payType" AND s_id = '.$payType);
+                            $checkCash = Dbase::isExist('settings', 's_name = "cash" AND s_id = '.$cashId);
+                            if($checkPayType){
+                                if($checkCash){
+                                    $stepOne = 1;
+                                }
+                                else{
+                                    array_push($error, 'cashId,cashNotFound');
+                                } 
                             }
                             else{
-                                echo Lang::getLang('payTypeNotFound');
-                                exit();
+                                array_push($error, 'payType,payTypeNotFound');
                             }
                         }
-                    }
-                    else{
-                        Output::error();
                     }
                 }
             }
@@ -39,7 +41,7 @@ if(Check::control('numeric', $invoiceId, 'invoiceId', true)){
     }
 }
 
-if($stepOne == 1){
+if($stepOne == 1 AND empty($error)){
     $getPassword = Superuser::getRow('superuser_password');
     
     if(isset($_SESSION["checkPassword"])){
@@ -48,23 +50,8 @@ if($stepOne == 1){
                 $descBefore = Dbase::getRow('invoice', 'invoice_id = '.$invoiceId, 'invoice_desc');
                 $descNew = $descBefore."<br />".Lang::getLang('reason').": ".$reason;
                 
-                if($what == "service"){
-                    include_once(dirname(__FILE__).'/cancelForService.php');
-                }
-                else if($what == "invoice"){
-                    include_once(dirname(__FILE__).'/cancelForInvoice.php');
-                }
-                else{
-                    exit();
-                }
-                
-                $table = 'invoice';
-                $values = array(
-                    'invoice_desc' => $descNew,
-                    'invoice_cancelled' => 1
-                    );
-                    $update = Dbase::update($table,  $values, 'invoice_id = '.$invoiceId);
-                    echo Lang::getLang('proccessSuccess').'<script type="text/javascript">setTimeout(location.reload.bind(location), 2000);</script>';
+                //All data send to cancelForService for write to database
+                include_once(dirname(__FILE__).'/cancelForService.php');
             }
             else{
                 $_SESSION["checkPassword"]--;  
@@ -79,6 +66,9 @@ if($stepOne == 1){
     else{
         Session::build('checkPassword', 3);
     }
+}
+else{
+    Output::error();
 }
 
 ?>

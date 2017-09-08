@@ -46,4 +46,13 @@ if($isPaidToProviders > 0){
         $insert = Dbase::insert($table, $values );
 }
 
-?>
+//Update invoice status
+$table = 'invoice';
+$values = array(
+    'invoice_desc' => $descNew,
+    'invoice_cancelled' => 1
+    );
+    $update = Dbase::update($table,  $values, 'invoice_id = '.$invoiceId);
+    echo Lang::getLang('proccessSuccess').'<script type="text/javascript">setTimeout(location.reload.bind(location), 2000);</script>';
+    
+    ?>

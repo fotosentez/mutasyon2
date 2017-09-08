@@ -1,0 +1,138 @@
+<div class="modal modalCancelServices" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">{Lang::getLang('cancelInvoice')}</h4>
+            </div>
+            <div class="modal-body">
+                
+                <form class="form-horizontal noload" method="post" action="controller/invoice/cancelProductsInvoice.php">
+                    <div class="col-xs-3">
+                        <!--Cash-->                   
+                        <label>{Lang::getLang('cash')}</label>
+                        <select name="cashId" class="form-control">
+                            {foreach Settings::getRow('cash') as $c}
+                            <option value="{$c.s_id}">{$c.s_value}</option>
+                            {/foreach}
+                        </select> 
+                        <label class="margin-top">{lang::getlang('date')}</label>
+                        <input type="date" name="date" class="form-control" value="{IbniYunus::getDate('now')}" />
+                    </div>
+                    <div class="col-xs-3">
+                        <!--Pay Type-->                   
+                        <label>{Lang::getLang('payType')}</label>
+                        <select name="payType" class="form-control">
+                            {foreach Settings::getRow('payType') as $p}
+                            <option value="{$p.s_id}">{$p.s_value}</option>
+                            {/foreach}
+                        </select> 
+                        <label class="margin-top">İade edilecek Tutar</label>
+                        <input type="number" name="refund" class="form-control" step="0.01"/>
+                    </div>
+                    <div class="col-xs-4 pull-right">
+                        <label>{lang::getlang('desc')}</label>   
+                        <textarea name="desc" class="form-control" style="height:110px"></textarea>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width:5%">İade</th>
+                                    <th style="width:10%">Miktar</th>
+                                    <th style="width:30%">Ürün Adı</th>
+                                    <th style="width:15%">Neden</th>
+                                    <th style="width:15%">Ürünün Durumu</th>
+                                    <th style="width:15%">Yapılacak İşlem</th>
+                                    <th style="width:10%">Ara Toplam</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach Invoice::getRow('products') as $p}
+                                <tr>
+                                    <td class="psId"><input type="checkbox" name="psId[]" value="{$p.ps_id}" /></td>
+                                    <td class="amount">
+                                        <select class="form-control" name="amount{$p.ps_id}">
+                                            {for $i = 1 to $p.ps_amount}
+                                            <option value="{$i}">{$i}</option>
+                                            {/for}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        {$p.products_name}<br />
+                                        <small>{$p.colors}</small>
+                                        <small>{$p.options}</small>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="reason{$p.ps_id}">
+                                            <option value="none">Seçiniz</option>
+                                            <option value="notLike">Beğenmedi</option>
+                                            <option value="damaged">Hasarlı</option>
+                                            <option value="other">Diğer</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="status{$p.ps_id}">
+                                            <option value="none">Seçiniz</option>
+                                            <option value="good">Temiz</option>
+                                            <option value="worn">Yıpranmış</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="solution{$p.ps_id}">
+                                            <option value="none">Seçiniz</option>
+                                            <option value="return">Para İadesi</option>
+                                            <option value="change">Değişim</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        {Settings::getRow('currency', 'default')}
+                                        <span class="eachSubTotal">{$p.ps_price}</span>
+                                    </td>
+                                </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-xs-3 pull-left">
+                        <label>{lang::getlang('password')} (Güvenlik nedeniyle)</label>
+                        <input type="text" name="password" class="form-control" />
+                        <input type="hidden" name="invoiceId" value="{Get::getValue('id')}" />
+                    </div>
+                    
+                    <div class="col-xs-3 pull-right datas">
+                        
+                        <!--Subtoal-->
+                        <div class="row">
+                            <div class="col-xs-6"><label>{Lang::getLang('subTotal')}:</label></div>
+                            <div class="col-xs-6 tar">{Settings::getRow('currency', true)} <span class="returnSubTotal">0.00</span></div>
+                        </div>
+                        
+                        <!--Payments-->
+                        <div class="row">
+                            <div class="col-xs-6"><label>{Lang::getLang('payments')}:</label></div>
+                            <div class="col-xs-6 tar">
+                                {Settings::getRow('currency', true)} <span class="returnPayments">{Invoice::getRow('payments')}</span>
+                            </div>
+                        </div>
+                        
+                        <!--Total-->
+                        <div class="row">
+                            <div class="col-xs-6"><label>{Lang::getLang('total')}:</label></div>
+                            <div class="col-xs-6 tar">{Settings::getRow('currency', true)} <span class="returnTotal">{Invoice::findTotal('total')}</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="clear"></div>
+                    <button class="btn btn-danger margin-top hidden-print" type="submit">{Lang::getLang('cancelInvoice')}</button>
+                </form>
+                
+                
+            </div><!--/modal-body-->
+        </div><!--/modal-content-->
+    </div><!--/modal-dialog-->
+</div><!--/modal-->

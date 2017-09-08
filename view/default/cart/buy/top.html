@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-sm-5">
     
-<!--     Seller -->
+    <!--     Seller -->
     <div class="col-xs-12">
         <select class="form-control" name="sellerId">
             {foreach Seller::getRow() as $s}
@@ -9,12 +9,12 @@
         </select>
     </div>
     
-<!--     Date -->
+    <!--     Date -->
     <div class="col-xs-12 margin-top">
         <input type="date" class="form-control" name="date" value="{IbniYunus::getDate('now')}" />
     </div>
     
-<!--     Desc -->
+    <!--     Desc -->
     <div class="col-xs-12 margin-top">
         <textarea name="desc" class="form-control"></textarea>
     </div>
@@ -24,7 +24,7 @@
 <!-- Right -->
 <div class="col-xs-12 col-sm-5 col-sm-offset-2">
     
-<!-- Virtual -->
+    <!-- Virtual -->
     <div class="col-xs-12">
         <label for="default">
             {Lang::getLang('virtualProduct')} 
@@ -34,14 +34,14 @@
         </label>
     </div>
     
-<!--     Payment group -->
+    <!--     Payment group -->
     <div class="col-xs-12 margin-top buybank">
         <div class="col-xs-12">
             <input type="number" name="buypayment" class="form-control notpay buypayment subTotal" step='0.01' />
         </div>
         
         <div class="col-xs-12 margin-top">
-            <select class="form-control notpay" name="cash">
+            <select class="form-control notpay" name="cashId">
                 {foreach Settings::getRow('cash') as $s}
                 <option value="{$s.s_id}">{$s.s_value}</option>
                 {/foreach}

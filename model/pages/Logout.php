@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__).'/../classes/Session.php'); // Get session
+require_once(dirname(__FILE__).'/../functions/Session.php'); // Get session
 
 session_start();
 Session::destroy();

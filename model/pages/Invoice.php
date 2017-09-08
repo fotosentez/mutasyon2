@@ -44,7 +44,7 @@ Class Invoice{
 		
 		if(self::getRow('invoice_cancelled', $id) != 1){
 		    
-                    if($payments < $total){if($due > $now){return "waiting";}else{return "unpaid";}}
+            if($payments < $total){if($due > $now){return "waiting";}else{return "unpaid";}}
 		    else{return "paid";}
 		}
 		else{return "cancelled";}
@@ -61,7 +61,16 @@ Class Invoice{
 	    else if($what == "products"){
 		
 		if($id){
-		    $getTable = Dbase::getRows('*', 'productsSold INNER JOIN invoice ON ps_invoice_id = invoice_id LEFT JOIN products_options ON ps_products_options_id = po_id LEFT JOIN products ON ps_products_id = products_id', 'ps_invoice_id = '.$id.' '); 
+		    $getTable = Dbase::getRows('
+		    *, 
+		    (SELECT s_value FROM settings WHERE po_colors_id = s_id)                  AS colors, 
+		    (SELECT options_name FROM options WHERE options_id = po_options_id)       AS options, 
+		    products_prefix||SKU||po_sku                                              AS osku', 
+		    'productsSold 
+		    INNER JOIN invoice                                                        ON ps_invoice_id = invoice_id 
+		    LEFT JOIN products_options                                                ON ps_products_options_id = po_id 
+		    LEFT JOIN products                                                        ON ps_products_id = products_id', 
+		    'ps_invoice_id = '.$id.' '); 
 		}
 		else{
 		    $getTable = Dbase::getRows('*', 'productsSold INNER JOIN invoice ON ps_invoice_id = invoice_id', 'ps_invoice_id <> 0 ');
@@ -106,14 +115,12 @@ Class Invoice{
      */
     function findTotal($what = "", $id = ""){
         
-        if($what == 'total' OR $what == 'subTotal' OR $what == 'discount' OR $what == 'providerRemain'){
+        if($what == 'total' OR $what == 'subTotal' OR $what == 'providerRemain' OR $what == 'remain'){
             
             /*------------------------------------------------------------
              */
             $total = 0;
             $invoiceTotal = self::getRow('invoiceTotal', $id);
-            $discount = self::getRow('invoice_discount', $id);
-            $discountType = self::getRow('invoice_discount_type', $id);
             //------------------------------------------------------------
             
             
@@ -121,34 +128,9 @@ Class Invoice{
             /*---------TOTAL INCLUDE DISCOUNT-----------------------------
              */
             if($what == 'total'){
-                if($discountType == 'percent'){
-                    $total = $invoiceTotal - $invoiceTotal*$discount/100;
-                }
-                else if($discountType == 'amount'){
-                    $total = $invoiceTotal - $discount;
-                }
-                else{
-                    $total = 0;
-                }
+                $total = $invoiceTotal - self::getRow('invoice_discount', $id);
             }
             //------------------------------------------------------------
-            
-            
-            
-            /*-----------DISCOUNT-----------------------------------------
-             */
-            else if($what == 'discount'){
-                if($discountType == 'percent'){
-                    $total = $invoiceTotal*$discount/100;
-                }
-                else if($discountType == 'amount'){
-                    $total = $discount;
-                }
-                else{
-                    $total = 0;
-                }
-            }
-            //-----------------------------------------------------------
             
             
             
@@ -156,6 +138,15 @@ Class Invoice{
              */
             else if($what == 'subTotal'){
                 $total = $invoiceTotal;
+            }
+            //-----------------------------------------------------------
+            
+            
+            
+            /*-------REMAIN (TOTAL-DISCOUNT-PAYMENTS)--------------------
+             */
+            else if($what == 'remain'){
+                $total = self::findTotal('total', $id)-(self::getRow('invoice_discount', $id)+self::getRow('payments', $id));
             }
             //-----------------------------------------------------------
             

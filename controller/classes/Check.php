@@ -140,9 +140,7 @@ Class Check {
             return true;
         }
         else{//if address not valid
-            array_push($error, $inputname);
-            Output::addRed($inputname, 'validateShortInput');
-            exit();
+            return array_push($error, $inputname.',validateShortInput');
         }
     }
     //----------------------------------------------------------------------------------------------------------------

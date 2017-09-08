@@ -140,15 +140,39 @@ if($stepAddOptionsCart == 1){
     
     
     else if($what == 'cart'){
-        $checkStock = Dbase::getRow('purchasedProducts', 'pp_products_options_id = '.$getId.'', 'sum(pp_amount)');
-        if($checkStock > 0){
-            $convert = $getId.",options,cart";
-            Session::arrayPush('cart', $convert);
+        
+        
+        $infs = Dbase::getRows('
+        sum(pp_amount) AS stock,
+        pp_amount_type,
+        pp_price,
+        pp_profit,
+        pp_profit_method ', 
+        
+        'purchasedProducts', 
+        
+        'pp_products_options_id = '.$getId.' AND pp_profit NOT NULL AND pp_profit_method NOT NULL '
+        );
+        
+        foreach($infs AS $i){
+            $stock              = $i['stock'];
+            $amountType         = $i['pp_amount_type'];
+            $price              = $i['pp_price'];
+            $profit             = $i['pp_profit'];
+            $method             = $i['pp_profit_method'];
+            
+            $eachPrice = Harizmi::getRow('total', array('profit' => $profit, 'price' => $price, 'method' => $method));
+            
+            if($stock > 0){
+                $convert = $getId.",options,cart,".$eachPrice.','.$amountType;
+                Session::arrayPush('cart', $convert);
+            }
+            else{
+                echo Lang::getLang('notEnoughStock');
+                exit();
+            }
         }
-        else{
-            echo Lang::getLang('notEnoughStock');
-            exit();
-        }
+        
     }
 }
 else if($stepProductsCart == 1){
@@ -159,15 +183,40 @@ else if($stepProductsCart == 1){
     
     
     else if($what == 'cart'){
-        $checkStock = Dbase::getRow('purchasedProducts', 'pp_products_id = '.$getId.'', 'sum(pp_amount)');
-        if($checkStock > 0){
-            $convert = $getId.",products,cart";
-            Session::arrayPush('cart', $convert);
+
+        $infs = Dbase::getRows('
+            sum(pp_amount) AS stock,
+            pp_amount_type,
+            pp_price,
+            pp_profit,
+            pp_profit_method ', 
+            
+        'purchasedProducts', 
+        
+        'pp_products_id = '.$getId
+        );
+        
+        foreach($infs AS $i){
+            $stock              = $i['stock'];
+            $amountType         = $i['pp_amount_type'];
+            $price              = $i['pp_price'];
+            $profit             = $i['pp_profit'];
+            $method             = $i['pp_profit_method'];
+            
+            $eachPrice = Harizmi::getRow('total', array('profit' => $profit, 'price' => $price, 'method' => $method));
+            
+            if($stock > 0){
+                $convert = $getId.",products,cart,".$eachPrice.','.$amountType;
+                Session::arrayPush('cart', $convert);
+            }
+            else{
+                echo Lang::getLang('notEnoughStock');
+                exit();
+            }
         }
-        else{
-            echo Lang::getLang('notEnoughStock');
-            exit();
-        }
+        
+        
+        
     }
 }
 //---------------------------------------------------------------------------------------------------------------------------

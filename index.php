@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/model/settings/include.php');CheckUrl::url();
-
+print_r(Cart::getRow('saleCart'));
 if(isset($_SESSION["mutasyon_login"])){
 
     switch (Get::getValue("u")) {

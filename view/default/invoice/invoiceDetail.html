@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-xs-12 invoice-header">
             <h1>
-		#{Invoice::getRow('no')}
+                #{Invoice::getRow('no')}
                 <small class="pull-right">Date: {Invoice::getRow('invoice_date')}</small>
             </h1>
         </div>
@@ -32,7 +32,7 @@
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-	    <b>Payment Due:</b> {Invoice::getRow('invoice_due_date')}
+            <b>Payment Due:</b> {Invoice::getRow('invoice_due_date')}
         </div>
         <!-- /.col -->
     </div>
@@ -55,17 +55,21 @@
                 <tbody>
                     {foreach Invoice::getRow('products') as $p}
                     <tr>
-                        <td class="amount">{$p.ps_amount}</td>
-                        <td>{$p.products_prefix}{$p.SKU}</td>
-                        <td>{$p.products_name}</td>
+                        <td class="">{$p.ps_amount}</td>
+                        <td>{$p.osku}</td>
+                        <td>
+                            {$p.products_name}<br />
+                            <small>{$p.colors}</small>
+                            <small>{$p.options}</small>
+                        </td>
                         <td>{$p.products_short_detail}</td>
                         <td>
                             {Settings::getRow('currency', 'default')}
-			    <span class="price">{$p.ps_price}</span>
+                            <span class="">{$p.ps_price}</span>
                         </td>
                         <td>
                             {Settings::getRow('currency', 'default')}
-			    <span class="eachSubTotal">{$p.ps_amount*$p.ps_price}</span>
+                            <span class="">{$p.ps_amount*$p.ps_price}</span>
                         </td>
                     </tr>
                     {/foreach}
@@ -88,23 +92,23 @@
                     <tbody>
                         <tr>
                             <th style="width:50%">Ara Toplam:</th>
-                            <td>{Settings::getRow('currency', 'default')}<span class="subTotal"></span></td>
+                            <td>{Settings::getRow('currency', 'default')}<span>{Invoice::findTotal('subTotal')}</span></td>
                         </tr>
                         <tr>
                             <th style="width:50%">İndirim:</th>
-			    <td>{Settings::getRow('currency', 'default')}<span class="discount">{Invoice::findTotal('discount')}</span></td>
+                            <td>{Settings::getRow('currency', 'default')}<span>{Invoice::getRow('invoice_discount')}</span></td>
                         </tr>
                         <tr>
                             <th style="width:50%">Toplam:</th>
-			    <td>{Settings::getRow('currency', 'default')}<span class="total"></span></td>
+                            <td>{Settings::getRow('currency', 'default')}<span>{Invoice::findTotal('total')}</span></td>
                         </tr>
                         <tr>
                             <th style="width:50%">Ödenen:</th>
-			    <td>{Settings::getRow('currency', 'default')}<span class="payment">{Invoice::getRow('payments')}</span></td>
+                            <td>{Settings::getRow('currency', 'default')}<span>{Invoice::getRow('payments')}</span></td>
                         </tr>
                         <tr>
                             <th style="width:50%">Kalan:</th>
-			    <td>{Settings::getRow('currency', 'default')}<span class="remain"></span></td>
+                            <td>{Settings::getRow('currency', 'default')}<span>{Invoice::findTotal('remain')}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -120,8 +124,10 @@
             <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
             <button class="btn btn-success pull-right" data-toggle="modal" data-target=".modalAddPayments"><i class="fa fa-credit-card"></i> Submit Payment</button>
             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".modalCancelServices"><i class="glyphicon glyphicon-off"></i> {Lang::getLang("cancelled")}</button>
         </div>
     </div>
 </section>
 
 {include file='view/default/modals/modalAddPayments.html'}
+{include file='view/default/invoice/products/calcelInvoice.html'}

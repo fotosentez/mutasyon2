@@ -23,7 +23,7 @@
                 <label>{Cart::getRow('products_name', $c)}</label><br />
                 <small>{Cart::getRow('s_value', $c)} {Cart::getRow('options_name', $c)}</small>
                 <input type="hidden" name="productID[]" value="{Cart::getRow('id', $c)}" />
-                <input type="hidden" name="what[]" value="{Cart::getRow('what', $c)}" />
+                <input type="hidden" name="what[]" value="{Cart::getRow('productType', $c)}" />
             </div>
         </div>
         

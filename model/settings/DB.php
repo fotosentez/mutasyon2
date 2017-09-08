@@ -14,6 +14,11 @@
             return $this->db->query($value);
         }
         
+        //Execute
+        function execute($value){
+            return $this->db->execute($value);
+        }
+        
         //Prepare
         function prepare($value){
             return $this->db->prepare($value);

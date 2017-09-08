@@ -22,7 +22,7 @@ Class Dbase{
         foreach($values as $k => $v ) {
             $prep[':'.$k] = $v;
         }
-        $sth = $db->prepare("INSERT INTO ".$table." ( " . implode(', ',array_keys($values)) . ") VALUES (" . implode(', ',array_keys($prep)) . ")");
+        $sth = $db->prepare("INSERT OR IGNORE INTO ".$table." ( " . implode(', ',array_keys($values)) . ") VALUES (" . implode(', ',array_keys($prep)) . ")");
         $res = $sth->execute($prep);
         return $db->lastInsertId();
         
@@ -58,7 +58,7 @@ Class Dbase{
     public static function updateOneRow($table,  $row, $condition) {
         $db = new DB();
         $updateOneRow = $db->prepare("UPDATE ".$table." SET ".  $row ."  WHERE ".$condition."");
-        $res = $updateOneRow->execute();
+        return $updateOneRow->execute();
     }
     
     /** DELETE Value eg: Dbase::delete('product', 'id_product = 8') **/
@@ -116,14 +116,19 @@ Class Dbase{
         $db = new DB();
         
         $gettable = $db->query('SELECT COUNT( * ) AS result FROM '.$table.' WHERE '.$condition.'', PDO::FETCH_ASSOC);
-        foreach($gettable as $g){
-            $result = $g['result'];
-        }
-        if($result > 0){
-            return true;
+        if($gettable){
+            foreach($gettable as $g){
+                $result = $g['result'];
+            }
+            if($result > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         else{
-            return false;
+            echo "<span class='databaseError'>".'SELECT COUNT( * ) AS result FROM '.$table.' WHERE '.$condition.''."</span>";
         }
     }
     

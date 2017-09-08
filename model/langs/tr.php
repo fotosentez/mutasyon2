@@ -37,7 +37,7 @@ Class Lang{
             //Notifications
             "mainPage" 					=> "Anasayfa",
             "validateDiscount" 				=> "İndirim miktarı toplamdan büyük olamaz!",
-            "validateDate" 				=> "Lütfen geçerli bir tarih formatı giriniz! Örn: 2017-01-01",
+            "validateDate" 				=> "Lütfen geçerli bir tarih formatı giriniz! Örn: 571-04-20",
             "validateIBAN" 				=> "Lütfen geçerli bir IBAN formatı giriniz!",
             "validateText" 				=> "Lütfen geçerli bir içerik giriniz!",
             "contentExist" 				=> "Böyle bir içerik zaten var!",
@@ -90,6 +90,8 @@ Class Lang{
             "feeOfProviders" 		                => "Hizmet sağlayıcıya aktarılacak ücret",
             "cantFeeBigToTotal" 		        => "Fatura toplamından büyük bir ödeme girdiniz",
             "currency_error" 		                => "Para Kodu Eklenmemiş",
+            "proccess" 		                        => "İşlem",
+            "returnTotal" 		                    => "İade Tutarı",
             
             //Left Menu
             "index" 					=> "Anasayfa",
@@ -258,6 +260,17 @@ Class Lang{
             "remain" 					=> "Kalan",
             "invoiceExpiry" 				=> "Ödeme Tarihi",
             "addInvoice" 				=> "Fatura Oluştur",
+            
+            
+            //Complaints
+            "notLike"                   => "Beğenmedi",
+            "damaged"                   => "Ürün hasarlı",
+            "other"                     => "Diğer",
+            
+            
+            //Proccess
+            "return"                   => "Para iadesi",
+            "change"                   => "Değişim",
             
             //Invoice Detail
             "invoiceDetail" 				=> "Fatura Detayı",
