@@ -22,8 +22,8 @@ Class Cart{
         else if($what == 'saleCart'){
             $cart = array();
             foreach(self::getRow('cart') as $a){
-                $a = explode(',', $a);
-                if($a[2] == 'cart'){array_push($cart, $a[0].','.$a[1].','.$a[2].','.$a[3].','.$a[4]);}
+                $a = explode('-', $a);
+                if($a[2] == 'cart'){array_push($cart, $a[0].'-'.$a[1].'-'.$a[2].'-'.$a[3].'-'.$a[4]);}
             }
             return $cart;
         }
@@ -37,8 +37,8 @@ Class Cart{
         else if($what == 'buyCart'){
             $cart = array();
             foreach(self::getRow('cart') as $a){
-                $a = explode(',', $a);
-                if($a[2] == 'buyCart'){array_push($cart, $a[0].','.$a[1].','.$a[2]);}
+                $a = explode('-', $a);
+                if($a[2] == 'buyCart'){array_push($cart, $a[0].'-'.$a[1].'-'.$a[2]);}
             }
             return $cart;
         }
@@ -64,10 +64,10 @@ Class Cart{
         
         
         /*-------GET PRODUCT OR OPTIONS ID------------------------------------------------------------
-         * E.g. Cart::getRow('id', '1,options,cart,15.50,1');
+         * E.g. Cart::getRow('id', '1-options-cart-15.50-1');
          */
         else if($what == "id" AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             return $a[0];
         }
         //--------------------------------------------------------------------------------------------
@@ -76,10 +76,10 @@ Class Cart{
         
         
         /*-------GET PRODUCT OR OPTIONS PRICE---------------------------------------------------------
-         * E.g. Cart::getRow('price', '1,options,cart,15.50,1');
+         * E.g. Cart::getRow('price', '1-options-cart-15.50-1');
          */
         else if($what == "price" AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             return $a[3];
         }
         //--------------------------------------------------------------------------------------------
@@ -88,10 +88,10 @@ Class Cart{
         
         
         /*-------GET PRODUCT OR OPTIONS AMOUNT TYPE---------------------------------------------------
-         * E.g. Cart::getRow('price', '1,options,cart,15.50,1');
+         * E.g. Cart::getRow('price', '1-options-cart-15.50-1');
          */
         else if($what == "amountType" AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             return $a[4];
         }
         //--------------------------------------------------------------------------------------------
@@ -100,10 +100,10 @@ Class Cart{
         
         
         /*-----GET TYPE FOR INSERT INVOICE------------------------------------------------------------
-         * E.g. Cart::getRow('what', '1,options,cart,15.50,1');
+         * E.g. Cart::getRow('what', '1-options-cart-15.50-1');
          */
         else if($what == "productType" AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             return $a[1];
         }
         //--------------------------------------------------------------------------------------------
@@ -112,11 +112,11 @@ Class Cart{
         
         
         /*-----GET CART TYPE--------------------------------------------------------------------------
-         * E.g. Cart::getRow('cartType', '1,options,cart,15.50,1');
+         * E.g. Cart::getRow('cartType', '1-options-cart-15.50-1');
          * For detect buy cart and cart
          */
         else if($what == "cartType" AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             return $a[2];
         }
         //--------------------------------------------------------------------------------------------
@@ -132,7 +132,7 @@ Class Cart{
             
             $count = array();
             foreach(@$_SESSION['cart'] as $c){
-                $a = explode(',', $c);
+                $a = explode('-', $c);
                 array_push($count, $a[2]);
             }
             $cart = array_count_values($count);
@@ -157,7 +157,7 @@ Class Cart{
         /*----FIND SALE PRICE OF OPTIONS--------------------------------------------------------------
          */
         else if($what == 'price' AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             if($a[1] == 'options'){
                 $getInfs = Dbase::getRows('pp_price, pp_profit, pp_profit_method', 'purchasedProducts', 'pp_products_options_id = '.$a[0]);
                 
@@ -178,7 +178,7 @@ Class Cart{
         /*----GET NAME OF OPTIONS---------------------------------------------------------------------
          */
         else if($what == 'options_name' AND $key){
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             if($a[1] == 'options'){
                 return Dbase::getRow('products_options INNER JOIN options ON po_options_id = options_id', 'po_id = '.$a[0], 'options_name');
             }
@@ -193,7 +193,7 @@ Class Cart{
         else if($what == 'empty' AND $key){
             
             foreach(Cart::getRow('cart') as $b => $k){
-                $a = explode(',', $k);
+                $a = explode('-', $k);
                 if($a[2] == $key){
                     $_SESSION['cart'] = array_diff($_SESSION['cart'], [$k]);
                 }
@@ -207,7 +207,7 @@ Class Cart{
         /*-----GET OTHER VALUES-----------------------------------------------------------------------
          */
         else{
-            $a = explode(',', $key);
+            $a = explode('-', $key);
             
             if($a[1] == 'options'){
                 $getProductsId = Dbase::getRow('products_options', 'po_id = '.$a[0], 'po_products_id');

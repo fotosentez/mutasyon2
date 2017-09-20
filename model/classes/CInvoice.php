@@ -36,9 +36,9 @@ Class CInvoice{
      $inv->insert();
      
      */
-    public function insert(){
+    public function insert($infs, $amount){
         global $error;
-        $stepOne = 0;
+        
         if(Check::control('numeric', $this->prefix, 'prefix', true)){
             if(Check::control('desc', $this->desc, 'desc')){
                 if(Check::control('numeric', $this->customer, 'customer', true)){
@@ -49,15 +49,33 @@ Class CInvoice{
                                     if(Check::control('date', $this->dueDate, 'dueDate', true)){
                                         if(Check::control('numeric', $this->status, 'status')){
                                             if($this->invoiceType == "s" OR $this->invoiceType == "p"){
-                                                if(empty($error)){
-                                                    $stepOne = 1;
-                                                    if(!$this->status){
-                                                        $this->status = 1;
+                                                
+                                                //Check products and its values------------------------------------------------
+                                                foreach($infs as $i){
+                                                    $a = explode('-', $i);
+                                                    
+                                                    $this->productsId         = $a[0];
+                                                    $this->productsType       = $a[1];
+                                                    $this->eachPrice          = $a[3];
+                                                    $this->amountType         = $a[4];
+                                                    $this->amount             = $amount.$a[0];
+                                                    
+                                                    if(Check::control('numeric', $this->productsId, $i, true)){
+                                                        if(Check::control('numeric', $this->productsType, $i, true)){
+                                                            if(Check::control('numeric', $this->eachPrice, $i, true)){
+                                                                if(Check::control('numeric', $this->amountType, $i, true)){
+                                                                    if(Check::control('numeric', $this->amount, $amount.$a[0], true)){
+                                                                        echo $i;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
+                                                    
+                                                    
                                                 }
-                                                else{
-                                                    Output::error();
-                                                }
+                                                //-------------------------------------------------------------------------------
+                                                
                                             }
                                             else{
                                                 array_push($error, 'invoiceType,validateText');
@@ -73,7 +91,7 @@ Class CInvoice{
         }
         
         
-        if($stepOne == 1){
+        if( empty($error) ){
             
             $getInvoicePrefixName   = Dbase::getRow('settings', 's_name = "prefix" AND s_id = '.$this->prefix, 's_value');
             $getLastInvoiceNo       = Invoice::getRow('lastNo', $this->prefix); //Get last invoice no of that prefix
@@ -95,9 +113,54 @@ Class CInvoice{
                 'invoice_status'                    => $this->status                    //1
                 );
                 $insertInvoice = Dbase::insert($table, $values );
-                return $insertInvoice;
+                
+                
+                /*-----------Add products from invoice----------------------------------------------------
+                 */
+                if($insertInvoice){
+                    foreach($infs AS $i){
+                        $a = explode(',', $i);
+                        
+                        $this->productsId         = $a[0];
+                        $this->productsType       = $a[1];
+                        $this->eachPrice          = $a[3];
+                        $this->amountType         = $a[4];
+                        $this->amount             = $amount.$a[0];
+                        $this->newInvoiceId     = $insertInvoice;
+                        
+                        if($this->productsType == 'options'){
+                            $getProductsId              = Dbase::getRow('products_options', 'po_id = '.$getId, 'po_products_id');
+                            $this->productsId           = $getProductsId;
+                            $this->optionsId            = $getId;
+                        }
+                        else if($this->productsType == 'products'){
+                            $this->productsId           = $getId;
+                            $opId                       = NULL;
+                        }
+                        else{
+                            exit();
+                        }
+                        
+                        
+                        $table = 'productsSold';
+                        $values = array(
+                            'ps_invoice_id'             => $this->newInvoiceId,
+                            'ps_products_id'            => $this->productsId,
+                            'ps_products_options_id'    => $this->optionsId,
+                            'ps_amount'                 => $this->amount,
+                            'ps_amount_type'            => $this->amountType,
+                            'ps_price'                  => $this->eachPrice
+                            );
+                            $insertProducts = Dbase::insert($table, $values );
+                        
+                        
+                    }
+                }
+                //-------------------------------------------------------------------------------------------
         }
-        
+        else{
+            Output::error();
+        }
         
     }
     //------------------------------------------------------------------------------------------------------------------------------------

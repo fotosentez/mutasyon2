@@ -134,7 +134,7 @@ if($stepOnlyOptions == 1){
  */
 if($stepAddOptionsCart == 1){
     if($what == 'buyCart'){
-        $convert = $getId.",options,buyCart";
+        $convert = $getId."-options-buyCart";
         Session::arrayPush('cart', $convert);
     }
     
@@ -164,7 +164,7 @@ if($stepAddOptionsCart == 1){
             $eachPrice = Harizmi::getRow('total', array('profit' => $profit, 'price' => $price, 'method' => $method));
             
             if($stock > 0){
-                $convert = $getId.",options,cart,".$eachPrice.','.$amountType;
+                $convert = $getId."-options-cart-".$eachPrice.'-'.$amountType;
                 Session::arrayPush('cart', $convert);
             }
             else{
@@ -177,7 +177,7 @@ if($stepAddOptionsCart == 1){
 }
 else if($stepProductsCart == 1){
     if($what == 'buyCart'){
-        $convert = $getId.",products,buyCart";
+        $convert = $getId."-products-buyCart";
         Session::arrayPush('cart', $convert);
     }
     
@@ -206,7 +206,7 @@ else if($stepProductsCart == 1){
             $eachPrice = Harizmi::getRow('total', array('profit' => $profit, 'price' => $price, 'method' => $method));
             
             if($stock > 0){
-                $convert = $getId.",products,cart,".$eachPrice.','.$amountType;
+                $convert = $getId."-products-cart-".$eachPrice.'-'.$amountType;
                 Session::arrayPush('cart', $convert);
             }
             else{
